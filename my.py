@@ -19,6 +19,7 @@ class Solution:
         return m
     
 r=Solution()
+
 print(r.lengthOfLongestSubstring('abcabcbb'))
 print(r.lengthOfLongestSubstring('pwwkew'))
 print(r.lengthOfLongestSubstring('aab'))
