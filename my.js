@@ -1,3 +1,1 @@
-const isMatch=(s,p)=>RegExp(`^${p}$`).test(s)
-
-console.log(isMatch('aa','a*'))
+const multiply=(a,b)=>(BigInt(a)*BigInt(b)+'')
