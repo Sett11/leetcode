@@ -1,1 +1,1 @@
-const addStrings=(a,b)=>+(BigInt(a)*BigInt(b)+'')
+const addStrings=(a,b)=>(BigInt(a)+BigInt(b)+'')
