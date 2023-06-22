@@ -1,13 +1,6 @@
 class Solution:
-    def isNumber(self,s):
-        try:
-            float(s)
-            s=s.lower()
-            if(s=='-inf' or s=='+inf' or s=='-infinity' or s=='+infinity' or s.isalpha()):
-                return False
-            return True
-        except:
-            return False
+    def removeElement(self,l,n):
+        return  len([i for i in l if i!=n])
 
 r=Solution()
-print(r.isNumber("inf"))
+print(r.removeElement([3,2,2,3],3))
