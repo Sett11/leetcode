@@ -1,12 +1,8 @@
 class Solution:
-    def repeatedCharacter(self,s):
-        a=[]
-        for i in s:
-            if i in a:
-                return i
-            else:
-                a.append(i)
+    def frequencySort(self,a):
+        return sorted(a,key=lambda e:(a.count(e),-e))
     
 s=Solution()
 
-print(s.repeatedCharacter('abccbaacz'))
+print(s.frequencySort([1,1,2,2,2,3]))
+print(s.frequencySort([2,3,1,3,2]))
