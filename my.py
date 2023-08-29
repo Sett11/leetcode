@@ -1,14 +1,15 @@
 class Solution:
-    def removeDuplicates(self,a):
-        i=0
-        while i<len(a):
-            if a.count(a[i])>1:
-                a.pop(i)
-                i-=1
-            i+=1
-        return len(a)
-    
+    def removeElement(self,l,n):
+        i=c=0
+        while i<len(l):
+            if l[i]==n:
+                l.pop(i)
+            else:
+                c+=1
+                i+=1
+        return c
+
+
 s=Solution()
 
-print(s.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
-print(s.removeDuplicates([1,1,1,1]))
+print(s.removeElement([3,2,3,2],3))
