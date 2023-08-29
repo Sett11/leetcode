@@ -1,7 +1,13 @@
 class Solution:
-    def findKthLargest(self,a,n):
-        return sorted([i for i in a],reverse=True)[n-1]
+    def removeDuplicates(self,a):
+        i=0
+        while i<len(a):
+            if a.count(a[i])>2:
+                a.pop(i)
+                i-=1
+            i+=1
+        return len(a)
     
 s=Solution()
 
-print(s.findKthLargest([3,2,1,5,6,4],2))
+print(s.removeDuplicates([1,1,1,2,2,3]))
