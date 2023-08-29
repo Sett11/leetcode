@@ -1,10 +1,10 @@
 class Solution:
-    def topKFrequent(self,a,n):
-        s=set(a)
-        return [j[1] for j in sorted([[a.count(i),i] for i in s],reverse=True)[:n]]
+    def frequencySort(self,s):
+        o={}
+        for i in set(s):
+            o[i]=s.count(i)
+        return ''.join(sorted(s,key=lambda e:(o[e],-ord(e)),reverse=True))
+    
+s=Solution()
 
-s = Solution()
-
-print(s.topKFrequent([1,1,1,2,2,3],2))
-print(s.topKFrequent([-1,-1],2))
-print(s.topKFrequent([4,1,-1,2,-1,2,3],2))
+print(s.frequencySort('loveleetcode'))
