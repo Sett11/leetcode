@@ -1,5 +1,13 @@
-twoSum=(a,k)=>{
-    for(let i=-1;++i<a.length;)for(let j=i;++j<a.length;)if(a[i]+a[j]===k)return [i+1,j+1]
+longestPalindrome=s=>{
+    let a=[]
+    for(let i=-1;++i<s.length;){
+        for(let j=i;++j<=s.length;){
+            let t=s.slice(i,j)
+            if(t===[...t].reverse().join``)a.push(t)
+        }
+    }
+    return a.sort((a,b)=>b.length-a.length)[0]
 }
 
-console.log(twoSum([ 2 , 7 ,11,15],9))
+console.log(longestPalindrome('babad'))
+console.log(longestPalindrome('cbbd'))

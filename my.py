@@ -1,14 +1,13 @@
 class Solution:
-    def countOperationsToEmptyArray(self,l):
-        c=0
-        while len(l):
-            if(min(l)==l[0]):
-                l.pop(0)
-                c+=1
-            else:
-                l.append(l.pop(0))
-                c+=1
-        return c
+    def longestCommonPrefix(self,s):
+        s=[''.join(set(i)) for i in zip(*s)]
+        for i in range(len(s)):
+            if len(s[i])>1:
+                return ''.join(s[:i])
+        return ''.join(s)
+    
+s=Solution()
 
-r=Solution()
-print(r.countOperationsToEmptyArray([3,4,-1]))
+print(s.longestCommonPrefix(["flower","flow","flight"]))
+print(s.longestCommonPrefix([""]))
+print(s.longestCommonPrefix(["a"]))
