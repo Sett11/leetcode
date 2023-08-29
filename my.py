@@ -1,13 +1,17 @@
 class Solution:
-    def mostFrequent(self,a,n):
-        b=[a[i+1] for i,j in enumerate(a) if j==n and i!=len(a)-1]
-        s,o,m=set(b),{},0
-        for i in s:
-            t=b.count(i)
-            o[t],m=i,max(t,m)
-        return o[m]
+    def numberOfPairs(self,a):
+        c,q=0,[]
+        while len(set(a))!=len(a):
+            t=a.pop(0)
+            if t not in a:
+                q.append(t)
+            else:
+                a.pop(a.index(t))
+                c+=1
+        return [c,len(a+q)]
+            
     
 s=Solution()
 
-print(s.mostFrequent([1,100,200,1,100],1))
-print(s.mostFrequent([2,2,2,2,3],2))
+print(s.numberOfPairs([1,3,2,1,3,2,2]))
+print(s.numberOfPairs([4,98,80,3,89,14,38,98]))
