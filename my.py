@@ -1,15 +1,7 @@
-def f(x):
-    r=[]
-    for i in x:
-        r.append(x.index(i))
-    return r
 class Solution:
-    def isIsomorphic(self,s,t):
-        return f(s)==f(t)
-        
+    def wordPattern(self,p,s):
+        return [p.index(i) for i in p]==[s.split(' ').index(i) for i in s.split(' ')]
     
 s=Solution()
 
-print(s.isIsomorphic("bbbaaaba","aaabbbba"))
-print(s.isIsomorphic("papap","titii"))
-print(s.isIsomorphic("ab","ca"))
+print(s.wordPattern('abba','dog cat cat dog'))
