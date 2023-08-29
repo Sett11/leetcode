@@ -1,12 +1,10 @@
 class Solution:
-    def majorityElement(self,a):
-        l,s,r=len(a)/3,set(a),[]
-        for i in s:
-            if a.count(i)>l:
-                r.append(i)
-        return r
-    
-s=Solution()
+    def topKFrequent(self,a,n):
+        s=set(a)
+        return [j[1] for j in sorted([[a.count(i),i] for i in s],reverse=True)[:n]]
 
-print(s.majorityElement([3,2,3]))
-print(s.majorityElement([1,2]))
+s = Solution()
+
+print(s.topKFrequent([1,1,1,2,2,3],2))
+print(s.topKFrequent([-1,-1],2))
+print(s.topKFrequent([4,1,-1,2,-1,2,3],2))
