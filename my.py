@@ -1,10 +1,12 @@
 class Solution:
-    def firstUniqChar(self,s):
-        for i in sorted(set(s),key=s.index):
-            if s.count(i)<2:
-                return s.index(i)
-        return -1
+    def repeatedCharacter(self,s):
+        a=[]
+        for i in s:
+            if i in a:
+                return i
+            else:
+                a.append(i)
     
 s=Solution()
 
-print(s.firstUniqChar('leetcode'))
+print(s.repeatedCharacter('abccbaacz'))
