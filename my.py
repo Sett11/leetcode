@@ -1,15 +1,14 @@
 class Solution:
-    def moveZeroes(self,a):
-        l,i=len(a),0
-        while i<l:
-            if not a[i]:
-                a.append(a.pop(i))
-                l-=1
-                i-=1
-            i+=1
-        return a
+    def searchInsert(self,a,n):
+        if n in a:
+            return a.index(n)
+        for i in range(len(a)):
+            if a[i]>n:
+                return i
+        return len(a)
     
 s=Solution()
 
-print(s.moveZeroes([0,1,0,3,12]))
-print(s.moveZeroes([0,0,1]))
+print(s.searchInsert([1,3,5,6],5))
+print(s.searchInsert([1,3,5,6],2))
+print(s.searchInsert([1,3,5,6],7))
