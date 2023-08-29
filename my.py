@@ -1,13 +1,8 @@
+from statistics import median as m
 class Solution:
-    def longestCommonPrefix(self,s):
-        s=[''.join(set(i)) for i in zip(*s)]
-        for i in range(len(s)):
-            if len(s[i])>1:
-                return ''.join(s[:i])
-        return ''.join(s)
+    def findMedianSortedArrays(self,a,b):
+        return m(sorted(a+b))
     
 s=Solution()
 
-print(s.longestCommonPrefix(["flower","flow","flight"]))
-print(s.longestCommonPrefix([""]))
-print(s.longestCommonPrefix(["a"]))
+print(s.findMedianSortedArrays([1,2],[3,4]))
