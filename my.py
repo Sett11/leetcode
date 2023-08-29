@@ -1,8 +1,12 @@
 class Solution:
-    def countCharacters(self,a,s):
-        return len(''.join([i for i in a if all([j in s and i.count(j)<=s.count(j) for j in i])]))
+    def rearrangeCharacters(self,s,t):
+        if [i for i in t if i not in s]:
+            return 0
+        return int(min([s.count(i)/t.count(i) for i in set(s) if i in t]))
     
 s=Solution()
 
-print(s.countCharacters(["cat","bt","hat","tree"],'atach'))
-print(s.countCharacters(["hello", "world", "leetcode"],'welldonehoneyr'))
+print(s.rearrangeCharacters('ilovecodingonleetcode','code'))
+print(s.rearrangeCharacters('abcba','abc'))
+print(s.rearrangeCharacters('abbaccaddaeea','aaaaa'))
+print(s.rearrangeCharacters('codecodecodecode','codecode'))
