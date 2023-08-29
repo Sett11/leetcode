@@ -1,9 +1,8 @@
 class Solution:
-    def divideArray(self,a):
-        a.sort()
-        r=[a[i]==a[i+1] for i in range(0,len(a)-1,2)]
-        return all(r) and len(r)==len(a)/2
+    def countCharacters(self,a,s):
+        return len(''.join([i for i in a if all([j in s and i.count(j)<=s.count(j) for j in i])]))
     
 s=Solution()
 
-print(s.divideArray([3,2,3,2,2,2]))
+print(s.countCharacters(["cat","bt","hat","tree"],'atach'))
+print(s.countCharacters(["hello", "world", "leetcode"],'welldonehoneyr'))
