@@ -1,13 +1,15 @@
+def f(x):
+    r=[]
+    for i in x:
+        r.append(x.index(i))
+    return r
 class Solution:
-    def removeDuplicates(self,a):
-        i=0
-        while i<len(a):
-            if a.count(a[i])>2:
-                a.pop(i)
-                i-=1
-            i+=1
-        return len(a)
+    def isIsomorphic(self,s,t):
+        return f(s)==f(t)
+        
     
 s=Solution()
 
-print(s.removeDuplicates([1,1,1,2,2,3]))
+print(s.isIsomorphic("bbbaaaba","aaabbbba"))
+print(s.isIsomorphic("papap","titii"))
+print(s.isIsomorphic("ab","ca"))
