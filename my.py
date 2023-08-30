@@ -1,15 +1,18 @@
+def f(x):
+    i=2
+    while i<=x:
+        if i>6:
+            return True
+        while x%i==0:
+            x//=i
+        i+=1
+    return False
 class Solution:
-    def isHappy(self,n):
-        a=[]
-        while 1:
-            n=sum([int(i)**2 for i in str(n)])
-            if n==1:
-                return True
-            if n in a:
-                return False
-            a.append(n)
+    def isUgly(self,n):
+        return n>0 and not f(n)
     
 s=Solution()
 
-print(s.isHappy(19))
-print(s.isHappy(2))
+print(s.isUgly(6))
+print(s.isUgly(14))
+print(s.isUgly(905391974))
