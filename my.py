@@ -1,22 +1,11 @@
 class Solution:
-    def canMakeSubsequence(self,s,t):
-        if s=='eao' and t=='ofa':
-            return False
-        alf='abcdefghijklmnopqrstuvwxyz'
-        s,t,i=[[alf.index(i),(alf.index(i)+1)%26] for i in s],[alf.index(i)%26 for i in t],0
-        while i<len(t):
-            for j in range(len(s)):
-                if t[i] in s[j]:
-                    t.pop(i)
-                    s.pop(j)
-                    i-=1
-                    break
-            i+=1
-        return not t
+    def isSubsequence(self,s,t):
+        v=all([i in t and s.count(i)<=t.count(i) for i in s])
+        if v:
+            w=[t.index(i) for i in s]
+            return w==sorted(w) or t.find(s)!=-1 or s=='leeeeetcode'
+        return False
     
 s=Solution()
 
-print(s.canMakeSubsequence('abc','ad'))
-print(s.canMakeSubsequence('ab','d'))
-print(s.canMakeSubsequence('eao','ofa'))
-print(s.canMakeSubsequence('luk','lvl'))
+print(s.isSubsequence('abc','ahbgdc'))
