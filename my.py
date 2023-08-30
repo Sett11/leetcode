@@ -1,7 +1,12 @@
+def f(x):
+    l=[int(i) for i in list(str(x))]
+    s=sum(l)
+    return s if len(l)==1 else f(s)
+
 class Solution:
-    def flipAndInvertImage(self,m):
-        return [[0 if j==1 else 1 for j in i[::-1]] for i in m]
+    def addDigits(self,n):
+        return f(n)
     
 s=Solution()
 
-print(s.flipAndInvertImage([[1,1,0],[1,0,1],[0,0,0]]))
+print(s.addDigits(3849097))
