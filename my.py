@@ -1,12 +1,15 @@
-def f(x):
-    l=[int(i) for i in list(str(x))]
-    s=sum(l)
-    return s if len(l)==1 else f(s)
-
 class Solution:
-    def addDigits(self,n):
-        return f(n)
+    def isHappy(self,n):
+        a=[]
+        while 1:
+            n=sum([int(i)**2 for i in str(n)])
+            if n==1:
+                return True
+            if n in a:
+                return False
+            a.append(n)
     
 s=Solution()
 
-print(s.addDigits(3849097))
+print(s.isHappy(19))
+print(s.isHappy(2))
