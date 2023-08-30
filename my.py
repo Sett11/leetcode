@@ -1,17 +1,8 @@
-from re import sub
-
 class Solution:
-    def compress(self,a):
-        r=list(''.join([i if len(i)==1 else i[0]+str(len(i)) for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',''.join(a)).split(' ') if i]))
-        a.clear()
-        [a.append(i) for i in r]
-        return len(r)
+    def decompressRLElist(self,a):
+        return sum([[[a[i+1]]*a[i]][0] for i in range(0,len(a),2)],[])
     
-q=["a","a","b","b","c","c","c"]
-
 s=Solution()
 
-print(s.compress(["a","b","b","b","b","b","b","b","b","b","b","b","b"]))
-print(s.compress(q))
-print(q)
-print(s.compress(["a"]))
+print(s.decompressRLElist([1,2,3,4]))
+print(s.decompressRLElist([1,1,2,3]))
