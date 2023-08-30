@@ -1,15 +1,18 @@
 class Solution:
-    def repeatedSubstringPattern(self,s):
-        l=len(s)//2
-        while l:
-            t=s[:l]
-            if ''.join([t]*(len(s)//len(s[:l])))==s:
-                return True
-            l-=1
-        return False
+    def repeatedStringMatch(self,s,t):
+        c,q=0,s
+        n=len(t)//len(s)
+        if ''.join([s]*n)==t:
+            return n
+        while c<50:
+            if s.find(t)!=-1:
+                return c+1
+            s+=q
+            c+=1
+        return -1
     
 s=Solution()
 
-print(s.repeatedSubstringPattern('abcabc'))
-print(s.repeatedSubstringPattern('abc'))
-print(s.repeatedSubstringPattern('a'))
+print(s.repeatedStringMatch('abcd','cdabcdab'))
+print(s.repeatedStringMatch('abc','cabcabca'))
+print(s.repeatedStringMatch('a','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'))
