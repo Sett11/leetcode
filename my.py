@@ -1,12 +1,17 @@
 from re import sub
 
-def f(x,c):
-    return x if not c else f(''.join([str(len(i))+i[0] for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',x).split(' ') if i]),c-1)
-
 class Solution:
-    def countAndSay(self,n):
-        return f('1',n-1)
+    def compress(self,a):
+        r=list(''.join([i if len(i)==1 else i[0]+str(len(i)) for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',''.join(a)).split(' ') if i]))
+        a.clear()
+        [a.append(i) for i in r]
+        return len(r)
     
+q=["a","a","b","b","c","c","c"]
+
 s=Solution()
 
-print(s.countAndSay(10))
+print(s.compress(["a","b","b","b","b","b","b","b","b","b","b","b","b"]))
+print(s.compress(q))
+print(q)
+print(s.compress(["a"]))
