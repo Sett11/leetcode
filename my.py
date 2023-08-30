@@ -1,7 +1,15 @@
 class Solution:
-    def percentageLetter(self,s,t):
-        return int(len([i for i in s if i==t])/len(s)*100)
+    def repeatedSubstringPattern(self,s):
+        l=len(s)//2
+        while l:
+            t=s[:l]
+            if ''.join([t]*(len(s)//len(s[:l])))==s:
+                return True
+            l-=1
+        return False
     
 s=Solution()
 
-print(s.percentageLetter('foobar','o'))
+print(s.repeatedSubstringPattern('abcabc'))
+print(s.repeatedSubstringPattern('abc'))
+print(s.repeatedSubstringPattern('a'))
