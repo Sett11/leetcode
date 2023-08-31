@@ -1,7 +1,7 @@
 class Solution:
-    def lengthOfLastWord(self,s):
-        return len([i for i in s.split(' ') if i][-1])
+    def prefixCount(self,a,p):
+        return len([i for i in a if i.lstrip().startswith(p)])
 
 s = Solution()
 
-print(s.lengthOfLastWord("   fly me   to   the moon  "))
+print(s.prefixCount(["pay"," attention ","practice"," attend "],'at'))
