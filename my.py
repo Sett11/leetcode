@@ -1,12 +1,14 @@
 class Solution:
-    def twoOutOfThree(self,a,b,c):
-        s=set(a+b+c)
+    def commonChars(self,a):
+        s=set(''.join(a))
+        a=[list(i) for i in a]
         r=[]
         for i in s:
-            if len([j for j in [i in a, i in b, i in c] if j])>1:
-                r.append(i)
+            if all(i in j for j in a):
+                m=min([j.count(i) for j in a])
+                r.extend([i]*m)
         return r
     
 s=Solution()
 
-print(s.twoOutOfThree([1,1,3,2],[2,3],[3]))
+print(s.commonChars(["bella","label","roller"]))
