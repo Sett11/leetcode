@@ -1,9 +1,10 @@
 from itertools import permutations as p
+
 class Solution:
-    def permuteUnique(self,a):
-        return [[int(n) for n in k.split('&')] for k in set(['&'.join([str(j) for j in i]) for i in p(a)])]
+    def getPermutation(self,n,k):
+        return ''.join([j for j in p([str(i) for i in range(1,n+1)])][k-1])
     
 s=Solution()
 
-print(s.permuteUnique([1,1,2]))
-print(s.permuteUnique([1,2,3,4,4,5]))
+print(s.getPermutation(3,3))
+print(s.getPermutation(4,9))
