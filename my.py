@@ -1,7 +1,7 @@
 class Solution:
-    def prefixCount(self,a,p):
-        return len([i for i in a if i.lstrip().startswith(p)])
+    def countPrefixes(self,a,p):
+        return len([i for i in a if p.startswith(i)])
 
 s = Solution()
 
-print(s.prefixCount(["pay"," attention ","practice"," attend "],'at'))
+print(s.countPrefixes(["a","b","c","ab","bc","abc"],'abc'))
