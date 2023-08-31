@@ -1,9 +1,9 @@
 from math import sqrt,floor
 class Solution:
-    def mySqrt(self,n):
-        return floor(sqrt(n))
+    def isPerfectSquare(self,n):
+        return floor(sqrt(n))==sqrt(n)
     
 s=Solution()
 
-print(s.mySqrt(8))
-print(s.mySqrt(4))
+print(s.isPerfectSquare(8))
+print(s.isPerfectSquare(4))
