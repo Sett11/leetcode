@@ -1,7 +1,7 @@
 class Solution:
-    def countEven(self,n):
-        return len([i for i in range(2,n+1) if sum([int(j) for j in str(i)])%2==0])
+    def separateDigits(self,a):
+        return sum([[int(j) for j in list(str(i))] for i in a],[])
     
 s=Solution()
 
-print(s.countEven(30))
+print(s.separateDigits([13,25,83,77]))
