@@ -1,18 +1,17 @@
-def f(x):
-    i=2
-    while i<=x:
-        if i>6:
-            return True
-        while x%i==0:
-            x//=i
-        i+=1
-    return False
 class Solution:
-    def isUgly(self,n):
-        return n>0 and not f(n)
+    def countPrimes(self,n):
+        if n<3:
+            return 0
+        p=[True]*(n+1)
+        p[0]=p[1]=False
+        for i in range(2,int(n**.5)+1):
+            if p[i]:
+                for i in range(i*i,n,i):
+                    p[i]=False
+        r=[i for i in range(2,n) if p[i]]
+        return len(r)
+        
     
 s=Solution()
 
-print(s.isUgly(6))
-print(s.isUgly(14))
-print(s.isUgly(905391974))
+print(s.countPrimes(1000001))
