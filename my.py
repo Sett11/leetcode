@@ -1,12 +1,7 @@
-def f(s,n):
-    return s if not n else f(''.join([str(j) for j in str(sum([int(i) for i in s]))]),n-1)
-
 class Solution:
-    def getLucky(self,s,n):
-        return int(f(''.join([str(ord(i)-96) for i in s]),n))
-        
+    def countEven(self,n):
+        return len([i for i in range(2,n+1) if sum([int(j) for j in str(i)])%2==0])
     
 s=Solution()
 
-print(s.getLucky('zbax',2))
-print(s.getLucky('iiii',1))
+print(s.countEven(30))
