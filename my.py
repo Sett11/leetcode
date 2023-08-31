@@ -1,7 +1,7 @@
 class Solution:
-    def separateDigits(self,a):
-        return sum([[int(j) for j in list(str(i))] for i in a],[])
+    def alternateDigitSum(self,n):
+        return eval('+'.join(['(+'+i+')' if j%2==0 else '(-'+i+')' for j,i in enumerate(list(str(n)))]))
     
 s=Solution()
 
-print(s.separateDigits([13,25,83,77]))
+print(s.alternateDigitSum(886996))
