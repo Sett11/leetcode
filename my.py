@@ -1,17 +1,7 @@
 class Solution:
-    def countPrimes(self,n):
-        if n<3:
-            return 0
-        p=[True]*(n+1)
-        p[0]=p[1]=False
-        for i in range(2,int(n**.5)+1):
-            if p[i]:
-                for i in range(i*i,n,i):
-                    p[i]=False
-        r=[i for i in range(2,n) if p[i]]
-        return len(r)
-        
+    def commonFactors(self,a,b):
+        return len([i for i in range(1,min(a,b)+1) if not a%i and not b%i])
     
 s=Solution()
 
-print(s.countPrimes(1000001))
+print(s.commonFactors(12,6))
