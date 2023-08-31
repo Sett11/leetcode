@@ -1,9 +1,9 @@
-from math import sqrt,floor
+from math import pow
+
 class Solution:
-    def isPerfectSquare(self,n):
-        return floor(sqrt(n))==sqrt(n)
+    def myPow(self,x,n):
+        return pow(x,n)
     
 s=Solution()
 
-print(s.isPerfectSquare(8))
-print(s.isPerfectSquare(4))
+print(s.myPow(2,8))
