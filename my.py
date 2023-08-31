@@ -1,7 +1,8 @@
+from itertools import permutations as p
 class Solution:
-    def differenceOfSum(self,a):
-        return abs(sum(a)-sum([int(i) for i in ''.join([str(j) for j in a])]))
+    def permute(self,a):
+        return [list(i) for i in p(a)]
     
 s=Solution()
 
-print(s.differenceOfSum([1,15,6,3]))
+print(s.permute([1,15,6,3]))
