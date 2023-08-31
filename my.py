@@ -1,14 +1,12 @@
 class Solution:
-    def commonChars(self,a):
-        s=set(''.join(a))
-        a=[list(i) for i in a]
+    def intersect(self,a,b):
+        s=set(a+b)
         r=[]
         for i in s:
-            if all(i in j for j in a):
-                m=min([j.count(i) for j in a])
-                r.extend([i]*m)
+            if all([i in a, i in b]):
+                r.extend([i]*min(a.count(i),b.count(i)))
         return r
     
 s=Solution()
 
-print(s.commonChars(["bella","label","roller"]))
+print(s.intersect([1,2,2,1],[2,2]))
