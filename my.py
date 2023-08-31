@@ -1,8 +1,7 @@
-from re import sub
 class Solution:
-    def countBits(self,n):
-        return [len(sub(r'[^1]','',bin(i))) for i in range(n+1)]
+    def isPowerOfTwo(self,n):
+        return n>0 and (n&(n-1))==0
     
 s=Solution()
 
-print(s.countBits(10))
+print(s.isPowerOfTwo(16))
