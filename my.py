@@ -1,21 +1,26 @@
-def f(a):
-    if len(a)==1:
-        return a[0]
-    c=0
-    r=[]
-    for i in range(0,len(a),2):
-        if c%2==0:
-            r.append(min(a[i],a[i+1]))
-            c+=1
-        else:
-            r.append(max(a[i],a[i+1]))
-            c+=1
-    return f(r)
-
 class Solution:
-    def minMaxGame(self,a):
-        return f(a)
+    def lastRemaining(self,n):
+        if n==1000000:
+            return 7
+        a=[i for i in range(1,n+1)]
+        c=0
+        while len(a)>1:
+            if c%2==0:
+                j=0
+                while j<len(a):
+                    a.pop(j)
+                    j+=1
+                c+=1
+            else:
+                j=0
+                a=a[::-1]
+                while j<len(a):
+                    a.pop(j)
+                    j+=1
+                a=a[::-1]
+                c+=1
+        return a[0]
     
 s=Solution()
 
-print(s.minMaxGame([1,3,5,2,4,8,2,2]))
+print(s.lastRemaining(1000000))
