@@ -1,26 +1,14 @@
 class Solution:
-    def lastRemaining(self,n):
-        if n==1000000:
-            return 7
-        a=[i for i in range(1,n+1)]
+    def divisorSubstrings(self,n,k):
+        s=list(str(n))
+        a=[int(j) for j in [''.join(s[i:i+k]) for i in range(0,len(s))] if len(j)==k]
         c=0
-        while len(a)>1:
-            if c%2==0:
-                j=0
-                while j<len(a):
-                    a.pop(j)
-                    j+=1
+        for i in a:
+            if i and n%i==0:
                 c+=1
-            else:
-                j=0
-                a=a[::-1]
-                while j<len(a):
-                    a.pop(j)
-                    j+=1
-                a=a[::-1]
-                c+=1
-        return a[0]
+        return c
     
 s=Solution()
 
-print(s.lastRemaining(1000000))
+print(s.divisorSubstrings(430043,2))
+print(s.divisorSubstrings(240,2))
