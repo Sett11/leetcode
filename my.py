@@ -2,7 +2,7 @@ class Solution:
     def singleNumber(self,a):
         for i in set(a):
             if a.count(i)==1:
-                return i
+                return i 
     
 s=Solution()
 
