@@ -1,20 +1,15 @@
-def pascal_triangle(n,r):
-    if not n:
-        return r
-    a=[0]*(len(r[-1])+1)
-    a[0]=a[-1]=1
-    for i in range(1,len(a)-1):
-        a[i]=r[-1][i-1]+r[-1][i]
-    r.append(a)
-    return pascal_triangle(n-1,r)
+def wrap(a):
+    return [int(str(i)[-1]) for i in a]
+
+def triangle_sum(a):
+    if len(a)==1:
+        return a[0]
+    return triangle_sum(wrap([a[i]+a[i+1] for i in range(len(a)-1)]))
 
 class Solution:
-    def getRow(self,n):
-        p=[[1],[1,1],[1,2,1]]
-        if n<len(p):
-            return p[n]
-        return pascal_triangle(n-2,p)[n]
-
+    def triangularSum(self,a):
+        return triangle_sum(wrap(a))
+    
 s=Solution()
 
-print(s.getRow(7))
+print(s.triangularSum([1,2,3,4,5,6,7,8,9]))
