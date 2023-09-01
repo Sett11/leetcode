@@ -1,4 +1,4 @@
-class MyStack:
+class MyQueue:
 
     def __init__(self):
         self.a=[]
@@ -7,10 +7,10 @@ class MyStack:
         self.a.append(x)
 
     def pop(self):
-        return self.a.pop()
+        return self.a.pop(0)
 
-    def top(self):
-        return self.a[-1]
+    def peek(self):
+        return self.a[0]
 
     def empty(self):
         return not self.a
