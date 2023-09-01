@@ -9,12 +9,12 @@ def pascal_triangle(n,r):
     return pascal_triangle(n-1,r)
 
 class Solution:
-    def generate(self,n):
+    def getRow(self,n):
         p=[[1],[1,1],[1,2,1]]
         if n<len(p):
-            return p[:n]
-        return pascal_triangle(n-3,p)
+            return p[n]
+        return pascal_triangle(n-2,p)[n]
 
 s=Solution()
 
-print(s.generate(5))
+print(s.getRow(7))
