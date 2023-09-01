@@ -1,9 +1,11 @@
 class Solution:
-    def singleNumber(self,a):
-        for i in set(a):
-            if a.count(i)==1:
-                return i 
+    def findDuplicate(self,a):
+        r=set()
+        for i in a:
+            if i in r:
+                return i
+            r.add(i)
     
 s=Solution()
 
-print(s.singleNumber([0,1,0,1,0,1,99]))
+print(s.findDuplicate([1,3,4,2,2]))
