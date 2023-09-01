@@ -1,15 +1,12 @@
-def wrap(a):
-    return [int(str(i)[-1]) for i in a]
-
-def triangle_sum(a):
-    if len(a)==1:
-        return a[0]
-    return triangle_sum(wrap([a[i]+a[i+1] for i in range(len(a)-1)]))
+def f(s,k):
+    if len(s)<=k:
+        return s
+    return f(''.join([str(sum([int(j) for j in s[i:i+k]])) for i in range(0,len(s),k)]),k)
 
 class Solution:
-    def triangularSum(self,a):
-        return triangle_sum(wrap(a))
+    def digitSum(self,s,k):
+        return f(s,k)
     
 s=Solution()
 
-print(s.triangularSum([1,2,3,4,5,6,7,8,9]))
+print(s.digitSum('11111222223',3))
