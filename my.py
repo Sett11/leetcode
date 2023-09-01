@@ -1,7 +1,16 @@
-class Solution:
-    def containsDuplicate(self,a):
-        return len(set(a))!=len(a)
-    
-s=Solution()
+class MyStack:
 
-print(s.containsDuplicate([1,2,3,4,1]))
+    def __init__(self):
+        self.a=[]
+
+    def push(self,x):
+        self.a.append(x)
+
+    def pop(self):
+        return self.a.pop()
+
+    def top(self):
+        return self.a[-1]
+
+    def empty(self):
+        return not self.a
