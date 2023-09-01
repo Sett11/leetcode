@@ -1,11 +1,11 @@
 class Solution:
-    def findDuplicate(self,a):
-        r=set()
-        for i in a:
-            if i in r:
+    def missingNumber(self,a):
+        m=max(a)
+        for i in range(m+1):
+            if i not in a:
                 return i
-            r.add(i)
+        return m+1
     
 s=Solution()
 
-print(s.findDuplicate([1,3,4,2,2]))
+print(s.missingNumber([0,2,3]))
