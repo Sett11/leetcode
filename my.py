@@ -1,16 +1,14 @@
-class MyQueue:
+class Solution:
+    def singleNumber(self,a):
+        s=set(a)
+        r=[]
+        for i in s:
+            if len(r)==2:
+                return r
+            if a.count(i)==1:
+                r.append(i)
+        return r
+    
+s=Solution()
 
-    def __init__(self):
-        self.a=[]
-
-    def push(self,x):
-        self.a.append(x)
-
-    def pop(self):
-        return self.a.pop(0)
-
-    def peek(self):
-        return self.a[0]
-
-    def empty(self):
-        return not self.a
+print(s.singleNumber([1,2,1,3,2,5]))
