@@ -1,4 +1,4 @@
-largestNumber=a=>a.sort((a,b)=>(b+''+a)-(a+''+b)).join``.replace(/^0+$/,'0')
+largestNumber=(n,a=[...Math.abs(n)+''])=>a.sort((a,b)=>(a+''+b)-(b+''+a))
 
-console.log(largestNumber([0,0]))
-console.log(largestNumber([1000,999,808,89700]))
+console.log(largestNumber(310))
+console.log(largestNumber(-3799649188))
