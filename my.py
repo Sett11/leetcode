@@ -1,13 +1,11 @@
 class Solution:
-    def hIndex(self,a):
-        m=max(a)
-        while m:
-            t=[i for i in a if i>=m]
-            if len(t)>=m:
-                return m
-            m-=1
-        return m 
+    def isPowerOfThree(self,n):
+        while n>=3:
+            if n%3:
+                break
+            n/=3
+        return n==1
     
 s=Solution()
 
-print(s.hIndex([3,0,6,1,5]))
+print(s.isPowerOfThree(33))
