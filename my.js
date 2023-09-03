@@ -1,6 +1,6 @@
-kthSmallest=(t,k)=>JSON.stringify(t).replace(/[^\d:]/g,'').replace(/:/g,' ').split` `.filter(e=>e).map(e=>+e).sort((a,b)=>a-b)[k]
+findSecondMinimumValue=t=>[...new Set(JSON.stringify(t).replace(/[^\d:]/g,'').replace(/:/g,' ').split` `.filter(e=>e).map(e=>+e).sort((a,b)=>a-b))][1]||-1
 
-console.log(kthSmallest({
+console.log(findSecondMinimumValue({
     v: 5,
     c: [
         {
@@ -25,6 +25,5 @@ console.log(kthSmallest({
             ]
         }
     ]
-},
-3
+}
 ))
