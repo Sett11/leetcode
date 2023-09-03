@@ -1,6 +1,6 @@
-class Solution:
-    def summaryRanges(self,a):
+def summaryRanges(l):
         r=[]
+        a=sorted(set(l))
         while a:
             t=[a.pop(0)]
             while a:
@@ -8,9 +8,30 @@ class Solution:
                     t.append(a.pop(0))
                 else:
                     break
-            r.append(f'{t[0]}->{t[-1]}'if len(t)>1 else str(t[0]))
+            r.append([t[0],t[-1]])
         return r
-    
-s=Solution()
 
-print(s.summaryRanges([0,2,3,4,6,8,9]))
+class SummaryRanges:
+    def __init__(self):
+        self.a=[]
+
+    def addNum(self,v):
+        self.a.append(v)
+
+    def getIntervals(self):
+        return summaryRanges(self.a)
+
+s=SummaryRanges()
+
+s.addNum(1)
+print(s.getIntervals())
+s.addNum(3)
+print(s.getIntervals())
+s.addNum(7)
+print(s.getIntervals())
+s.addNum(2)
+print(s.getIntervals())
+s.addNum(6)
+s.addNum(6)
+s.addNum(6)
+print(s.getIntervals())
