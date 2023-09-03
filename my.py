@@ -1,11 +1,8 @@
+from re import sub
 class Solution:
-    def isPowerOfFour(self,n):
-        while n>=4:
-            if n%4:
-                break
-            n/=4
-        return n==1
+    def sortByBits(self,a):
+        return [j[1] for j in sorted([[len(sub(r'[^1]','',bin(i))),i] for i in a],key=lambda e:(e[0],e[1]))]
     
 s=Solution()
 
-print(s.isPowerOfFour(64))
+print(s.sortByBits([0,1,2,3,4,5,6,7,8]))
