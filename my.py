@@ -1,34 +1,16 @@
 class Solution:
-    def numIslands(self,a):
-        m,n=len(a),len(a[0])
-        q=[[False]*n for _ in range(m)]
-        c=0
-        def dfs(i,j):
-            if i<0 or j<0 or i>=m or j>=n or a[i][j]=='0' or q[i][j]:
-                return
-            q[i][j]=True
-            dfs(i,j+1)
-            dfs(i,j-1)
-            dfs(i+1,j)
-            dfs(i-1,j)
-        for i in range(m):
-            for j in range(n):
-                if a[i][j]=='1' and not q[i][j]:
-                    dfs(i,j)
-                    c+=1
-        return c
-        
+    def summaryRanges(self,a):
+        r=[]
+        while a:
+            t=[a.pop(0)]
+            while a:
+                if a[0]-t[-1]==1:
+                    t.append(a.pop(0))
+                else:
+                    break
+            r.append(f'{t[0]}->{t[-1]}'if len(t)>1 else str(t[0]))
+        return r
     
 s=Solution()
 
-print(s.numIslands([
-  ["1","1","0","0","0"],
-  ["1","1","0","0","0"],
-  ["0","0","1","0","0"],
-  ["0","0","0","1","1"]
-]))
-print(s.numIslands([["1","1","1","1","1","1"],
-                    ["1","0","0","0","0","1 "],
-                    ["1","0","1","1","0","1"],
-                    ["1","0","0","0","0", "1"],
-                    ["1","1","1","1","1","1"]]))
+print(s.summaryRanges([0,2,3,4,6,8,9]))
