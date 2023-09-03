@@ -6,7 +6,7 @@ class Solution:
             if len(t)>=m:
                 return m
             m-=1
-        return m
+        return m 
     
 s=Solution()
 
