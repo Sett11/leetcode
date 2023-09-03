@@ -1,11 +1,11 @@
 class Solution:
-    def isPowerOfThree(self,n):
-        while n>=3:
-            if n%3:
+    def isPowerOfFour(self,n):
+        while n>=4:
+            if n%4:
                 break
-            n/=3
+            n/=4
         return n==1
     
 s=Solution()
 
-print(s.isPowerOfThree(33))
+print(s.isPowerOfFour(64))
