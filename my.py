@@ -1,17 +1,27 @@
 class Solution:
-    def uniquePaths(self,m,n):
-        if m==1 or n==1:
-            return 1
-        a=[[0]*n for _ in range(m)]
-        for i in range(1,n):
-            a[1][i]=1
+    def uniquePathsWithObstacles(self,d):
+        m,n=len(d),len(d[0])
+        a=[[0 for _ in range(n)] for _ in range(m)]
+        for i in range(n):
+            if d[0][i]==1:
+                break
+            else:
+                a[0][i]=1
+        for i in range(m):
+            if d[i][0]==1:
+                break
+            else:
+                a[i][0]=1
         for i in range(1,m):
-            a[i][1]=1
-        for i in range(2,m):
-            for j in range(2,n):
+            for j in range(1,n):
+                if d[i][j]==1:
+                    continue
                 a[i][j]=a[i][j-1]+a[i-1][j]
-        return sum(sum(a,[]))+1
+        return a[-1][-1]
         
 s=Solution()
 
-print(s.uniquePaths(28,34))
+print(s.uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]]))
+[[0, 0, 0],
+ [0, 1, 1],
+ [0, 1, 0]]
