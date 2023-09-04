@@ -1,11 +1,18 @@
-from itertools import combinations
+from itertools import product
+from re import sub,I
 class Solution:
-    def subsets(self,a):
+    def letterCasePermutation(self,s):
+        ns=sub(r'[a-z]','&',s,flags=I)
+        a=[list(j) for j in product(*[[i.lower(),i.upper()] for i in s if i.isalpha()])]
         r=[]
-        for i in range(1,len(a)):
-            r.extend(['&'.join([str(k) for k in sorted(j)]) for j in combinations(a,i)])
-        return [[]]+[[int(j) for j in i.split('&')] for i in set(r)]+[a]
+        for i in a:
+            t=ns
+            while i:
+                t=t.replace('&',i.pop(0),1)
+            r.append(t)
+        return r
     
 s=Solution()
 
-print(s.subsets([1,2,2]))
+print(s.letterCasePermutation('RmR'))
+print(s.letterCasePermutation('1a2b'))
