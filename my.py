@@ -1,28 +1,9 @@
-class MinStack:
+from itertools import combinations as c
 
-    def __init__(self):
-        self.stack=[]
-
-    def push(self,v):
-        self.stack.append(v)
-
-    def pop(self):
-        self.stack.pop()
-
-    def top(self):
-        return self.stack[-1]
-
-    def getMin(self):
-        return min(self.stack)
+class Solution:
+    def combinationSum3(self,k,n):
+        return [list(j) for j in c([i for i in range(1,10) if i<n],k) if sum(j)==n]
     
-m=MinStack()
+s=Solution()
 
-m.push(-2)
-m.push(0)
-m.push(-3)
-
-print(m.getMin())
-
-m.pop()
-
-print(m.top())
+print(s.combinationSum3(3,9))
