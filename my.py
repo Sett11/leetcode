@@ -1,13 +1,17 @@
-import re
-
 class Solution:
-    def reverseVowels(self,s):
-        a=[i for i in s if i.lower() in 'aeoiu'][::-1]
-        s=re.sub(r'[aioue]','&6&',s,flags=re.I)
-        for i in a:
-            s=s.replace('&6&',i,1)
-        return s
+    def uniquePaths(self,m,n):
+        if m==1 or n==1:
+            return 1
+        a=[[0]*n for _ in range(m)]
+        for i in range(1,n):
+            a[1][i]=1
+        for i in range(1,m):
+            a[i][1]=1
+        for i in range(2,m):
+            for j in range(2,n):
+                a[i][j]=a[i][j-1]+a[i-1][j]
+        return sum(sum(a,[]))+1
         
 s=Solution()
 
-print(s.reverseVowels('leetcode'))
+print(s.uniquePaths(28,34))
