@@ -1,7 +1,7 @@
 class Solution:
-    def defangIPaddr(self,s):
-        return s.replace('.','[.]')
+    def minimizedStringLength(self,s):
+        return len(set(s))
     
 s=Solution()
 
-print(s.defangIPaddr("1.1.1.1"))
+print(s.minimizedStringLength("aaabcd"))
