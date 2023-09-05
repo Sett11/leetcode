@@ -1,19 +1,15 @@
 class Solution:
-    def maxProduct(self,a):
-        m=0
-        a=list(set(a))
-        for i in range(len(a)):
-            for j in range(i+1,len(a)):
-                s=0
-                for h in a[i]:
-                    if h not in a[j]:
-                        s=len(a[i])*len(a[j])
-                    else:
-                        s=0
-                        break
-                m=max(m,s)
-        return m
+    def coinChange(self,a,n):
+        r=[n+1]*(n+1)
+        r[0]=0
+        a.sort()
+        for i in range(1,n+1):
+            for j in a:
+                if i-j>=0:
+                    r[i]=min(r[i],1+r[i-j])
+        return r[n] if r[n]!=n+1 else -1
     
 s=Solution()
 
-print(s.maxProduct(["abcw","baz","foo","bar","xtfn","abcdef"]))
+print(s.coinChange([1,2,5],11))
+print(s.coinChange([186,419,83,408],6249))
