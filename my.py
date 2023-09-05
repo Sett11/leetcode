@@ -1,25 +1,19 @@
 class Solution:
-    def getHint(self,s,q):
-        c=x=i=0
-        s,q=list(s),list(q)
-        while i<(min(len(s),len(q))):
-            if s[i]==q[i]:
-                c+=1
-                s.pop(i)
-                q.pop(i)
-                i-=1
-            i+=1
-        i=0
-        while i<len(s):
-            if s[i] in q:
-                x+=1
-                q.pop(q.index(s[i]))
-                s.pop(i)
-                i-=1
-            i+=1
-        return f'{c}A{x}B'
-
+    def maxProduct(self,a):
+        m=0
+        a=list(set(a))
+        for i in range(len(a)):
+            for j in range(i+1,len(a)):
+                s=0
+                for h in a[i]:
+                    if h not in a[j]:
+                        s=len(a[i])*len(a[j])
+                    else:
+                        s=0
+                        break
+                m=max(m,s)
+        return m
+    
 s=Solution()
 
-print(s.getHint('1807','7810'))
-print(s.getHint('1123','0111'))
+print(s.maxProduct(["abcw","baz","foo","bar","xtfn","abcdef"]))
