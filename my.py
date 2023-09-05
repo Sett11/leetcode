@@ -1,10 +1,9 @@
-def sorted_one_count(x):
-    return [i for i in x if x.count(i)==1]
-
 class Solution:
-    def countWords(self,a,b):
-        return len(set(sorted_one_count(a)).intersection(set(sorted_one_count(b))))
+    def kthDistinct(self,a,k):
+        r=[i for i in a if a.count(i)==1]
+        return '' if len(r)<k else r[k-1]
 
 s=Solution()
 
-print(s.countWords(["leetcode","is","amazing","as","is"],["amazing","leetcode","is"]))
+print(s.kthDistinct(["d","b","c","b","c","a"],2))
+print(s.kthDistinct(['a','a'],1))
