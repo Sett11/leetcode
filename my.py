@@ -1,19 +1,21 @@
 from re import sub
 
+def f(s):
+    a=[i for i in sub(r'\#+',lambda e:' '+e.group()+' ',s).split(' ') if i]
+    g=[i for i,j in enumerate(a) if j[0]=='#' and i]
+    for i in g:
+        a[i-1]=a[i-1][:-len(a[i])]
+        a[i]=''
+        if i<len(a)-1:
+            a[i+1]=a[i-1]+a[i+1]
+            a[i-1]=''
+    return ''.join(a).replace('#','')
+
 class Solution:
-    def removeStars(self,s):
-        a=sub(r'\*+',lambda e:' '+e.group()+' ',s).split(' ')
-        g=[i for i,j in enumerate(a) if j and j[0]=='*']
-        for i in g:
-            a[i-1]=a[i-1][:-len(a[i])]
-            a[i]=''
-            if i<len(a)-1:
-                a[i+1]=a[i-1]+a[i+1]
-                a[i-1]=''
-        return ''.join(a)
+    def backspaceCompare(self,s,t):
+        return f(s)==f(t)
     
 s=Solution()
 
-print(s.removeStars("leet**cod*e"))
-print(s.removeStars("erase*****"))
-print(s.removeStars("abb*cdfg*****x*"))
+print(s.backspaceCompare("ab#c","ad#c"))
+print(s.backspaceCompare("a##c","#a#c"))
