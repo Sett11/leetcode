@@ -1,32 +1,17 @@
-from random import choice
+from random import shuffle
 
-class RandomizedCollection:
-    def __init__(self):
-        self.a=[]
+class Solution:
+    def __init__(self,a):
+        self.a=a
 
-    def insert(self,v):
-        q=v in self.a
-        self.a.append(v)
-        return not q
+    def reset(self):
+        return self.a
 
-    def remove(self,v):
-        q=v in self.a
-        if q:
-            self.a.remove(v)
-        return q
-
-    def getRandom(self):
-        return choice(self.a)
+    def shuffle(self):
+        t=self.a.copy()
+        shuffle(t)
+        return t
     
-r=RandomizedCollection()
+s=Solution([1,2,3])
 
-print(r.insert(7))
-print(r.insert(7))
-print(r.insert(1))
-print(r.insert(2))
-print(r.insert(5))
-
-print(r.remove(5))
-
-print(r.getRandom())
-print(r.getRandom())
+print(s.shuffle())
