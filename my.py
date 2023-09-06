@@ -1,21 +1,7 @@
-from re import sub
-
-def f(s):
-    a=[i for i in sub(r'\#+',lambda e:' '+e.group()+' ',s).split(' ') if i]
-    g=[i for i,j in enumerate(a) if j[0]=='#' and i]
-    for i in g:
-        a[i-1]=a[i-1][:-len(a[i])]
-        a[i]=''
-        if i<len(a)-1:
-            a[i+1]=a[i-1]+a[i+1]
-            a[i-1]=''
-    return ''.join(a).replace('#','')
-
 class Solution:
-    def backspaceCompare(self,s,t):
-        return f(s)==f(t)
-    
+    def kthSmallest(self,a,k):
+        return sorted(sum(a,[]))[k-1]
+
 s=Solution()
 
-print(s.backspaceCompare("ab#c","ad#c"))
-print(s.backspaceCompare("a##c","#a#c"))
+print(s.kthSmallest([[1,5,9],[10,11,13],[12,13,15]],8))
