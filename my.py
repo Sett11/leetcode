@@ -1,7 +1,25 @@
-class Solution:
-    def lexicalOrder(self,n):
-        return sorted([i for i in range(1,n+1)],key=str)
-    
-s=Solution()
+class MagicDictionary:
+    def __init__(self):
+        self.d=[]
 
-print(s.lexicalOrder(50000))
+    def buildDict(self,d):
+        self.d=d
+
+    def search(self,s):
+        for i in self.d:
+            if len(i)==len(s):
+                c=0
+                for j in range(len(s)):
+                    if i[j]!=s[j]:
+                        c+=1
+                if c==1:
+                    return True
+        return False
+    
+m=MagicDictionary()
+
+m.buildDict(["hello", "leetcode"])
+
+print(m.search("hello"))
+print(m.search('hhllo'))
+print(m.search('leetcodd'))
