@@ -1,25 +1,20 @@
-class MagicDictionary:
+class Trie:
     def __init__(self):
-        self.d=[]
+        self.t=[]
 
-    def buildDict(self,d):
-        self.d=d
+    def insert(self,s):
+        self.t.append(s)
 
-    def search(self,s):
-        for i in self.d:
-            if len(i)==len(s):
-                c=0
-                for j in range(len(s)):
-                    if i[j]!=s[j]:
-                        c+=1
-                if c==1:
-                    return True
-        return False
+    def search(self,w):
+        return w in self.t
+
+    def startsWith(self,p):
+        return bool([i for i in self.t if i.startswith(p)])
     
-m=MagicDictionary()
+t=Trie()
 
-m.buildDict(["hello", "leetcode"])
+t.insert('apple')
 
-print(m.search("hello"))
-print(m.search('hhllo'))
-print(m.search('leetcodd'))
+print(t.search('apple'))
+
+print(t.startsWith('app'))
