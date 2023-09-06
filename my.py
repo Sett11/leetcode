@@ -1,13 +1,7 @@
 class Solution:
-    def canConstruct(self,s,t):
-        s,t=list(s),list(t)
-        for i in s:
-            if i in t:
-                t.remove(i)
-            else:
-                return False
-        return True
+    def lexicalOrder(self,n):
+        return sorted([i for i in range(1,n+1)],key=str)
     
 s=Solution()
 
-print(s.canConstruct('aa','aab'))
+print(s.lexicalOrder(50000))
