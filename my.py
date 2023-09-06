@@ -1,20 +1,14 @@
-class Trie:
-    def __init__(self):
-        self.t=[]
+from re import sub
 
-    def insert(self,s):
-        self.t.append(s)
+def rep(a,s):
+    r=sorted([i for i in a if s.startswith(i)],key=len)
+    return s if not r else r[0]
 
-    def search(self,w):
-        return w in self.t
-
-    def startsWith(self,p):
-        return bool([i for i in self.t if i.startswith(p)])
+class Solution:
+    def replaceWords(self,a,s):
+        return sub(r'\b([A-z])+\b',lambda e:rep(a,e.group()),s)
     
-t=Trie()
+s=Solution()
 
-t.insert('apple')
-
-print(t.search('apple'))
-
-print(t.startsWith('app'))
+print(s.replaceWords(["cat","bat","rat"],"the cattle was rattled by the battery"))
+print(s.replaceWords(["a","b","c"],"aadsfasf absbs bbab cadsfafs"))
