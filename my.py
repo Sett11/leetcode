@@ -1,17 +1,13 @@
-from random import shuffle
-
 class Solution:
-    def __init__(self,a):
-        self.a=a
-
-    def reset(self):
-        return self.a
-
-    def shuffle(self):
-        t=self.a.copy()
-        shuffle(t)
-        return t
+    def canConstruct(self,s,t):
+        s,t=list(s),list(t)
+        for i in s:
+            if i in t:
+                t.remove(i)
+            else:
+                return False
+        return True
     
-s=Solution([1,2,3])
+s=Solution()
 
-print(s.shuffle())
+print(s.canConstruct('aa','aab'))
