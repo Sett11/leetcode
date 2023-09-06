@@ -1,14 +1,10 @@
-from re import sub
-
-def rep(a,s):
-    r=sorted([i for i in a if s.startswith(i)],key=len)
-    return s if not r else r[0]
+def f(x):
+    return sum([ord(i) for i in x])
 
 class Solution:
-    def replaceWords(self,a,s):
-        return sub(r'\b([A-z])+\b',lambda e:rep(a,e.group()),s)
+    def findTheDifference(self,s,t):
+        return chr(f(t)-f(s))
     
 s=Solution()
 
-print(s.replaceWords(["cat","bat","rat"],"the cattle was rattled by the battery"))
-print(s.replaceWords(["a","b","c"],"aadsfasf absbs bbab cadsfafs"))
+print(s.findTheDifference('abcd','bcade'))
