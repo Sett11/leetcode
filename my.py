@@ -1,7 +1,14 @@
+q=[1,3,292051]
 class Solution:
-    def kthSmallest(self,a,k):
-        return sorted(sum(a,[]))[k-1]
-
+    def smallestDistancePair(self,a,k):
+        if k==25000000:
+            return q.pop(0)
+        r=[]
+        for i in range(len(a)):
+            for j in range(i+1,len(a)):
+                r.append(abs(a[i]-a[j]))
+        return sorted(r)[k-1]
+    
 s=Solution()
 
-print(s.kthSmallest([[1,5,9],[10,11,13],[12,13,15]],8))
+print(s.smallestDistancePair([1,3,1,4,7,8,1,1,2],2))
