@@ -1,3 +1,9 @@
 class Solution:
-    def toHex(self,n):
-        return hex(n)[2:] if n>=0 else hex(n+2**32)[2:]
+    def thirdMax(self,a):
+        r=sorted(set(a),reverse=True)
+        return max(r) if len(r)<3 else r[2]
+
+    
+s=Solution()
+
+print(s.thirdMax([1,1,2]))
