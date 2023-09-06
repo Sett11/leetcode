@@ -1,13 +1,12 @@
 from random import choice
 
-class RandomizedSet:
+class RandomizedCollection:
     def __init__(self):
         self.a=[]
 
     def insert(self,v):
         q=v in self.a
-        if not q:
-            self.a.append(v)
+        self.a.append(v)
         return not q
 
     def remove(self,v):
@@ -19,7 +18,7 @@ class RandomizedSet:
     def getRandom(self):
         return choice(self.a)
     
-r=RandomizedSet()
+r=RandomizedCollection()
 
 print(r.insert(7))
 print(r.insert(7))
