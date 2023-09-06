@@ -1,9 +1,12 @@
 class Solution:
-    def thirdMax(self,a):
-        r=sorted(set(a),reverse=True)
-        return max(r) if len(r)<3 else r[2]
+    def findNonMinOrMax(self,a):
+        a.remove(min(a))
+        if a:
+            a.remove(max(a))
+        return -1 if not a else a[0]
 
     
 s=Solution()
 
-print(s.thirdMax([1,1,2]))
+print(s.findNonMinOrMax([1,2]))
+print(s.findNonMinOrMax([1,2,5]))
