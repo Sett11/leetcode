@@ -6,7 +6,7 @@ class Solution:
             if sorted(s[i:i+len(t)])==t:
                 return True
         return False
-    
+
 s=Solution()
 
 print(s.checkInclusion('ab','"eidbaooo"'))
