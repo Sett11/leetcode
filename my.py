@@ -1,7 +1,11 @@
+from re import sub
+
 class Solution:
-    def findComplement(self,n):
-        return int(''.join(['1' if i=='0' else '0' for i in bin(n)[2:]]),2)
+    def findMaxConsecutiveOnes(self,a):
+        s=sub(r'(.)\1*',lambda e:' '+e.group()+' ' if e.group()[0]=='0' else str(len(e.group())),''.join([str(i) for i in a])).split(' ')
+        return max([int(i) for i in s if i])
     
 s=Solution()
 
-print(s.findComplement(5))
+print(s.findMaxConsecutiveOnes([1,1,0,1,1,1]))
+print(s.findMaxConsecutiveOnes([0]))
