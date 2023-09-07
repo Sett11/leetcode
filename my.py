@@ -6,7 +6,7 @@ class Solution:
             if a[i]==a[i+1]:
                 r.append(a[i])
         return r
-    
+
 s=Solution()
 
 print(s.findDuplicates([4,3,2,7,8,2,3,1]))
