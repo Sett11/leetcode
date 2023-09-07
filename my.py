@@ -1,19 +1,21 @@
-def check(s,n):
-    return all(s.count(i)>=n for i in s)
-
 class Solution:
-    def longestSubstring(self,s,n):
-        if n==301:
-            return n
-        l=0
-        for i in range(len(s)):
-            for j in range(len(s),i+n-1,-1):
-                t=check(s[i:j],n)
-                if t:
-                    l=max(l,len(s[i:j]))
+    def partitionString(self,s):
+        if len(set(s))==1:
+            return len(s)
+        s+=s[-1]
+        c=0
+        i=0
+        while i<len(s):
+            for j in range(i+1,len(s)+1):
+                t=s[i:j]
+                if len(t)!=len(set(t)):
+                    c+=1
+                    i=j-2
                     break
-        return l
+            i+=1
+        return c
     
 s=Solution()
 
-print(s.longestSubstring('aaabb',3))
+print(s.partitionString('abacaba'))
+print(s.partitionString('ssssss'))
