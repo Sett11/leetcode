@@ -1,25 +1,15 @@
-def wrap(m):
-    a=[[0]*3 for _ in range(3)]
-    for i in range(len(m)):
-        if i&1:
-            a[m[i][0]][m[i][1]]='O'
-        else:
-            a[m[i][0]][m[i][1]]='X'
-    return a
-
-def f(a):
-    r,i=[],0
-    while i<len(a):
-        r.append(a[i][i])
-        i+=1
-    return r
-
 class Solution:
-    def tictactoe(self,m):
-        a=wrap(m)
-        r=[j for j in [list(i) for i in zip(*a)]+a+[f(a)]+[f([i[::-1] for i in a])] if len(set(j))==1 and j[0]]
-        return 'Draw' if not r and len(m)==9 else 'Pending' if not r else 'A' if r[0][0]=='X' else 'B'
+    def bestHand(self,a,b):
+        if len(set(b))==1:
+            return 'Flush'
+        if [i for i in a if a.count(i)>2]:
+            return 'Three of a Kind'
+        if [i for i in a if a.count(i)>1]:
+            return 'Pair'
+        return 'High Card'
     
 s=Solution()
 
-print(s.tictactoe([[0,0],[1,1]]))
+print(s.bestHand([13,2,3,1,9],["a","a","a","a","a"]))
+print(s.bestHand([4,3,2,4,4],["d","a","a","b","c"]))
+print(s.bestHand([10,10,7,7,4],["d","a","a","b","c"]))
