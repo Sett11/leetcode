@@ -1,12 +1,11 @@
 class Solution:
-    def fib(self,n):
-        a,b=0,1
-        c=0
-        while c<n:
-            a,b=b,a+b
-            c+=1
+    def tribonacci(self,n):
+        k,a,b,c=0,0,1,1
+        while k<n:
+            a,b,c=b,c,a+b+c
+            k+=1
         return a
     
 s=Solution()
 
-print(s.fib(2))
+print(s.tribonacci(78))
