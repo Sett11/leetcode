@@ -1,21 +1,14 @@
 class Solution:
-    def partitionString(self,s):
-        if len(set(s))==1:
-            return len(s)
-        s+=s[-1]
-        c=0
-        i=0
-        while i<len(s):
-            for j in range(i+1,len(s)+1):
-                t=s[i:j]
-                if len(t)!=len(set(t)):
-                    c+=1
-                    i=j-2
-                    break
-            i+=1
-        return c
+    def longestPalindrome(self,s):
+        q=set()
+        for i in s:
+            if i not in q:
+                q.add(i)
+            else:
+                q.remove(i)
+        return len(s)-len(q)+bool(s and q)
     
 s=Solution()
 
-print(s.partitionString('abacaba'))
-print(s.partitionString('ssssss'))
+print(s.longestPalindrome('abccccdd'))
+print(s.longestPalindrome('abcckkkkkkdpkkkkwwwwwwoooooooo'))
