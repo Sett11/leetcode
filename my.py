@@ -1,12 +1,7 @@
 class Solution:
-    def findDuplicates(self,a):
-        a.sort()
-        r=[]
-        for i in range(len(a)-1):
-            if a[i]==a[i+1]:
-                r.append(a[i])
-        return r
-
+    def findComplement(self,n):
+        return int(''.join(['1' if i=='0' else '0' for i in bin(n)[2:]]),2)
+    
 s=Solution()
 
-print(s.findDuplicates([4,3,2,7,8,2,3,1]))
+print(s.findComplement(5))
