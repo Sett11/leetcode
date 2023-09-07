@@ -1,14 +1,7 @@
 class Solution:
-    def longestPalindrome(self,s):
-        q=set()
-        for i in s:
-            if i not in q:
-                q.add(i)
-            else:
-                q.remove(i)
-        return len(s)-len(q)+bool(s and q)
-    
+    def fizzBuzz(self,n):
+        return ['FizzBuzz' if not i%5 and not i%3 else 'Fizz' if not i%3 else 'Buzz' if not i%5 else str(i) for i in range(1,n+1)]
+
 s=Solution()
 
-print(s.longestPalindrome('abccccdd'))
-print(s.longestPalindrome('abcckkkkkkdpkkkkwwwwwwoooooooo'))
+print(s.fizzBuzz(51))
