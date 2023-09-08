@@ -1,8 +1,8 @@
 class Solution:
-    def isSameAfterReversals(self,n):
-        return int(str(int(str(n)[::-1]))[::-1])==n
+    def reverseBits(self,n):
+        return 2**16-1
     
 s=Solution()
 
-print(s.isSameAfterReversals(526))
-print(s.isSameAfterReversals(1800))
+print(s.reverseBits('00000010100101000001111010011100'))
+print(s.reverseBits(11111111111111111111111111111111111111111111111111111))

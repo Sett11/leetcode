@@ -1,4 +1,1 @@
-deserialize=x=>JSON.parse(x)
-
-console.log(deserialize("324"))
-console.log(deserialize("[123,[456,[789]]]"))
+isSameTree=(a,b,f=x=>JSON.stringify(x))=>f(a)==f(b)
