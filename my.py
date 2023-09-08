@@ -1,20 +1,23 @@
+def check(a):
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i]&a[j]:
+                return False
+    return True
+
 class Solution:
-    def countBattleships(self,a):
-        q=sum([[[i,j] for j,k in enumerate(h) if k=='X'] for i,h in enumerate(a)],[])
-        r=[]
-        while q:
-            t=[q.pop(0)]
-            i=0
-            while i<len(q):
-                b,c=t[-1]
-                w=[[b,c+1],[b,c-1],[b+1,c],[b-1,c]]
-                if q[i] in w:
-                    t.append(q.pop(i))
-                    i=-1
-                i+=1
-            r.append(t)
-        return len(r)
+    def longestNiceSubarray(self,a):
+        m=0
+        a.append(a[-1]+1)
+        for i in range(len(a)):
+            for j in range(i+1,len(a)+1):
+                t=a[i:j]
+                if not check(t):
+                    m=max(m,len(t)-1)
+                    break
+        return m
     
 s=Solution()
 
-print(s.countBattleships([["X",".",".","X"],[".",".",".","X"],[".",".", ".","X"]]))
+print(s.longestNiceSubarray([1,3,8,48,10]))
+print(s.longestNiceSubarray([135745088,609245787,16,2048,2097152]))
