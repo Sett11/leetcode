@@ -1,11 +1,13 @@
-from re import sub
-
 class Solution:
-    def findMaxConsecutiveOnes(self,a):
-        s=sub(r'(.)\1*',lambda e:' '+e.group()+' ' if e.group()[0]=='0' else str(len(e.group())),''.join([str(i) for i in a])).split(' ')
-        return max([int(i) for i in s if i])
+    def intToRoman(self,n):
+        o=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]
+        s=''
+        for i in o:
+            while n>=i[0]:
+                n-=i[0]
+                s+=i[1]
+        return s
     
 s=Solution()
 
-print(s.findMaxConsecutiveOnes([1,1,0,1,1,1]))
-print(s.findMaxConsecutiveOnes([0]))
+print(s.intToRoman(1994))
