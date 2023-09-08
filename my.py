@@ -1,7 +1,8 @@
 class Solution:
-    def sortTheStudents(self,m,k):
-        return sorted(m,key=lambda e:-e[k])
+    def customSortString(self,t,s):
+        return ''.join(map(lambda e:e[1],sorted([[t.index(i) if i in t else s.index(i),i] for i in s])))
     
 s=Solution()
 
-print(s.sortTheStudents([[10,6,9,1],[7,5,11,2],[4,8,3,15]],2))
+print(s.customSortString("cba","abcd"))
+print(s.customSortString("cbafg","abcd"))
