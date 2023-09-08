@@ -1,7 +1,7 @@
 class Solution:
-    def sortPeople(self,a,b):
-        return [j[1] for j in sorted([[b[i],a[i]] for i in range(len(a))],reverse=True)]
+    def sortTheStudents(self,m,k):
+        return sorted(m,key=lambda e:-e[k])
     
 s=Solution()
 
-print(s.sortPeople(["Mary","John","Emma"],[180,165,170]))
+print(s.sortTheStudents([[10,6,9,1],[7,5,11,2],[4,8,3,15]],2))
