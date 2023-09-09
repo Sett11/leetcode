@@ -1,37 +1,23 @@
-def f(a):
-    m,n=len(a),len(a[0])
-    z=[]
-    for r in range(m):
-        i,j,v=r,0,[]
-        while j<n and i>=0:
-            v.append(a[i][j])
-            i-=1
-            j+=1
-        z.append(v[::-1])
-    for c in range(1,n):
-        i,j,v=m-1,0,[]
-        while j<n and i>=0:
-            v.append(a[i][j])
-            i-=1
-            j+=1
-        z.append(v[::-1])
-    return z
-
 class Solution:
-    def isBoomerang(self,p):
-        if p==[[92,72],[12,40],[27,46]] or p==[[22,33],[37,27],[67,15]] or p==[[19,82],[73,73],[97,69]] or p==[[0,0],[11,22],[18,36]] or p==[[76,29],[31,98],[61,52]] or p==[[49,56],[71,71],[5,26]] or p==[[75,76],[19,4],[40,31]]:
-            return False
-        if p==[[81,1],[8,11],[6,74]]:
-            return True
-        if len(set([''.join([str(i) for i in j]) for j in p]))!=len(p):
-            return False
-        m=max(sum(p,[]))+1
-        a=[[0]*m for _ in range(m)]
-        for i in p:
-            a[i[0]][i[1]]=1
-        return all(i.count(1)!=3 for i in f(a)+f(a[::-1])+a+[list(j) for j in zip(*a)])
-    
+    def alphabetBoardPath(self,s):
+        o={'a': [0, 0], 'b': [0, 1], 'c': [0, 2], 'd': [0, 3], 'e': [0, 4], 'f': [1, 0], 'g': [1, 1], 'h': [1, 2], 'i': [1, 3], 'j': [1, 4], 'k': [2, 0], 'l': [2, 1], 'm': [2, 2], 'n': [2, 3], 'o': [2, 4], 'p': [3, 0], 'q': [3, 1], 'r': [3, 2], 's': [3, 3], 't': [3, 4], 'u': [4, 0], 'v': [4, 1], 'w': [4, 2], 'x': [4, 3], 'y': [4, 4], 'z': [5, 0]}
+        t=[0,0]
+        c=''
+        for i in s:
+            a,b=o[i]
+            v,w=a>t[0],b>t[1]
+            if i!='z':
+                c+=('D' if v else 'U')*(a-t[0] if v else t[0]-a)
+                c+=('R' if w else 'L')*(b-t[1] if w else t[1]-b)
+            else:
+                c+=('R' if w else 'L')*(b-t[1] if w else t[1]-b)
+                c+=('D' if v else 'U')*(a-t[0] if v else t[0]-a)
+            t=[a,b]
+            c+='!'
+        return c
+
+
 s=Solution()
 
-print(s.isBoomerang([[1,1],[2,2],[3,3]]))
-print(s.isBoomerang([[92,72],[12,40],[27,46]]))
+print(s.alphabetBoardPath('leet'))
+print(s.alphabetBoardPath('zdz'))
