@@ -1,7 +1,9 @@
 class Solution:
-    def maximumNumberOfStringPairs(self,s):
-        return len(s)-len(set([''.join(sorted(i)) for i in s]))
+    def countSegments(self,s):
+        return len([i for i in s.split(' ') if i])
     
 s=Solution()
 
-print(s.maximumNumberOfStringPairs(["cd","ac","dc","ca","zz"]))
+print(s.countSegments("Hello, my name is John"))
+print(s.countSegments("    , , , ,        a, eaefa"))
+print(s.countSegments(''))
