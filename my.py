@@ -1,22 +1,64 @@
-class Solution:
-    def validIPAddress(self,s):
-        a,b=s.split('.'),s.split(':')
-        if len(a)!=4 and len(b)!=8:
-            return 'Neither'
-        if len(a)==4:
-            try:
-                return (all([int(i)>=0 and int(i)<256 and not (len(i)>1 and i[0]=='0') for i in a]) and 'IPv4') or 'Neither'
-            except:
-                return 'Neither'
-        else:
-            try:
-                return (all([len(i)<=4 for i in b]) and [int(i,16) for i in b] and 'IPv6') or 'Neither'
-            except:
-                return 'Neither'
-    
-s=Solution()
+class AllOne:
+    def __init__(self):
+        self.a={}
+        self.min=100000
+        self.max=0
+        self.minstack=[]
+        self.maxstack=[]
 
-print(s.validIPAddress("172.16.254.1"))
-print(s.validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334"))
-print(s.validIPAddress("02001:0db8:85a3:0000:0000:8a2e:0370:7334"))
-print(s.validIPAddress("192.168@1.1"))
+    def inc(self,k):
+        if k in self.a:
+            self.a[k]+=1
+        else:
+            self.a[k]=1
+        self.maxstack=[]
+        self.minstack=[]
+
+    def dec(self,k):
+        self.a[k]-=1
+        if self.a[k]<=0:
+            del self.a[k]
+        self.maxstack=[]
+        self.minstack=[]
+
+    def getMaxKey(self):
+        if self.maxstack:
+            return self.maxstack[-1]
+        m=v=0
+        for i in self.a:
+            if self.a[i]>m:
+                m=self.a[i]
+                v=i
+        if v and m>=self.max:
+            self.max=m
+            self.maxstack.append(v)
+        return v or ''
+
+    def getMinKey(self):
+        if self.minstack:
+            return self.minstack[-1]
+        m=float('inf')
+        v=0
+        for i in self.a:
+            if self.a[i]<m:
+                m=self.a[i]
+                v=i
+        if v and m<=self.min:
+            self.min=m
+            self.minstack.append(v)
+        return v or ''
+
+a=AllOne()
+
+print(a.inc('hello'))
+print(a.inc('hello'))
+
+print(a.getMaxKey())
+print(a.getMinKey())
+
+print(a.inc('leet'))
+
+print(a.getMaxKey())
+print(a.getMinKey())
+
+print(a.a)
