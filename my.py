@@ -1,16 +1,16 @@
+def primes_checker(n):
+    return all(n%i for i in range(2,int(n**.5)+1)) and n>=2
+
 class Solution:
-    def floodFill(self,a,k,t,c):
-        m,n,w=len(a),len(a[0]),a[k][t]
-        def dfs(i,j):
-            if 0<=i<m and 0<=j<n and a[i][j]==w and a[i][j]!=c:
-                a[i][j]=c
-                dfs(i+1,j)
-                dfs(i-1,j)
-                dfs(i,j+1)
-                dfs(i,j-1)
-        dfs(k,t)
-        return a
+    def diagonalPrime(self,a):
+        m=0
+        for i in range(len(a)):
+            t=[j for j in [a[i][len(a[i])-i-1],a[i][i]] if primes_checker(j)]
+            m=max(m,max(t,default=0))
+        return m
     
 s=Solution()
 
-print(s.floodFill([[1,1,1],[1,1,0],[1,0,1]],1,1,2))
+print(s.diagonalPrime([[1,2,3],
+                       [5,6,7],
+                       [9,10,11]]))
