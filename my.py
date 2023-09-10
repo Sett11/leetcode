@@ -1,25 +1,34 @@
-class Solution:
-    def circularArrayLoop(self,a):
-        if len(a)>100:
-            return False
-        if a==[-2,1,-1,-2,-2] or a==[2,-1,1,-2,-2] or a==[1,-1] or a==[2,2,2,2,2,4,7] or a==[1,2,2,-1] or a==[1,1,1,1,1,1,1,1,1,-5]:
-            return False
-        if a==[1,1,1,5,1] or a==[2,1,1,-1] or a==[-8,-1,1,7,2] or a==[1,2,1,1,1,1,-1] or a==[1,1,1,-1] or a==[-1,1]:
-            return False
-        if a==[3,1,2]:
-            return True
-        l=i=len(a)
-        r=[]
-        while len(r)<l+1:
-            n=i%l
-            i+=a[n]
-            r.append(n)
-        return len(set(r[1:]))>1
-    
-s=Solution()
+class CustomStack:
+    def __init__(self,m):
+        self.max_size=m
+        self.stack=[]
 
-print(s.circularArrayLoop([2,-1,1,-2,-2]))
-print(s.circularArrayLoop([1,2,3,4,5]))
-print(s.circularArrayLoop([2,-1,1,2,2]))
-print(s.circularArrayLoop([-2,1,-1,-2,-2]))
-print(s.circularArrayLoop([-1,-2,-3,-4,-5,6]))
+    def push(self,x):
+        if len(self.stack)<self.max_size:
+            self.stack.append(x)
+
+    def pop(self):
+        if self.stack:
+            return self.stack.pop()
+        return -1
+
+    def increment(self,k,v):
+        self.stack=[i+v for i in self.stack[:k]]+self.stack[k:]
+
+c=CustomStack(3)
+
+print(c.push(1))
+print(c.push(2))
+print(c.pop())
+print(c.push(2))
+print(c.push(3))
+print(c.push(4))
+print(c.stack)
+print(c.increment(5,100))
+print(c.stack)
+print(c.increment(2,100))
+print(c.stack)
+print(c.pop())
+print(c.pop())
+print(c.pop())
+print(c.pop())
