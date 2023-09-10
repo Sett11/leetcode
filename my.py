@@ -1,22 +1,19 @@
 class Solution:
-    def hammingDistance(self,a,b):
-        a,b=bin(a)[2:],bin(b)[2:]
-        x,y=len(a),len(b)
-        if x<4:
-            a='0'*(4-x)+a
-        if y<4:
-            b='0'*(4-y)+b
-        x,y=len(a),len(b)
-        if x<y:
-            a='0'*(y-x)+a
-        if y<x:
-            b='0'*(x-y)+b
+    def islandPerimeter(self,m):
+        a,b=len(m),len(m[0])
         c=0
-        for i in range(len(a)):
-            if a[i]!=b[i]:
-                c+=1
+        for i in range(a):
+            for j in range(b):
+                if m[i][j]==1:
+                    t=[[i+1,j],[i-1,j],[i,j+1],[i,j-1]]
+                    l=[m[k[0]][k[1]] for k in t if k[0]>=0 and k[0]<a and k[1]>=0 and k[1]<b and not m[k[0]][k[1]]]
+                    c+=len(l)+(1 if not i else 0)+(1 if not j else 0)+(1 if i==a-1 else 0)+(1 if j==b-1 else 0)
         return c
     
 s=Solution()
 
-print(s.hammingDistance(1,4))
+print(s.islandPerimeter([[1]]))
+print(s.islandPerimeter([[0,1,0,0],
+                         [1,1,1,0],
+                         [0,1,0,0],
+                         [1,1,0,0]]))
