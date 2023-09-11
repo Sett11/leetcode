@@ -1,10 +1,10 @@
 def check(n):
-    return all(not n%int(i) for i in str(n))
+    return [i for i in str(n) if not n%int(i)]
 
 class Solution:
-    def selfDividingNumbers(self,l,r):
-        return [i for i in range(l,r+1) if '0' not in str(i) and check(i)]
+    def countDigits(self,n):
+        return len(check(n))
     
 s=Solution()
 
-print(s.selfDividingNumbers(1,10000))
+print(s.countDigits(121))
