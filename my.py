@@ -1,10 +1,7 @@
-def check(n):
-    return [i for i in str(n) if not n%int(i)]
-
 class Solution:
-    def countDigits(self,n):
-        return len(check(n))
+    def digitCount(self,s):
+        return all(s.count(str(i))==int(s[i]) for i in range(len(s)))
     
 s=Solution()
 
-print(s.countDigits(121))
+print(s.digitCount('1210'))
