@@ -1,19 +1,12 @@
-class Solution:
-    def nextGreaterElements(self,a):
-        r=[]
-        a+=a
-        for i in range(len(a)//2):
-            v=False
-            for j in range(i+1,len(a)):
-                if a[j]>a[i]:
-                    r.append(a[j])
-                    v=True
-                    break
-            if not v:
-                r.append(-1)
-        return r
+from itertools import permutations as p
 
+class Solution:
+    def nextGreaterElement(self,n):
+        r=sorted(set([int(''.join(i)) for i in p(str(n))]))
+        g=r.index(n)
+        return -1 if g==len(r)-1 or r[g+1]==n else r[g+1]
+    
 s=Solution()
 
-print(s.nextGreaterElements([1,2,1]))
-print(s.nextGreaterElements([1,2,3,4,3]))
+print(s.nextGreaterElement(2167))
+print(s.nextGreaterElement(101))
