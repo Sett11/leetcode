@@ -1,13 +1,10 @@
+def check(n):
+    return all(not n%int(i) for i in str(n))
+
 class Solution:
-    def checkPerfectNumber(self,n):
-        a=[]
-        i=1
-        while i<n**.5:
-            if not n%i:
-                a.extend([i,n/i])
-            i+=1
-        return sum(a)-n==n
+    def selfDividingNumbers(self,l,r):
+        return [i for i in range(l,r+1) if '0' not in str(i) and check(i)]
     
 s=Solution()
 
-print(s.checkPerfectNumber(28))
+print(s.selfDividingNumbers(1,10000))
