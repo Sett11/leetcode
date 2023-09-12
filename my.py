@@ -1,24 +1,17 @@
-def d(n):
-    i=2
-    a=[]
-    while i<n*n:
-        while n%i==0:
-            n//=i
-            a.append(i)
-        i+=1
-    return a
-
 class Solution:
-    def smallestValue(self,n):
-        a=[]
-        while True:
-            n=sum(d(n))
-            if n in a:
-                return n
-            else:
-                a.append(n)
-        return a
+    def matrixReshape(self,a,m,n):
+        b=sum(a,[])
+        if len(b)!=m*n:
+            return a
+        r=[]
+        while b:
+            t=[]
+            while len(t)<n:
+                t.append(b.pop(0))
+            r.append(t)
+        return r
     
 s=Solution()
 
-print(s.smallestValue(12588))
+print(s.matrixReshape([[1,2],[3,4],[5,6],[7,8]],2,4))
+print(s.matrixReshape([[1,2],[3,4]],1,4))
