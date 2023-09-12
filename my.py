@@ -1,29 +1,12 @@
-from random import randint
+from math import ceil
 
-class Solution:
-    def __init__(self,m,n):
-        self.m=m
-        self.n=n
-        self.s=set()
-
-    def flip(self):
-        t=[randint(0,self.m-1),randint(0,self.n-1)]
-        c='&'.join([str(i) for i in t])
-        while c in self.s:
-            t=[randint(0,self.m-1),randint(0,self.n-1)]
-            c='&'.join([str(i) for i in t])
-        self.s.add(c)
-        return t
-
-    def reset(self):
-        self.s=set()
+class Solution():
+    def countOdds(self,l,r):
+        return ceil((r-l)/2)+(1 if r&1 and l&1 else 0)
     
-s=Solution(3,1)
+s=Solution()
 
-print(s.flip())
-print(s.flip())
-s.reset()
-
-print(s.flip())
-print(s.flip())
-print(s.flip())
+print(s.countOdds(3,7))
+print(s.countOdds(8,10))
+print(s.countOdds(5,7))
+print(s.countOdds(21,22))
