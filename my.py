@@ -1,42 +1,29 @@
+def d(n):
+    a=[]
+    for i in range(2,int(n**.5)+1):
+        if n%i==0:
+            a.extend([i,n//i])
+    return sorted(a)
+
+def f(a,k):
+    m=int(1e9)
+    o={}
+    o[m]=m
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i]*a[j]==k:
+                m=min(abs(a[i]-a[j]),m)
+                o[m]=[a[i],a[j],[m]]
+    return o[m] if m!=1e9 else [0,0,[int(1e9)]]
+
 class Solution:
-    def invalidTransactions(self,a):
-        for i in range(len(a)):
-            t=a[i].split(',')
-            t[1],t[2]=int(t[1]),int(t[2])
-            a[i]=t
-        
-        s=set(i[0] for i in a)
-        o={}
-        r=[]
-        cache=[]
-        for i in s:
-            for j in a:
-                if i==j[0]:
-                    if o.get(i):
-                        o[i].append(j)
-                    else:
-                        o[i]=[j]
-        for i in o:
-            t=o[i]
-            for j in range(len(t)):
-                if t[j][2]>1000 and [t[j],j] not in cache:
-                    r.append(','.join([str(h) for h in t[j]]))
-                    cache.append([t[j],j])
-                for k in range(j+1,len(t)):
-                    if abs(t[k][1]-t[j][1])<=60 and t[j][3]!=t[k][3]:
-                        if [t[j],j] not in cache:
-                            r.append(','.join([str(h) for h in t[j]]))
-                            cache.append([t[j],j])
-                        if [t[k],k] not in cache:
-                            r.append( ','.join([str(h) for h in t[k]]))
-                            cache.append([t[k],k])
-        return r
-        
+    def closestDivisors(self,n):
+        o={1:[1,2],2:[1,3],3:[2,2],4:[2,3],5:[2,3],6:[2,4]}
+        if o.get(n):
+            return o[n]
+        c,q=f(d(n+1),n+1),f(d(n+2),n+2)
+        return c[:2] if c[2][0]<q[2][0] else q[:2]
     
 s=Solution()
 
-print(s.invalidTransactions(["alice,20,800,mtv","alice,50,100,beijing"]))
-print(s.invalidTransactions(["alice,20,800,mtv","alice,50,1200,mtv"]))
-print(s.invalidTransactions(["alice,20,800,mtv","alice,50,100,mtv","alice,51,100,frankfurt"]))
-print(s.invalidTransactions(["alex,676,260,bangkok","bob,656,1366,bangkok","alex,393,616,bangkok","bob,820,990,amsterdam","alex,596,1390,amsterdam"]))
-print(s.invalidTransactions(["bob,689,1910,barcelona","alex,696,122,bangkok","bob,832,1726,barcelona","bob,820,596,bangkok","chalicefy,217,669,barcelona","bob,175,221,amsterdam"]))
+print(s.closestDivisors(9))
