@@ -1,19 +1,24 @@
-from functools import reduce as r
-
 def d(n):
     i=2
-    s=set()
+    a=[]
     while i<n*n:
         while n%i==0:
             n//=i
-            s.add(i)
+            a.append(i)
         i+=1
-    return list(s)
+    return a
 
 class Solution:
-    def distinctPrimeFactors(self,a):
-        return len(d(r(lambda e,c:e*c,a)))
+    def smallestValue(self,n):
+        a=[]
+        while True:
+            n=sum(d(n))
+            if n in a:
+                return n
+            else:
+                a.append(n)
+        return a
     
 s=Solution()
 
-print(s.distinctPrimeFactors([i for i in range(1,10000)]))
+print(s.smallestValue(12588))
