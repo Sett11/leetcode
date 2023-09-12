@@ -1,12 +1,14 @@
-from math import ceil
+from itertools import permutations as p
 
-class Solution():
-    def countOdds(self,l,r):
-        return ceil((r-l)/2)+(1 if r&1 and l&1 else 0)
+class Solution:
+    def reorderedPowerOf2(self,n):
+        for i in p(str(n)):
+            t=''.join(i)
+            q=int(t)
+            if t[0]!='0' and q&(q-1)==0:
+                return True
+        return False
     
 s=Solution()
 
-print(s.countOdds(3,7))
-print(s.countOdds(8,10))
-print(s.countOdds(5,7))
-print(s.countOdds(21,22))
+print(s.reorderedPowerOf2(1024))
