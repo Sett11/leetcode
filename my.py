@@ -1,8 +1,8 @@
 class Solution:
-    def checkRecord(self,s):
-        return s.find('LLL')==-1 and s.count('A')<2
+    def reverseWords(self,s):
+        return ' '.join([i[::-1] for i in s.split(' ')])
     
 s=Solution()
 
-print(s.checkRecord('PPALLL'))
-print(s.checkRecord('PPALLP'))
+print(s.reverseWords("Let's take LeetCode contest"))
+print(s.reverseWords('God Ding'))
