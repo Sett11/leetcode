@@ -1,11 +1,10 @@
 class Solution:
-    def rearrangeArray(self,a):
-        b,c,r=[],[],[]
-        [c.append(a[i]) if a[i]<0 else b.append(a[i]) for i in range(len(a))]
-        [r.extend([b[i],c[i]]) for i in range(len(b))]
-        return r
+    def pivotArray(self,a,n):
+        b,c,d=[],[],[]
+        [b.append(i) if i<n else c.append(i) if i==n else d.append(i) for i in a]
+        return b+c+d
     
 s=Solution()
 
-print(s.rearrangeArray([3,1,-2,-5,2,-4]))
-print(s.rearrangeArray([-1,1]))
+print(s.pivotArray([9,12,5,10,14,3,10],10))
+print(s.pivotArray([-3,4,3,2],2))
