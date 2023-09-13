@@ -1,10 +1,11 @@
+shift=lambda e,c:chr(ord(e)+c)
+
 class Solution:
-    def numJewelsInStones(self,s,t):
-        c=0
-        for i in s:
-            c+=t.count(i)
-        return c
+    def replaceDigits(self,s):
+        l=len(s)
+        return ''.join([s[i-1]+shift(s[i-1],int(s[i])) for i in range(1,l,2)])+(s[-1] if l&1 else '')
     
 s=Solution()
 
-print(s.numJewelsInStones("aA","aAAbbbb"))
+print(s.replaceDigits('a1c1e1'))
+print(s.replaceDigits('a1b2c3d4e'))
