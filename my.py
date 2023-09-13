@@ -1,11 +1,17 @@
 class Solution:
-    def countSeniors(self,a):
-        c=0
-        for i in a:
-            if int(i[11:13])>60:
-                c+=1
-        return c
+    def shiftingLetters(self,s,a):
+        alf='abcdefghijklmnopqrstuvwxyz'
+        l=len(s)
+        n=sum(a)
+        r=list(s)
+        for i in range(l):
+            if i:
+                n-=a[i-1]
+            r[i]=alf[(alf.index(r[i])+n)%26]
+        return ''.join(r)
+        
     
 s=Solution()
 
-print(s.countSeniors(["7868190130M7522","5303914400F9211","9273338290F4010"]))
+print(s.shiftingLetters('abc',[3,5,9]))
+print(s.shiftingLetters('aaa',[1,2,3]))
