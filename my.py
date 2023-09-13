@@ -1,9 +1,7 @@
-from re import sub
 class Solution:
-    def areNumbersAscending(self,s):
-        return eval('<'.join([i for i in sub(r'\D',' ',s).split(' ') if i]))
+    def sortSentence(self,s):
+        return ' '.join([j[1] for j in sorted([[int(i[-1:]),i[:-1]] for i in s.split(' ')])])
     
 s=Solution()
 
-print(s.areNumbersAscending("1 box has 3 blue 4 red 6 green and 12 yellow marbles"))
-print(s.areNumbersAscending("hello world 5 x 5"))
+print(s.sortSentence("is2 sentence4 This1 a3"))
