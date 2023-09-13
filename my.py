@@ -1,25 +1,20 @@
 class Solution:
-    def minimumCost(self,a):
-        a=sorted(a,reverse=True)
-        c=0
-        m=-1
-        while a:
-            t=k=-1
-            if a:
-                t=a.pop(0)
-                c+=t
-                m=max(t,m)
-            if a:
-                k=a.pop(0)
-                c+=k
-                m=max(k,m)
-            if a and a[0]<=m:
-                a.pop(0)
-            if a and a[0]>m:
-                c+=a.pop(0)
-        return c
-    
+    def minimumAbsDifference(self,a):
+        a.sort()
+        m=int(1e9)
+        o={}
+        for i in range(0,len(a)-1,1):
+            q=[a[i],a[i+1]]
+            s=abs(a[i]-a[i+1])
+            m=min(s,m)
+            if s in o:
+                o[s].append(q)
+            else:
+                o[s]=[q]
+        return o[m]
+
 s=Solution()
 
-print(s.minimumCost([6,5,7,9,2,2]))
-print(s.minimumCost([1,2,3]))
+print(s.minimumAbsDifference([4,2,1,3]))
+print(s.minimumAbsDifference([3,8,-10,23,19,-4,-14,27]))
+print(s.minimumAbsDifference([1,3,6,10,15]))
