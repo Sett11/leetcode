@@ -1,17 +1,13 @@
 class Solution:
-    def shiftingLetters(self,s,a):
-        alf='abcdefghijklmnopqrstuvwxyz'
-        l=len(s)
-        n=sum(a)
-        r=list(s)
-        for i in range(l):
-            if i:
-                n-=a[i-1]
-            r[i]=alf[(alf.index(r[i])+n)%26]
-        return ''.join(r)
-        
-    
-s=Solution()
+    def findAndReplacePattern(self, a, t):
+        r = []
+        for i in a:
+            if len(i) == len(t) and all(i.count(i[j]) == t.count(t[j]) and i.index(i[j]) == t.index(t[j]) for j in range(len(t))):
+                r.append(i)
+        return r
 
-print(s.shiftingLetters('abc',[3,5,9]))
-print(s.shiftingLetters('aaa',[1,2,3]))
+
+s = Solution()
+
+print(s.findAndReplacePattern(
+    ["abc", "deq", "mee", "aqq", "dkd", "ccc"], 'add'))
