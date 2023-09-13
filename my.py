@@ -1,12 +1,11 @@
 class Solution:
-    def check(self,a):
-        b=sorted(a)
-        for i in range(len(a)):
-            if a[i:]+a[:i]==b:
-                return True
-        return False
+    def checkString(self,s):
+        return 'b' not in s or 'a' not in s[s.index('b'):]
     
 s=Solution()
 
-print(s.check([2,5,1,3,4,7]))
-print(s.check([3,4,5,1,2]))
+print(s.checkString('aaabbb'))
+print(s.checkString('abab'))
+print(s.checkString('aaa'))
+print(s.checkString('bbb'))
+print(s.checkString(''))
