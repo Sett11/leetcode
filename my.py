@@ -1,7 +1,14 @@
 class Solution:
-    def sortSentence(self,s):
-        return ' '.join([j[1] for j in sorted([[int(i[-1:]),i[:-1]] for i in s.split(' ')])])
+    def checkIfExist(self,a):
+        l=len(a)
+        for i in range(l):
+            t=a[i]*2
+            if t in a and a.index(t)!=i:
+                return True
+        return False
     
 s=Solution()
 
-print(s.sortSentence("is2 sentence4 This1 a3"))
+print(s.checkIfExist([10,2,5,3]))
+print(s.checkIfExist([3,1,7,11]))
+print(s.checkIfExist([-2,0,10,-19,4,6,-8]))
