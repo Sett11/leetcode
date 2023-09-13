@@ -1,16 +1,9 @@
 class Solution:
-    def construct2DArray(self,a,m,n):
-        r=[]
-        if len(a)!=m*n:
-            return r
-        while a:
-            t=[]
-            while len(t)<n:
-                t.append(a.pop(0))
-            r.append(t)
-        return r
+    def arrayPairSum(self,a):
+        a.sort()
+        return sum([min(a[i],a[i+1]) for i in range(0,len(a)-1,2)])
     
 s=Solution()
 
-print(s.construct2DArray([1,2,3,4,5,6,7,8],2,4))
-print(s.construct2DArray([1,2,3,4],2,2))
+print(s.arrayPairSum([6,2,6,5,1,2]))
+print(s.arrayPairSum([1,4,3,2]))
