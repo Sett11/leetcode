@@ -1,9 +1,25 @@
 class Solution:
-    def arrayPairSum(self,a):
-        a.sort()
-        return sum([min(a[i],a[i+1]) for i in range(0,len(a)-1,2)])
+    def minimumCost(self,a):
+        a=sorted(a,reverse=True)
+        c=0
+        m=-1
+        while a:
+            t=k=-1
+            if a:
+                t=a.pop(0)
+                c+=t
+                m=max(t,m)
+            if a:
+                k=a.pop(0)
+                c+=k
+                m=max(k,m)
+            if a and a[0]<=m:
+                a.pop(0)
+            if a and a[0]>m:
+                c+=a.pop(0)
+        return c
     
 s=Solution()
 
-print(s.arrayPairSum([6,2,6,5,1,2]))
-print(s.arrayPairSum([1,4,3,2]))
+print(s.minimumCost([6,5,7,9,2,2]))
+print(s.minimumCost([1,2,3]))
