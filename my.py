@@ -1,18 +1,10 @@
-import bisect
+from bisect import bisect_left
 
-class KthLargest:
-    def __init__(self,k,a):
-        self.k=k
-        self.a=sorted(a)
-
-    def add(self,v):
-        bisect.insort(self.a,v)
-        return self.a[-self.k]
+class Solution:
+    def search(self,a,n):
+        return bisect_left(a,n) if n in a else -1
     
-K=KthLargest(3,[4, 5, 8, 2])
+s=Solution()
 
-print(K.add(3))
-print(K.add(5))
-print(K.add(10))
-print(K.add(9))
-print(K.add(4))
+print(s.search([-1,0,3,5,9,12],9))
+print(s.search([-1,0,3,5,9,12],22))
