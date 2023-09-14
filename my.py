@@ -1,18 +1,17 @@
 class Solution:
-    def checkPossibility(self,a):
-        b=sorted(a)
-        for i in range(len(a)):
-            t=a.pop(i)
-            g=b.index(t)
-            b.pop(g)
-            if a==b:
-                return True
+    def findLengthOfLCIS(self,a):
+        m=0
+        t=[a.pop(0)]
+        while a:
+            if a and t[-1]<a[0]:
+                t.append(a.pop(0))
             else:
-                a.insert(i,t)
-                b.insert(g,t)
-        return False
+                m=max(len(t),m)
+                t=[a.pop(0)]
+        m=max(len(t),m)
+        return m
     
 s=Solution()
 
-print(s.checkPossibility([4,2,3]))
-print(s.checkPossibility([-1,4,2,3]))
+print(s.findLengthOfLCIS([1,3,5,4,7]))
+print(s.findLengthOfLCIS([1,2,3,4,5]))
