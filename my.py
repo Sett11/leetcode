@@ -1,10 +1,11 @@
-from bisect import bisect_left
+from bisect import bisect,bisect_left
 
 class Solution:
-    def search(self,a,n):
-        return bisect_left(a,n) if n in a else -1
+    def maximumCount(self,a):
+        return max(len(a[:bisect_left(a,0)]),len(a[bisect(a,0):]))
     
 s=Solution()
 
-print(s.search([-1,0,3,5,9,12],9))
-print(s.search([-1,0,3,5,9,12],22))
+print(s.maximumCount([-2,-1,-1,1,2,3]))
+print(s.maximumCount([-3,-2,-1,0,0,1,2]))
+print(s.maximumCount([1,2,3,4]))
