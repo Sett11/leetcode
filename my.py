@@ -1,17 +1,9 @@
-class Skiplist:
-    def __init__(self):
-        self.a=[]
-
-    def search(self,t):
-        return t in self.a
-
-    def add(self,n):
-        self.a.append(n)
-
-    def erase(self,n):
-        if n in self.a:
-            self.a.remove(n)
-            return True
-        return False
+class Solution:
+    def isOneBitCharacter(self,a):
+        s=''.join([str(i) for i in a[:-1]]).replace('11','').replace('10','').replace('0','')
+        return not s and not a[-1]
     
-s=Skiplist()
+s=Solution()
+
+print(s.isOneBitCharacter([0,0]))
+print(s.isOneBitCharacter([1,1,0,0]))
