@@ -1,11 +1,14 @@
-from bisect import bisect,bisect_left
-
 class Solution:
-    def maximumCount(self,a):
-        return max(len(a[:bisect_left(a,0)]),len(a[bisect(a,0):]))
+    def countNegatives(self,a):
+        c=0
+        for i in range(len(a)):
+            for j in range(len(a[0])):
+                if a[i][j]<0:
+                    c+=len(a[i][j:])
+                    break
+        return c
     
 s=Solution()
 
-print(s.maximumCount([-2,-1,-1,1,2,3]))
-print(s.maximumCount([-3,-2,-1,0,0,1,2]))
-print(s.maximumCount([1,2,3,4]))
+print(s.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]))
+print(s.countNegatives([[3,2],[1,0]]))
