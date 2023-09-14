@@ -1,17 +1,23 @@
-class Solution:
-    def findLengthOfLCIS(self,a):
-        m=0
-        t=[a.pop(0)]
-        while a:
-            if a and t[-1]<a[0]:
-                t.append(a.pop(0))
-            else:
-                m=max(len(t),m)
-                t=[a.pop(0)]
-        m=max(len(t),m)
-        return m
-    
-s=Solution()
+class MapSum:
+    def __init__(self):
+        self.o={}
 
-print(s.findLengthOfLCIS([1,3,5,4,7]))
-print(s.findLengthOfLCIS([1,2,3,4,5]))
+    def insert(self,k,v):
+        self.o[k]=v
+
+    def sum(self,p):
+        c=0
+        for i in self.o:
+            if i.startswith(p):
+                c+=self.o[i]
+        return c
+
+M=MapSum()
+
+M.insert('apple',3)
+
+print(M.sum('ap'))
+
+M.insert('app',4)
+
+print(M.sum('ap'))
