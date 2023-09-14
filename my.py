@@ -1,14 +1,17 @@
 class Solution:
-    def countNegatives(self,a):
-        c=0
-        for i in range(len(a)):
-            for j in range(len(a[0])):
-                if a[i][j]<0:
-                    c+=len(a[i][j:])
-                    break
-        return c
+    def fairCandySwap(self,a,b):
+        i=0
+        while i<max(len(b),len(a)):
+            q,w=a.copy(),b.copy()
+            t=w.pop(i)
+            q.append(t)
+            c,d=sum(q),sum(w)
+            n=(c+d)//2-d
+            if n in q:
+                return [n,t]
+            i+=1
+
     
 s=Solution()
 
-print(s.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]))
-print(s.countNegatives([[3,2],[1,0]]))
+print(s.fairCandySwap([2],[1,3]))
