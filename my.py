@@ -1,41 +1,48 @@
-class MyCircularQueue:
-    def __init__(self,k):
-        self.max_size=k
-        self.queue=[]
+class FrontMiddleBackQueue:
 
-    def enQueue(self,v):
-        if len(self.queue)<self.max_size:
-            return not bool(self.queue.append(v))
-        return False
+    def __init__(self):
+        self.queue = []
 
-    def deQueue(self):
+    def pushFront(self, v):
+        self.queue.insert(0, v)
+
+    def pushMiddle(self, v):
+        l = len(self.queue)//2
+        self.queue = self.queue[0:l]+[v]+self.queue[l:]
+        return self.queue
+
+    def pushBack(self, v):
+        self.queue.append(v)
+
+    def popFront(self):
         try:
-            return bool(str(self.queue.pop(0)))
-        except:
-            return False
-
-    def Front(self):
-        try:
-            return self.queue[0]
-        except:
-            return -1
-
-    def Rear(self):
-        try:
-            return self.queue[-1]
+            return self.queue.pop(0)
         except:
             return -1
 
-    def isEmpty(self):
-        return not bool(self.queue)
+    def popMiddle(self):
+        l = len(self.queue)//2
+        try:
+            return self.queue.pop(l if len(self.queue)&1 else l-1)
+        except:
+            return -1
 
-    def isFull(self):
-        return len(self.queue)>=self.max_size
-    
-m=MyCircularQueue(3)
+    def popBack(self):
+        try:
+            return self.queue.pop()
+        except:
+            return -1
 
-print(m.enQueue(1))
-print(m.enQueue(2))
-print(m.enQueue(3))
 
-print(m.queue)
+f = FrontMiddleBackQueue()
+
+f.pushMiddle(3)
+f.pushFront(6)
+f.pushMiddle(6)
+f.pushMiddle(3)
+print(f.queue)
+print(f.popMiddle())
+print(f.popMiddle())
+# print(f.queue)
+# print(f.popMiddle())
+# print(f.popMiddle())
