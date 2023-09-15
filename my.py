@@ -1,8 +1,9 @@
 class Solution:
-    def nextGreatestLetter(self,s,t):
-        return next((i for i in s if i>t),s[0])
+    def countElements(self,a):
+        m,n=min(a),max(a)
+        return len([i for i in a if m<i<n])
     
 s=Solution()
 
-print(s.nextGreatestLetter(["c","f","j"],'a'))
-print(s.nextGreatestLetter(["c","f","j"],'c'))
+print(s.countElements([11,7,2,15]))
+print(s.countElements([-3,3,3,90]))
