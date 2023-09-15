@@ -1,18 +1,14 @@
 class Solution:
-    def calPoints(self,a):
-        r=[]
-        for i in a:
-            if i.isdigit() or i[1:].isdigit():
-                r.append(int(i))
-            if i=='+':
-                r.append(r[-1]+r[-2])
-            if i=='C':
-                r.pop()
-            if i=='D':
-                r.append(r[-1]*2)
-        return sum(r)
+    def hasAlternatingBits(self,n):
+        s=bin(n)[2:]
+        for i in range(len(s)):
+            t=s[i:i+2]
+            if len(t)>1 and len(set(t))==1:
+                return False
+        return True
     
 s=Solution()
 
-print(s.calPoints(["5","2","C","D","+"]))
-print(s.calPoints(["5","-2","4","C","D","9","+","+"]))
+print(s.hasAlternatingBits(5))
+print(s.hasAlternatingBits(4))
+print(s.hasAlternatingBits(11))
