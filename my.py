@@ -1,14 +1,13 @@
 class Solution:
-    def hasAlternatingBits(self,n):
-        s=bin(n)[2:]
-        for i in range(len(s)):
-            t=s[i:i+2]
-            if len(t)>1 and len(set(t))==1:
-                return False
-        return True
-    
+    def pivotIndex(self,a):
+        c=0
+        for i in range(1,len(a)+1):
+            if c==sum(a[i:]):
+                return i-1
+            c+=a[i-1]
+        return -1
+        
 s=Solution()
 
-print(s.hasAlternatingBits(5))
-print(s.hasAlternatingBits(4))
-print(s.hasAlternatingBits(11))
+print(s.pivotIndex([1,7,3,6,5,6]))
+print(s.pivotIndex([-1,-1,-1,-1,-1,-1]))
