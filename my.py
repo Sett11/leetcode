@@ -1,51 +1,41 @@
-class MyCircularDeque:
-    def __init__(self, k):
-        self.max_size = k
-        self.deck = []
+class MyCircularQueue:
+    def __init__(self,k):
+        self.max_size=k
+        self.queue=[]
 
-    def insertFront(self, v):
-        if len(self.deck) < self.max_size:
-            return not bool(self.deck.insert(0, v))
+    def enQueue(self,v):
+        if len(self.queue)<self.max_size:
+            return not bool(self.queue.append(v))
         return False
 
-    def insertLast(self, v):
-        if len(self.deck) < self.max_size:
-            return not bool(self.deck.append(v))
-        return False
-
-    def deleteFront(self):
-        if self.deck:
-            return bool(str(self.deck.pop(0)))
-        return False
-
-    def deleteLast(self):
-        if self.deck:
-            return bool(str(self.deck.pop()))
-        return False
-
-    def getFront(self):
+    def deQueue(self):
         try:
-            return self.deck[0]
+            return bool(str(self.queue.pop(0)))
+        except:
+            return False
+
+    def Front(self):
+        try:
+            return self.queue[0]
         except:
             return -1
 
-    def getRear(self):
+    def Rear(self):
         try:
-            return self.deck[-1]
+            return self.queue[-1]
         except:
             return -1
 
     def isEmpty(self):
-        return not bool(self.deck)
+        return not bool(self.queue)
 
     def isFull(self):
-        return self.max_size == len(self.deck)
+        return len(self.queue)>=self.max_size
+    
+m=MyCircularQueue(3)
 
+print(m.enQueue(1))
+print(m.enQueue(2))
+print(m.enQueue(3))
 
-m = MyCircularDeque(5)
-
-print(m.insertFront(9))
-print(m.insertLast(11))
-print(m.deck)
-print(m.isEmpty())
-print(m.deck)
+print(m.queue)
