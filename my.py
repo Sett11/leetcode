@@ -1,15 +1,50 @@
-class Solution:
-    def findRestaurant(self,a,b):
-        s=list(set(a).intersection(set(b)))
-        m=int(1e9)
-        for i in range(len(s)):
-            t=a.index(s[i])+b.index(s[i])
-            m=min(t,m)
-            s[i]=[s[i]]+[t]
-        return [i[0] for i in s if i[1]==m]
-    
-s=Solution()
+class MyCircularDeque:
+    def __init__(self, k):
+        self.max_size = k
+        self.deck = []
 
-print(s.findRestaurant(["Shogun","Tapioca Express","Burger King","KFC"],["Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"]))
-print(s.findRestaurant(["Shogun","Tapioca Express","Burger King","KFC"],["KFC","Shogun","Burger King"]))
-print(s.findRestaurant(["happy","sad","good"],["sad","happy","good"]))
+    def insertFront(self, v):
+        if len(self.deck) < self.max_size:
+            return not bool(self.deck.insert(0, v))
+        return False
+
+    def insertLast(self, v):
+        if len(self.deck) < self.max_size:
+            return not bool(self.deck.append(v))
+        return False
+
+    def deleteFront(self):
+        if self.deck:
+            return bool(str(self.deck.pop(0)))
+        return False
+
+    def deleteLast(self):
+        if self.deck:
+            return bool(str(self.deck.pop()))
+        return False
+
+    def getFront(self):
+        try:
+            return self.deck[0]
+        except:
+            return -1
+
+    def getRear(self):
+        try:
+            return self.deck[-1]
+        except:
+            return -1
+
+    def isEmpty(self):
+        return not bool(self.deck)
+
+    def isFull(self):
+        return self.max_size == len(self.deck)
+
+
+m = MyCircularDeque(5)
+
+print(m.insertFront(9))
+print(m.insertLast(11))
+print(m.deck)
+print(m.isEmpty())
