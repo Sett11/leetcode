@@ -1,20 +1,14 @@
-class MyCalendar:
+def shange(a):
+    for i in [0,1]:
+        t=a[i].split(':')
+        a[i]=float(t[0]+'.'+t[1])
+    return a
 
-    def __init__(self):
-        self.a = []
+class Solution:
+    def haveConflict(self,a,b):
+        a,b=shange(a),shange(b)
+        return True if (b[1]>=a[0] and b[1]<=a[1]) or b[0]==a[1] or (a[1]>=b[0] and a[1]<=b[1]) else False
+    
+s=Solution()
 
-    def book(self, s, e):
-        for i in self.a:
-            if (s >= i[0] and e <= i[1]) or (s < i[1] and s >= i[0]) or (e > i[0] and s < i[0]):
-                return False
-        return bool(self.a.append([s, e]) or 1)
-
-
-m = MyCalendar()
-
-arr = [47, 50], [33, 41], [39, 45], [33, 42], [25, 32], [
-    26, 35], [19, 25], [3, 8], [8, 13], [18, 27]
-
-for i in arr:
-    print(m.book(i[0], i[1]))
-    #print(m.a)
+print(s.haveConflict(["01:00","02:00"],["01:20","03:00"]))
