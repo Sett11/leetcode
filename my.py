@@ -1,11 +1,11 @@
 class Solution:
-    def countMatches(self,a,k,v):
-        c=0
-        for i in a:
-            if k=='type' and i[0]==v or k=='color' and i[1]==v or k=='name' and i[2]==v:
-                c+=1
-        return c
+    def binaryGap(self,n):
+        a=[i for i,j in enumerate(bin(n)[2:]) if j=='1']
+        m=0
+        for i in range(1,len(a)):
+            m=max(m,a[i]-a[i-1])
+        return m
     
 s=Solution()
 
-print(s.countMatches([["phone","blue","pixel"],["computer","silver","phone"],["phone","gold","iphone"]],'type','phone'))
+print(s.binaryGap(22))
