@@ -1,19 +1,14 @@
-from re import sub
-
 class Solution:
-    def mostCommonWord(self,s,a):
-        t=[i for i in sub(r'[^A-z ]',' ',s.lower()).split(' ') if i not in a and i]
-        r=set(t)
-        o={}
-        m=0
-        for i in r:
-            n=t.count(i)
-            o[n]=i
-            m=max(m,n)
-        return o[m]
+    def shortestToChar(self,s,t):
+        g=[i for i,j in enumerate(s) if j==t]
+        r=[]
+        for i,j in enumerate(s):
+            m=1e9
+            for j in g:
+                m=min(m,abs(i-j))
+            r.append(m)
+        return r
     
 s=Solution()
 
-print(s.mostCommonWord('Bob hit a ball, the hit BALL flew far after it was hit.',["hit"]))
-print(s.mostCommonWord("a,a,a,a,b,b,b,c,c",["a"]))
-print(s.mostCommonWord("a.",[]))
+print(s.shortestToChar('loveleetcode','e'))
