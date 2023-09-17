@@ -1,14 +1,13 @@
 class Solution:
-    def shortestToChar(self,s,t):
-        g=[i for i,j in enumerate(s) if j==t]
-        r=[]
-        for i,j in enumerate(s):
-            m=1e9
-            for j in g:
-                m=min(m,abs(i-j))
-            r.append(m)
-        return r
+    def toGoatLatin(self,s):
+        a=s.split(' ')
+        for i in range(len(a)):
+            if a[i][0].lower() in 'aioue':
+                a[i]+='ma'+'a'*(i+1)
+            else:
+                a[i]=a[i][1:]+a[i][0]+'ma'+'a'*(i+1)
+        return ' '.join(a)
     
 s=Solution()
 
-print(s.shortestToChar('loveleetcode','e'))
+print(s.toGoatLatin("The quick brown fox jumped over the lazy dog"))

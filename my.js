@@ -1,1 +1,0 @@
-isSameTree=(a,b,f=x=>JSON.stringify(x))=>f(a)==f(b)
