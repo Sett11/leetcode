@@ -1,13 +1,8 @@
 class Solution:
-    def toGoatLatin(self,s):
-        a=s.split(' ')
-        for i in range(len(a)):
-            if a[i][0].lower() in 'aioue':
-                a[i]+='ma'+'a'*(i+1)
-            else:
-                a[i]=a[i][1:]+a[i][0]+'ma'+'a'*(i+1)
-        return ' '.join(a)
+    def arrangeWords(self,s):
+        return ' '.join(sorted(s.lower().split(' '),key=len)).capitalize()
     
 s=Solution()
 
-print(s.toGoatLatin("The quick brown fox jumped over the lazy dog"))
+print(s.arrangeWords("Keep calm and code on"))
+print(s.arrangeWords("To be or not to be"))
