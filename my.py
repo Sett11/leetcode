@@ -1,18 +1,11 @@
-from re import sub,search
-
 class Solution:
-    def largeGroupPositions(self,s):
-        a=[i for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',s).split(' ') if len(i)>2]
-        r=[]
-        for i in a:
-            t=list(search(i,s).span())
-            t[-1]-=1
-            s=s.replace(i,'&'*len(i),1)
-            r.append(t)
+    def divideString(self,s,k,f):
+        r=[s[i:i+k] for i in range(0,len(s),k)]
+        l=len(r[-1])
+        if l<k:
+            r[-1]+=f*(k-l)
         return r
     
 s=Solution()
 
-print(s.largeGroupPositions('abcdddeeeeaabbbcd'))
-print(s.largeGroupPositions('nnnhaaannnm'))
-print(s.largeGroupPositions('llleeeeemmkkkkeeeehh'))
+print(s.divideString('abcdefghij',3,'x'))
