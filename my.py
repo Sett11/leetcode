@@ -1,30 +1,11 @@
-from functools import reduce as r
-
-class ProductOfNumbers:
-
-    def __init__(self):
-        self.a=[]
-        self.o={}
-
-    def add(self,n):
-        self.a.append(n)
+class Solution:
+    def countMatches(self,a,k,v):
+        c=0
+        for i in a:
+            if k=='type' and i[0]==v or k=='color' and i[1]==v or k=='name' and i[2]==v:
+                c+=1
+        return c
     
-    def getProduct(self,k):
-        if k in self.o and self.o[k][0]==len(self.a):
-            return self.o[k][1]
-        v=r(lambda a,c:a*c,self.a[-k:])
-        self.o[k]=[len(self.a),v]
-        return v
-    
-p=ProductOfNumbers()
+s=Solution()
 
-p.add(7)
-print(p.getProduct(1))
-p.add(5)
-p.add(0)
-p.add(4)
-
-print(p.getProduct(2))
-
-print(p.getProduct(4))
-print(p.getProduct(1))
+print(s.countMatches([["phone","blue","pixel"],["computer","silver","phone"],["phone","gold","iphone"]],'type','phone'))
