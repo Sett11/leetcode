@@ -1,13 +1,19 @@
+from re import sub
+
 class Solution:
-    def rotateString(self,s,t):
-        i=0
-        while i<len(s):
-            if s==t:
-                return True
-            s=s[1:]+s[0]
-            i+=1
-        return False
+    def mostCommonWord(self,s,a):
+        t=[i for i in sub(r'[^A-z ]',' ',s.lower()).split(' ') if i not in a and i]
+        r=set(t)
+        o={}
+        m=0
+        for i in r:
+            n=t.count(i)
+            o[n]=i
+            m=max(m,n)
+        return o[m]
     
 s=Solution()
 
-print(s.rotateString('abcde','bcdea'))
+print(s.mostCommonWord('Bob hit a ball, the hit BALL flew far after it was hit.',["hit"]))
+print(s.mostCommonWord("a,a,a,a,b,b,b,c,c",["a"]))
+print(s.mostCommonWord("a.",[]))
