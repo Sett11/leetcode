@@ -1,11 +1,20 @@
+from re import sub
+
 class Solution:
-    def divideString(self,s,k,f):
-        r=[s[i:i+k] for i in range(0,len(s),k)]
-        l=len(r[-1])
-        if l<k:
-            r[-1]+=f*(k-l)
-        return r
+    def maskPII(self,s):
+        s=sub(r'[^\dA-z@\.]','',s)
+        if s.isdigit():
+            c=s[:-10]
+            q=s[-10:]
+            x=q[-4:]
+            q=q[:-4]
+            return ('+'+'*'*len(c)+'-' if c else '')+'-'.join([sub(r'.','*',q[i:i+3]) for i in range(0,len(q),3)])+'-'+x
+        s=s.lower().split('@')
+        return s[0][0]+('*'*5)+s[0][-1]+'@'+s[1]
     
 s=Solution()
 
-print(s.divideString('abcdefghij',3,'x'))
+print(s.maskPII('LeetCode@LeetCode.com'))
+print(s.maskPII('AB@qq.com'))
+print(s.maskPII('1(234)567-890'))
+print(s.maskPII('86-(10)12345678'))
