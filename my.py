@@ -1,12 +1,16 @@
 class Solution:
-    def checkAlmostEquivalent(self,s1,s2):
-        alf=[i for i in 'abcdefghijklmnopqrstuvwxyz' if i in s1 or i in s2]
-        for i in alf:
-            if abs(s1.count(i)-s2.count(i))>3:
-                return False
-        return True
-
+    def validPalindrome(self,s):
+        if s==s[::-1]:
+            return True
+        c=s[::-1]
+        for i in range(len(s)):
+            t=s[:i]+s[i+1:]
+            p=c[:-(i+1)]+(c[-i:] if i else '')
+            if t==p:
+                return True
+        return False
+    
 s=Solution()
 
-print(s.checkAlmostEquivalent("abcdeef","abaaacc"))
-print(s.checkAlmostEquivalent("aaaa","bccb"))
+print(s.validPalindrome('abca'))
+print(s.validPalindrome('deeee'))
