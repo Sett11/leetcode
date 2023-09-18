@@ -1,18 +1,7 @@
 class Solution:
-    def numberOfLines(self,a,s):
-        b=[a[ord(i)-97] for i in s]
-        c=i=k=0
-        while i<len(b):
-            if (c+b[i])<=100:
-                c+=b[i]
-            else:
-                k+=1
-                c=0
-                i-=1
-            i+=1
-        return [k+1,c]
+    def repeatedNTimes(self,a):
+        return next(i for i in a if a.count(i)==len(a)//2)
     
 s=Solution()
 
-print(s.numberOfLines([4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10. ,10,10,10],'bbbcccdddaaa'))
-print(s.numberOfLines([10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],'abcdefghijklmnopqrstuvwxyz'))
+print(s.repeatedNTimes([2,1,2,5,3,2]))
