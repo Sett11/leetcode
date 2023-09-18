@@ -1,17 +1,22 @@
-from itertools import permutations
-from bisect import insort
-
 class Solution:
-    def findEvenNumbers(self,a):
-        s=set((permutations(a,3)))
-        r=[]
-        for i in s:
-            n=int(''.join([str(j) for j in i]))
-            if not n&1 and n>=100:
-                insort(r,n)
-        return r
-    
+    def evenOddBit(self,n):
+        s=bin(n)[2:]
+        k=h=0
+        if len(s)&1:
+            for i,j in enumerate(s):
+                if i&1 and j=='1':
+                    h+=1
+                if not i&1 and j=='1':
+                    k+=1
+        else:
+            for i,j in enumerate(s):
+                if i&1 and j=='1':
+                    k+=1
+                if not i&1 and j=='1':
+                    h+=1
+        return [k,h]
+       
 s=Solution()
 
-print(s.findEvenNumbers([2,1,3,0]))
-print(s.findEvenNumbers([2,2,8,8,2]))
+print(s.evenOddBit(17))
+print(s.evenOddBit(2))
