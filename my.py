@@ -1,7 +1,7 @@
 class Solution:
-    def repeatedNTimes(self,a):
-        return next(i for i in a if a.count(i)==len(a)//2)
+    def findNumbers(self,a):
+        return len(list((i for i in a if not len(str(i))&1)))
     
 s=Solution()
 
-print(s.repeatedNTimes([2,1,2,5,3,2]))
+print(s.findNumbers([12,345,2,6,7896]))
