@@ -1,22 +1,12 @@
 class Solution:
-    def evenOddBit(self,n):
-        s=bin(n)[2:]
-        k=h=0
-        if len(s)&1:
-            for i,j in enumerate(s):
-                if i&1 and j=='1':
-                    h+=1
-                if not i&1 and j=='1':
-                    k+=1
-        else:
-            for i,j in enumerate(s):
-                if i&1 and j=='1':
-                    k+=1
-                if not i&1 and j=='1':
-                    h+=1
-        return [k,h]
-       
+    def checkAlmostEquivalent(self,s1,s2):
+        alf=[i for i in 'abcdefghijklmnopqrstuvwxyz' if i in s1 or i in s2]
+        for i in alf:
+            if abs(s1.count(i)-s2.count(i))>3:
+                return False
+        return True
+
 s=Solution()
 
-print(s.evenOddBit(17))
-print(s.evenOddBit(2))
+print(s.checkAlmostEquivalent("abcdeef","abaaacc"))
+print(s.checkAlmostEquivalent("aaaa","bccb"))
