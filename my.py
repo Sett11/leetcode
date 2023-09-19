@@ -1,16 +1,18 @@
+from re import sub
+
 class Solution:
-    def validPalindrome(self,s):
-        if s==s[::-1]:
-            return True
-        c=s[::-1]
-        for i in range(len(s)):
-            t=s[:i]+s[i+1:]
-            p=c[:-(i+1)]+(c[-i:] if i else '')
-            if t==p:
-                return True
-        return False
+    def minDiffInBST(self,a):
+        a=sub(r'[^\d]',' ',repr(a)).split(' ')
+        m=1e9
+        l=len(a)
+        for i in range(l):
+            if a[i]:
+                t=int(a[i])
+                for j in range(i+1,l):
+                    if a[j]:
+                        m=min(m,abs(t-int(a[j])))
+        return m
     
 s=Solution()
 
-print(s.validPalindrome('abca'))
-print(s.validPalindrome('deeee'))
+print(s.minDiffInBST([4,2,6,1,3]))
