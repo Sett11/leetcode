@@ -1,14 +1,16 @@
-from re import sub
-
 class Solution:
-    def duplicateZeros(self,a):
-        l=len(a)
-        b=[int(j) for j in list(sub(r'0','00',''.join([str(i) for i in a])))]
-        a.clear()
-        a.extend(b[:l])
+    def reverseOnlyLetters(self,s):
+        s=list(s)
+        a=[]
+        for i in range(len(s)):
+            if s[i].isalpha():
+                a.insert(0,s[i])
+                s[i]='&6&'
+        s=''.join(s)
+        while a:
+            s=s.replace('&6&',a.pop(0),1)
+        return s
     
 s=Solution()
-arr=[1,0,2,3,0,4,5,0]
-print(arr)
-s.duplicateZeros(arr)
-print(arr)
+
+print(s.reverseOnlyLetters('a-bC-dEf-ghIj!'))
