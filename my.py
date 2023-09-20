@@ -1,22 +1,15 @@
-class Solution:
-    def matchPlayersAndTrainers(self,a,b):
-        if a[0]==836741295:
-            return 99667
-        m=max(b,default=0)
-        a=[i for i in a if i<=m]
-        n=min(a,default=0)
-        b=[i for i in b if i>=n]
-        c=0
-        while a and b:
-            a.pop(0)
-            if b:
-                b.pop(0)
-            c+=1
-        return c
+def f(a,v):
+    for i in range(len(a)-1):
+        if (v and a[i]>=a[i+1]) or (not v and a[i]<=a[i+1]):
+            return False
+    return True
 
+class Solution:
+    def validMountainArray(self,a):
+        n=a.index(max(a))
+        return bool(a[:n] and a[n+1:] and f(a[:n],True) and f(a[n+1:],False) and a.count(a[n])==1)
     
 s=Solution()
 
-print(s.matchPlayersAndTrainers([4,7,9],[8,2,5,8]))
-print(s.matchPlayersAndTrainers([1,1,1],[8]))
-print(s.matchPlayersAndTrainers([2],[1]))
+print(s.validMountainArray([0,3,2,1]))
+print(s.validMountainArray([2,1]))
