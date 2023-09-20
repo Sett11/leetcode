@@ -1,10 +1,14 @@
-from re import split
+from re import sub
 
 class Solution:
-    def numDifferentIntegers(self,s):
-        return len({int(i) for i in split(r'\D',s) if i})
+    def numRookCaptures(self,a):
+        for i in range(len(a)):
+            for j in range(len(a[0])):
+                if a[i][j]=='R':
+                    t,k=''.join(a[i]).replace('.',''),''.join([k for k in zip(*a)][j]).replace('.','')
+                    return sub(r'(.{,1}R.{,1})',lambda e:' '+e.group()+' ',t).split(' ')[1].replace('R','').count('p')+sub(r'(.{,1}R.{,1})',lambda e:' '+e.group()+' ',k).split(' ')[1].replace('R','').replace('R','').count('p')
     
 s=Solution()
 
-print(s.numDifferentIntegers('a123bc34d8ef34'))
-print(s.numDifferentIntegers('a1b01c001'))
+print(s.numRookCaptures([[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]))
+print(s.numRookCaptures([[".",".",".",".",".",".",".","."],[".","p","p","p","p","p",".","."],[".","p","p","B","p","p",".","."],[".","p","B","R","B","p",".","."],[".","p","p","B","p","p",".","."],[".","p","p","p","p","p",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]))
