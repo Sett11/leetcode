@@ -1,14 +1,19 @@
+from re import sub
+
+def f(s):
+    return [i for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',s).split(' ') if i]
+
 class Solution:
-    def finalString(self,s):
-        c=''
-        for i in s:
-            if i!='i':
-                c+=i
-            else:
-                c=c[::-1]
-        return c
+    def isLongPressedName(self,s,t):
+        a,b=f(s),f(t)
+        if len(b)!=len(a):
+            return False
+        for i in range(len(a)):
+            if a[i][0]!=b[i][0] or len(a[i])>len(b[i]):
+                return False
+        return True
     
 s=Solution()
 
-print(s.finalString('string'))
-print(s.finalString('poiinter'))
+print(s.isLongPressedName("alex","aaleex"))
+print(s.isLongPressedName("saeed","ssaaedd"))
