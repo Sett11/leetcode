@@ -1,16 +1,14 @@
 class Solution:
-    def reverseOnlyLetters(self,s):
-        s=list(s)
-        a=[]
-        for i in range(len(s)):
-            if s[i].isalpha():
-                a.insert(0,s[i])
-                s[i]='&6&'
-        s=''.join(s)
-        while a:
-            s=s.replace('&6&',a.pop(0),1)
-        return s
+    def finalString(self,s):
+        c=''
+        for i in s:
+            if i!='i':
+                c+=i
+            else:
+                c=c[::-1]
+        return c
     
 s=Solution()
 
-print(s.reverseOnlyLetters('a-bC-dEf-ghIj!'))
+print(s.finalString('string'))
+print(s.finalString('poiinter'))
