@@ -1,7 +1,10 @@
+from re import split
+
 class Solution:
-    def minDeletionSize(self,a):
-        return len([i for i in zip(*a) if sorted(i)!=list(i)])
+    def numDifferentIntegers(self,s):
+        return len({int(i) for i in split(r'\D',s) if i})
     
 s=Solution()
 
-print(s.minDeletionSize(["cba","daf","ghi"]))
+print(s.numDifferentIntegers('a123bc34d8ef34'))
+print(s.numDifferentIntegers('a1b01c001'))
