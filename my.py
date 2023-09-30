@@ -1,12 +1,9 @@
 class Solution:
-    def prefixesDivBy5(self,a):
-        c=''
-        for i in range(len(a)):
-            c+=str(a[i])
-            a[i]=int(c,2)%5==0
-        return a
+    def averageValue(self,a):
+        a=[i for i in a if not i&1 and not i%3]
+        return int(sum(a)/len(a)) if len(a) else 0
             
     
 s=Solution()
 
-print(s.prefixesDivBy5([0,1,1]))
+print(s.averageValue([1,3,6,10,12,15]))
