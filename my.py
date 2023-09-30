@@ -1,14 +1,12 @@
 class Solution:
-    def heightChecker(self,a):
-        c=0
-        b=sorted(a)
-        for i in range(len(a)):
-            if a[i]!=b[i]:
-                c+=1
-        return c
-            
+    def findOcurrences(self,t,f,s):
+        a=t.split(' ')
+        r=[]
+        for i in range(len(a)-2):
+            if a[i]==f and a[i+1]==s:
+                r.append(a[i+2])
+        return r
     
 s=Solution()
 
-print(s.heightChecker([1,1, 4 ,2, 1 , 3 ]))
-print(s.heightChecker([5,1,2,3,4]))
+print(s.findOcurrences("alice is a good girl she is a good student",'a','good'))
