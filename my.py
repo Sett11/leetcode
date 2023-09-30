@@ -1,14 +1,7 @@
 class Solution:
-    def maximum69Number (self,n):
-        m=n
-        a=list(str(n))
-        for i in range(len(a)):
-            if a[i]=='6':
-                t=a.copy()
-                t[i]='9'
-                m=max(m,int(''.join(t)))
-        return m
+    def countDistinctIntegers(self,a):
+        return len(set(list(map(lambda e:int(str(e)[::-1]),a))+a))
 
 s=Solution()
 
-print(s.maximum69Number(9669))
+print(s.countDistinctIntegers([1,13,10,12,31]))
