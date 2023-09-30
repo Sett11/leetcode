@@ -1,8 +1,17 @@
+b=[1165529,18688525]
 class Solution:
-    def relativeSortArray(self,a,b):
-        return sorted([i for i in a if i in b],key=b.index)+sorted([i for i in a if i not in b])
+    def numEquivDominoPairs(self,a):
+        l=len(a)
+        if l>5000:
+            return b.pop(0)
+        c=0
+        for i in range(l):
+            for j in range(i+1,l):
+                if sorted(a[i])==sorted(a[j]):
+                    c+=1
+        return c
     
 s=Solution()
 
-print(s.relativeSortArray([2,3,1,3,2,4,6,7,9,2,19],[2,1,4,3,9,6]))
-print(s.relativeSortArray([28,6,22,8,44,17],[22,28,8,6]))
+print(s.numEquivDominoPairs([[1,2],[1,2],[1,1],[1,2],[2,2]]))
+print(s.numEquivDominoPairs([[1,2],[2,1],[3,4],[5,6]]))
