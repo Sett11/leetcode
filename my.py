@@ -1,14 +1,11 @@
 class Solution:
-    def arrayRankTransform(self,a):
-        o={}
-        l=list(set(a))
-        l.sort()
-        for i in range(len(l)):
-            o[l[i]]=i
-        for i in range(len(a)):
-            a[i]=o[a[i]]+1
-        return a
+    def luckyNumbers (self,a):
+        b=[max(i) for i in zip(*a)]
+        c=[min(i) for i in a]
+        return list(set(b).intersection(set(c)))
 
 s=Solution()
 
-print(s.arrayRankTransform([40,10,20,30]))
+print(s.luckyNumbers([[3,7,8],[9,11,13],[15,16,17]]))
+print(s.luckyNumbers([[1,10,4,2],[9,3,8,7],[15,16,17,12]]))
+print(s.luckyNumbers([[7,8],[1,2]]))
