@@ -1,7 +1,12 @@
 class Solution:
-    def bitwiseComplement(self,n):
-        return int(''.join(['1' if i=='0' else '0' for i in bin(n)[2:]]),2)
+    def prefixesDivBy5(self,a):
+        c=''
+        for i in range(len(a)):
+            c+=str(a[i])
+            a[i]=int(c,2)%5==0
+        return a
+            
     
 s=Solution()
 
-print(s.bitwiseComplement(5))
+print(s.prefixesDivBy5([0,1,1]))
