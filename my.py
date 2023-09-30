@@ -1,15 +1,11 @@
 class Solution:
-    def getSmallestString(self,n,k):
-        a=['a']*n
-        v=n
-        for i in range(n-1,-1,-1):
-            if v==k:
-                break
-            v-=1
-            a[i]=chr(96+min(k-v,26))
-            v+=ord(a[i])-96
-        return ''.join(a)
+    def uncommonFromSentences(self,s1,s2):
+        s1,s2=s1.split(' '),s2.split(' ')
+        a,b=[i for i in s1 if s1.count(i)==1 and i not in s2],[i for i in s2 if s2.count(i)==1 and i not in s1]
+        return a+b
     
 s=Solution()
 
-print(s.getSmallestString(5,73))
+print(s.uncommonFromSentences("this apple is sweet","this apple is sour"))
+print(s.uncommonFromSentences("apple apple","banana"))
+print(s.uncommonFromSentences("s z z z s","s z ejt"))
