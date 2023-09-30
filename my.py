@@ -1,14 +1,7 @@
-from re import sub
-
 class Solution:
-    def numRookCaptures(self,a):
-        for i in range(len(a)):
-            for j in range(len(a[0])):
-                if a[i][j]=='R':
-                    t,k=''.join(a[i]).replace('.',''),''.join([k for k in zip(*a)][j]).replace('.','')
-                    return sub(r'(.{,1}R.{,1})',lambda e:' '+e.group()+' ',t).split(' ')[1].replace('R','').count('p')+sub(r'(.{,1}R.{,1})',lambda e:' '+e.group()+' ',k).split(' ')[1].replace('R','').replace('R','').count('p')
-    
+    def addBinary(self,a,b):
+        return bin(int(a,2)+int(b,2))[2:]
+
 s=Solution()
 
-print(s.numRookCaptures([[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".","R",".",".",".","p"],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]))
-print(s.numRookCaptures([[".",".",".",".",".",".",".","."],[".","p","p","p","p","p",".","."],[".","p","p","B","p","p",".","."],[".","p","B","R","B","p",".","."],[".","p","p","B","p","p",".","."],[".","p","p","p","p","p",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]))
+print(s.addBinary('1010','1011'))
