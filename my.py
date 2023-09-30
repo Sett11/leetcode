@@ -1,7 +1,15 @@
 class Solution:
-    def addBinary(self,a,b):
-        return bin(int(a,2)+int(b,2))[2:]
-
+    def getSmallestString(self,n,k):
+        a=['a']*n
+        v=n
+        for i in range(n-1,-1,-1):
+            if v==k:
+                break
+            v-=1
+            a[i]=chr(96+min(k-v,26))
+            v+=ord(a[i])-96
+        return ''.join(a)
+    
 s=Solution()
 
-print(s.addBinary('1010','1011'))
+print(s.getSmallestString(5,73))
