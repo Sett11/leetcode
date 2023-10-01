@@ -1,21 +1,13 @@
 class Solution:
-     def makeGood(self,s):
-                i=0
-                s=list(s)
-                while i<len(s)-1:
-                        if i<0:
-                               i=0
-                        if len(s)==1:
-                               break
-                        if (s[i].lower()==s[i+1].lower() and s[i+1].isupper() and s[i].islower()) or (s[i].lower()==s[i+1].lower() and s[i].isupper() and s[i+1].islower()):
-                            s.pop(i)
-                            s.pop(i)
-                            i-=2
-                        i+=1
-                return ''.join(s)
+    def thousandSeparator(self,n):
+        n=str(n)[::-1]
+        return '.'.join([n[i:i+3] for i in range(0,len(n),3)])[::-1]
     
+
 s=Solution()
 
-print(s.makeGood('leEeetcode'))
-print(s.makeGood('abBAcC'))
-print(s.makeGood('kkdsFuqUfSDKK'))
+print(s.thousandSeparator(2**31-1))
+print(s.thousandSeparator(1000))
+print(s.thousandSeparator(10000))
+print(s.thousandSeparator(100000))
+print(s.thousandSeparator(1000000))
