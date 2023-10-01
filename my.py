@@ -1,12 +1,9 @@
 class Solution:
-    def runningSum(self,a):
-        r=[]
-        c=0
-        for i in range(len(a)):
-            c+=a[i]
-            r.append(c)
-        return r
+    def average(self,a):
+        a.remove(min(a))
+        a.remove(max(a))
+        return sum(a)/len(a)
     
 s=Solution()
 
-print(s.runningSum([1,2,3,4]))
+print(s.average([4000,3000,1000,2000]))
