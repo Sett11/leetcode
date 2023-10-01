@@ -1,7 +1,15 @@
 class Solution:
-    def checkValid(self,a):
-        return all(sorted(i)==[x for x in range(1,len(a)+1)] for i in a+[list(j) for j in zip(*a)])
+    def checkXMatrix(self,a):
+        if not all(sum([[a[i][i],a[i][len(a[0])-1-i]] for i in range(len(a))],[])):
+            return False
+        for i in range(len(a)):
+            a[i][i]=0
+            a[i][len(a[0])-1-i]=0
+        return all(not i for i in sum(a,[]))
     
 s=Solution()
 
-print(s.checkValid([[1,2,3],[3,1,2],[2,3,1]]))
+print(s.checkXMatrix([[5,0,0,1],
+                      [0,4,1,5],
+                      [0,5,2,0],
+                      [4,1,0,2]]))
