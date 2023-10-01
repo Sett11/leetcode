@@ -1,13 +1,15 @@
 class Solution:
-    def thousandSeparator(self,n):
-        n=str(n)[::-1]
-        return '.'.join([n[i:i+3] for i in range(0,len(n),3)])[::-1]
+    def diagonalSum(self,a):
+        return sum([a[i][len(a[0])-1-i]+a[i][i] for i in range(len(a))])-(a[len(a)//2][len(a[0])//2] if len(a)&1 else 0)
     
-
 s=Solution()
 
-print(s.thousandSeparator(2**31-1))
-print(s.thousandSeparator(1000))
-print(s.thousandSeparator(10000))
-print(s.thousandSeparator(100000))
-print(s.thousandSeparator(1000000))
+print(s.diagonalSum([
+            [ 1 ,2, 3 ],
+              [4, 5,6 ],
+              [ 7 ,8, 9 ]]))
+print(s.diagonalSum([
+            [ 1 ,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1 ]]))
