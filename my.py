@@ -1,16 +1,14 @@
-from math import sqrt
-
 class Solution:
-    def countTriples(self,n):
-        a=[i for i in range(1,n+1)]
-        c=0
-        for i in range(len(a)):
-            for j in range(len(a)):
-                q=sqrt(a[i]**2+a[j]**2)
-                if q in a:
-                    c+=1
-        return c
+    def findKthPositive(self,a,k):
+        n=1
+        while k:
+            if n not in a:
+                k-=1
+            n+=1
+        return n-1
     
 s=Solution()
 
-print(s.countTriples(300))
+print(s.findKthPositive([2,3,4,7,11],5))
+print(s.findKthPositive([1,2],1))
+print(s.findKthPositive([1,2,3,4],2))
