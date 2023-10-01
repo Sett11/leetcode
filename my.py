@@ -1,9 +1,9 @@
 class Solution:
-    def average(self,a):
-        a.remove(min(a))
-        a.remove(max(a))
-        return sum(a)/len(a)
+    def canMakeArithmeticProgression(self,a):
+        a.sort()
+        return all(a[i+1]-a[i]==a[1]-a[0] for i in range(len(a)-1))
+        
     
 s=Solution()
 
-print(s.average([4000,3000,1000,2000]))
+print(s.canMakeArithmeticProgression([3,1,5]))
