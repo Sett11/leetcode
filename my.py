@@ -1,13 +1,14 @@
 class Solution:
-    def unequalTriplets(self,a):
-        q=0
-        for i in range(len(a)):
-            for j in range(i+1,len(a)):
-                for k in range(j+1,len(a)):
-                    if a[i]!=a[j] and a[j]!=a[k] and a[i]!=a[k]:
-                        q+=1
-        return q
+    def arithmeticTriplets(self,a,d):
+        l=len(a)
+        c=0
+        for i in range(l):
+            for j in range(i+1,l):
+                for k in range(j+1,l):
+                    if a[j]-a[i]==d and a[k]-a[j]==d:
+                        c+=1
+        return c
     
 s=Solution()
 
-print(s.unequalTriplets([4,4,2,4,3]))
+print(s.arithmeticTriplets([0,1,4,6,7,10],3))
