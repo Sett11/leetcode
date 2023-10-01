@@ -1,25 +1,33 @@
 class Solution:
-    def threeSum(self,a):
+    def fourSum(self,a,d):
         a.sort()
+        l=len(a)
         s=set()
-        for i in range(len(a)-2):
-            f=a[i]
-            j=i+1
-            k=len(a)-1
-            while j<k:
-                x=a[j]
-                y=a[k]
-                p=f+x+y
-                if p>0:
-                    k-=1
-                elif p<0:
-                    j+=1
-                else:
-                    s.add((f,x,y))
-                    j+=1
-                    k-=1
+        for i in range(l):
+            o=a[i]
+            for j in range(i+1,l):
+                t=a[j]
+                k=j+1
+                h=l-1
+                while k<h:
+                    th=a[k]
+                    f=a[h]
+                    p=o+t+th+f
+                    if p==d:
+                        s.add((o,t,th,f))
+                        k+=1
+                        h-=1
+                    elif p>d:
+                        h-=1
+                    elif p<d:
+                        k+=1
+                    else:
+                        h-=1
+                        k+=1
         return s
     
+
 s=Solution()
 
-print(s.threeSum([-1,0,1,2,-1,-4]))
+print(s.fourSum([1,0,-1,0,-2,2],0))
+print(s.fourSum([2,2,2,2,2],0))
