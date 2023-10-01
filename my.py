@@ -1,16 +1,15 @@
-def canMakeArithmeticProgression(a):
-    a.sort()
-    n=a[1]-a[0]
-    return all(a[i+1]-a[i]==n for i in range(len(a)-1))
+from re import sub
 
 class Solution:
-    def checkArithmeticSubarrays(self,a,b,c):
-        r=[]
-        for i in range(len(b)):
-            r.append(canMakeArithmeticProgression(a[b[i]:c[i]+1]))
-        return r
-        
+    def reformatDate(self,s):
+        mounth={"Jan":'01', "Feb":'02', "Mar":'03', "Apr":'04', "May":'05', "Jun":'06', "Jul":'07', "Aug":'08', "Sep":'09', "Oct":'10', "Nov":'11', "Dec":'12'}
+        s=s.split(' ')
+        n=sub(r'\D','',s[0])
+        if len(n)==1:
+            n='0'+n
+        return f'{s[-1]}-{mounth[s[1]]}-{n}'
     
 s=Solution()
 
-print(s.checkArithmeticSubarrays([4,6,5,9,3,7],[0,0,2],[2,3,5]))
+print(s.reformatDate("6th Jun 1933"))
+print(s.reformatDate("20th Oct 2052"))
