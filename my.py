@@ -1,14 +1,21 @@
 class Solution:
-    def findKthPositive(self,a,k):
-        n=1
-        while k:
-            if n not in a:
-                k-=1
-            n+=1
-        return n-1
+     def makeGood(self,s):
+                i=0
+                s=list(s)
+                while i<len(s)-1:
+                        if i<0:
+                               i=0
+                        if len(s)==1:
+                               break
+                        if (s[i].lower()==s[i+1].lower() and s[i+1].isupper() and s[i].islower()) or (s[i].lower()==s[i+1].lower() and s[i].isupper() and s[i+1].islower()):
+                            s.pop(i)
+                            s.pop(i)
+                            i-=2
+                        i+=1
+                return ''.join(s)
     
 s=Solution()
 
-print(s.findKthPositive([2,3,4,7,11],5))
-print(s.findKthPositive([1,2],1))
-print(s.findKthPositive([1,2,3,4],2))
+print(s.makeGood('leEeetcode'))
+print(s.makeGood('abBAcC'))
+print(s.makeGood('kkdsFuqUfSDKK'))
