@@ -1,13 +1,10 @@
 class Solution:
-    def numIdenticalPairs(self,a):
-        l=len(a)
-        c=0
-        for i in range(l):
-            for j in range(i+1,l):
-                if a[i]==a[j]:
-                    c+=1
-        return c
+    def numWaterBottles(self,n,m):
+        return int(n+((n-1)/(m-1)))
     
 s=Solution()
 
-print(s.numIdenticalPairs([1,2,3,1,1,3]))
+print(s.numWaterBottles(9,3))
+print(s.numWaterBottles(15,4))
+print(s.numWaterBottles(15,7))
+print(s.numWaterBottles(10,6))
