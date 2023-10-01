@@ -1,13 +1,13 @@
 class Solution:
-    def maximumTripletValue(self,a):
-        l=len(a)
-        m=0
-        for i in range(l):
-            for j in range(i+1,l):
-                for k in range(j+1,l):
-                    m=max(m,(a[i]-a[j])*a[k])
-        return m
+    def pivotInteger(self,n):
+        c=n-1
+        if n==1:
+            return 1
+        while True:
+            if c*(c+1)/2==sum([i for i in range(c,n+1)]) or c==-1:
+                return c
+            c-=1
     
 s=Solution()
 
-print(s.maximumTripletValue([12,6,1,2,7]))
+print(s.pivotInteger(1))
