@@ -1,10 +1,10 @@
 class Solution:
-    def numWaterBottles(self,n,m):
-        return int(n+((n-1)/(m-1)))
+    def restoreString(self,s,a):
+        r=[]
+        for i in range(len(a)):
+            r.append([a[i],s[i]])
+        return ''.join(list(map(lambda e:e[1],sorted(r))))
     
 s=Solution()
 
-print(s.numWaterBottles(9,3))
-print(s.numWaterBottles(15,4))
-print(s.numWaterBottles(15,7))
-print(s.numWaterBottles(10,6))
+print(s.restoreString("codeleet",[4,5,6,7,0,2,1,3]))
