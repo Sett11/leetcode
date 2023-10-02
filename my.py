@@ -1,14 +1,14 @@
 class Solution:
-    def lastStoneWeight(self,a):
-        while len(a)>1:
-            n=max(a)
-            a.remove(n)
-            m=max(a)
-            a.remove(m)
-            v=max(n,m)-min(n,m)
-            a.append(v)
-        return a[0]
-
+    def stringMatching(self,a):
+        l=len(a)
+        r=[]
+        for i in range(l):
+            for j in range(l):
+                if a[i] in a[j] and i!=j:
+                    r.append(a[i])
+                    break
+        return r
+    
 s=Solution()
 
-print(s.lastStoneWeight([2,7,4,1,8,1]))
+print(s.stringMatching(["mass","as","hero","superhero"]))
