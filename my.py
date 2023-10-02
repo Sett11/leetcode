@@ -1,13 +1,12 @@
 class Solution:
-    def containsPattern(self,a,n,m):
-        if 99 in a or 33 in a:
-            return False
-        s=''.join(map(str,a))
-        for i in range(len(s)-n):
-            if s[i:i+n]*m in s:
-                return True
-        return False
-    
+    def maxRepeating(self,s,c):
+        x=c
+        n=0
+        while c in s:
+            c+=x
+            n+=1
+        return n
+
 s=Solution()
 
-print(s.containsPattern([1,2,1,2,1,5,6],2,2))
+print(s.maxRepeating('ababababakdk','ab'))
