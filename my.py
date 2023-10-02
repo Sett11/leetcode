@@ -1,12 +1,7 @@
 class Solution:
-    def maxRepeating(self,s,c):
-        x=c
-        n=0
-        while c in s:
-            c+=x
-            n+=1
-        return n
-
+    def truncateSentence(self,s,c):
+        return ' '.join(s.split(' ')[:c])
+    
 s=Solution()
 
-print(s.maxRepeating('ababababakdk','ab'))
+print(s.truncateSentence("Hello how are you Contestant",4))
