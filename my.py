@@ -1,14 +1,14 @@
 class Solution:
-    def sumOddLengthSubarrays(self,a):
-        l=len(a)
-        c=0
-        for i in range(l):
-            for j in range(i+1,l+1):
-                t=a[i:j]
-                if len(t)&1:
-                    c+=sum(t)
-        return c
-    
+    def lastStoneWeight(self,a):
+        while len(a)>1:
+            n=max(a)
+            a.remove(n)
+            m=max(a)
+            a.remove(m)
+            v=max(n,m)-min(n,m)
+            a.append(v)
+        return a[0]
+
 s=Solution()
 
-print(s.sumOddLengthSubarrays([1,4,2,5,3]))
+print(s.lastStoneWeight([2,7,4,1,8,1]))
