@@ -1,11 +1,28 @@
-class Solution():
-    def threeConsecutiveOdds(self,a):
-        for i in range(len(a)-2):
-            if a[i]&1 and a[i+1]&1 and a[i+2]&1:
-                return True
-        return False
+def search_letter(s,c):
+    alf='abcdefghijklmnopqrstuvwxyz'
+    for i in alf:
+        if i!=s and i!=c:
+            return i
+
+class Solution:
+    def modifyString(self,s):
+        s=list(s)
+        for i in range(len(s)):
+            if s[i]=='?':
+                if i==0 and i==len(s)-1:
+                    s[i]='a'
+                if i==0 and s[i]=='?':
+                    q=search_letter(s[i+1],s[i+1])
+                    s[i]=q
+                elif i==len(s)-1 and s[i]=='?':
+                    q=search_letter(s[i-1],s[i-1])
+                    s[i]=q
+                elif s[i]=='?':
+                    q=search_letter(s[i-1],s[i+1])
+                    s[i]=q
+        return ''.join(s)
+
     
 s=Solution()
 
-
-print(s.threeConsecutiveOdds([1,2,34,3,4,5,7,23,12]))
+print(s.modifyString(s.modifyString('ubv?w')))
