@@ -1,10 +1,11 @@
 class Solution:
-    def kidsWithCandies(self,a,k):
-        r=[]
-        [r.append(True) if i+k>=max(a) else r.append(False) for i in a]
-        return r
+    def kWeakestRows(self,a,k):
+        return [h[1] for h in sorted([[j.count(1),i] for i,j in enumerate(a)])[:k]]
     
 s=Solution()
 
-print(s.kidsWithCandies([2,3,5,1,3],3))
-print(s.kidsWithCandies([4,2,1,1,2],1))
+print(s.kWeakestRows([[1,1,0,0,0],
+ [1,1,1,1,0],
+ [1,0,0,0,0],
+ [1,1,0,0,0],
+ [1,1,1,1,1]],3))
