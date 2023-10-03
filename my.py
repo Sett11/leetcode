@@ -1,16 +1,11 @@
 class Solution:
-    def maximumUnits(self,a,n):
-        a=sorted(a,key=lambda e:e[1],reverse=True)
-        i=c=0
-        while i<len(a) and n:
-            if n:
-                while a[i][0] and n:
-                    a[i][0]-=1
-                    c+=a[i][1]
-                    n-=1
-                i+=1
-        return c
-    
+    def secondHighest(self,s):
+        try:
+            return sorted({int(i) for i in s if i.isdigit()},reverse=True)[1]
+        except:
+            return -1
+
 s=Solution()
 
-print(s.maximumUnits([[5,10],[2,5],[4,7],[3,9]],10))
+print(s.secondHighest('dfa12321afd'))
+print(s.secondHighest('ck077'))
