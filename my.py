@@ -1,15 +1,10 @@
+from functools import reduce as r
+
 class Solution:
-    def maxAscendingSum(self,a):
-        a.append(a[-1]-1)
-        m=max(a,default=0)
-        for i in range(len(a)-1):
-            if a[i]<a[i+1]:
-                for j in range(i+1,len(a)-1):
-                    if a[j]>=a[j+1]:
-                        m=max(m,sum(a[i:j+1]))
-                        break
-        return m
+    def arraySign(self,a):
+        s=r(lambda e,u:e*u,a)
+        return 1 if s>0 else 0 if not s else -1
 
 s=Solution()
 
-print(s.maxAscendingSum([100,10,1]))
+print(s.arraySign([-1,-2,-3,-4,3,2,1]))
