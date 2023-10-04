@@ -1,10 +1,7 @@
 class Solution:
-    def firstPalindrome(self,a):
-        try:
-            return next(i for i in a if i==i[::-1])
-        except:
-            return ''
+    def mostWordsFound(self,a):
+        return max((len(i.split(' ')) for i in a))
     
 s=Solution()
 
-print(s.firstPalindrome(["def","ghi"]))
+print(s.mostWordsFound(["alice and bob love leetcode", "i think so too", "this is great thanks very much"]))
