@@ -1,8 +1,13 @@
 class Solution:
-    def greatestLetter(self,s):
-        a=sorted(filter(lambda e:e.isupper(),[i for i in s if i.lower() in s and i.upper() in s]),key=ord,reverse=True)
-        return a[0] if a else ''
+    def decodeMessage(self,k,s):
+        a=[]
+        alf=[chr(i) for i in range(97,123)]
+        for i in k:
+            if i not in a and i!=' ':
+                a.append(i)
+        o=dict(zip(a,alf))
+        return ''.join([o[i] if i in alf else i for i in s])
     
 s=Solution()
 
-print(s.greatestLetter("arRAzFif"))
+print(s.decodeMessage("the quick brown fox jumps over the lazy dog","vkbs bs t suepuv"))
