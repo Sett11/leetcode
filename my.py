@@ -1,7 +1,8 @@
 class Solution:
-    def smallestEvenMultiple(self,n):
-        return next(i for i in range(n,10000000) if not i%2 and not i%n)
+    def findGCD(self,a):
+        n,m=min(a),max(a)
+        return next(i for i in range(n,0,-1) if not n%i and not m%i)
 
 s=Solution()
 
-print(s.smallestEvenMultiple(5))
+print(s.findGCD([2,5,6,9,10]))
