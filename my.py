@@ -1,13 +1,12 @@
 class Solution:
-    def decodeMessage(self,k,s):
-        a=[]
-        alf=[chr(i) for i in range(97,123)]
-        for i in k:
-            if i not in a and i!=' ':
-                a.append(i)
-        o=dict(zip(a,alf))
-        return ''.join([o[i] if i in alf else i for i in s])
-    
+    def findKDistantIndices(self,a,k,n):
+        s=set()
+        for i in range(len(a)):
+            for j in range(len(a)):
+                if abs(i-j)<=n and a[j]==k:
+                    s.add(i)
+        return list(s)
+
 s=Solution()
 
-print(s.decodeMessage("the quick brown fox jumps over the lazy dog","vkbs bs t suepuv"))
+print(s.findKDistantIndices([3,4,9,1,3,9,5],9,1))
