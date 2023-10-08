@@ -1,7 +1,10 @@
 class Solution:
-    def isThree(self,n):
-        return len({i for i in range(1,n+1) if not n%i})==3
+    def equalFrequency(self,s):
+        if len(set(s))==1:
+            return True
+        a=sorted([s.count(i) for i in set(s)])
+        return (len(set(a[:-1]))==1 and a[-1]-a[0]==1) or (len(set(a))==1 and a[0]==1) or ((1 in a and a.count(1)==1) and len(set([i for i in a if i!=1]))==1)
 
 s=Solution()
 
-print(s.isThree(4))
+print(s.equalFrequency('zz'))
