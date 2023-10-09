@@ -1,10 +1,7 @@
 class Solution:
-    def findMaxK(self,a):
-        try:
-            return next(i for i in sorted(a,reverse=True) if -i in a)
-        except:
-            return -1
-
+    def convertTemperature(self,n):
+        return [round(n+273.15,5),round(n*1.80+32,5)]
+    
 s=Solution()
 
-print(s.findMaxK([-1,10,6,7,-7,1]))
+print(s.convertTemperature(36.50))
