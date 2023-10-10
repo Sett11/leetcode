@@ -1,7 +1,13 @@
 class Solution:
-    def maximumValue(self,a):
-        return max([int(i) if all(j.isdigit() for j in i) else len(i) for i in a])
+    def deleteGreatestValue(self,a):
+        m=0
+        while all(i for i in a):
+            n=0
+            for i in range(len(a)):
+                n=max(n,a[i].pop(a[i].index(max(a[i]))))
+            m+=n
+        return m
     
 s=Solution()
 
-print(s.maximumValue(["alic3","bob","3","4","00000"]))
+print(s.deleteGreatestValue([[1,2,4],[3,3,1]]))
