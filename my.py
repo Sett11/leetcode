@@ -1,7 +1,7 @@
 class Solution:
-    def convertTemperature(self,n):
-        return [round(n+273.15,5),round(n*1.80+32,5)]
+    def maximumValue(self,a):
+        return max([int(i) if all(j.isdigit() for j in i) else len(i) for i in a])
     
 s=Solution()
 
-print(s.convertTemperature(36.50))
+print(s.maximumValue(["alic3","bob","3","4","00000"]))
