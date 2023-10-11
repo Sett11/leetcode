@@ -1,13 +1,14 @@
 class Solution:
-    def equalPairs(self,a):
-        b=[list(i) for i in zip(*a)]
+    def similarPairs(self,a):
+        a=[sorted(set(i)) for i in a]
         c=0
-        for i in a:
-            for j in b:
-                if i==j:
+        l=len(a)
+        for i in range(l):
+            for j in range(i+1,l):
+                if a[i]==a[j]:
                     c+=1
         return c
     
 s=Solution()
 
-print(s.equalPairs([[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]))
+print(s.similarPairs(["aba","aabb","abcd","bac","aabc"]))
