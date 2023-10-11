@@ -1,14 +1,7 @@
 class Solution:
-    def similarPairs(self,a):
-        a=[sorted(set(i)) for i in a]
-        c=0
-        l=len(a)
-        for i in range(l):
-            for j in range(i+1,l):
-                if a[i]==a[j]:
-                    c+=1
-        return c
+    def countConsistentStrings(self,s,a):
+        return len([i for i in a if all(j in s for j in i)])
     
 s=Solution()
 
-print(s.similarPairs(["aba","aabb","abcd","bac","aabc"]))
+print(s.countConsistentStrings("ab",["ad","bd","aaab","baa","badab"]))
