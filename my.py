@@ -1,14 +1,23 @@
 class Solution:
-    def findTheArrayConcVal(self,a):
-        l=len(a)//2
-        b,c=a[:l],a[l:][::-1]
-        if len(b)<len(c):
-            b+=[0]
-        if len(c)<len(b):
-            c+=[0]
-        return sum([int(str(b[i])+str(c[i])) for i in range(len(b))])
+    def mergeArrays(self,a,b):
+        c=a+b
+        r=[]
+        i=0
+        c.sort()
+        while i<len(c):
+            t=c[i]
+            j=i+1
+            while j<len(c):
+                if t[0]==c[j][0]:
+                    t[1]+=c[j][1]
+                    c.pop(j)
+                    j-=1
+                j+=1
+            i+=1
+            r.append(t)
+        return r
     
 s=Solution()
 
-print(s.findTheArrayConcVal([7,52,2,4]))
-print(s.findTheArrayConcVal([5,14,13,8,12]))
+print(s.mergeArrays([[1,2],[2,3],[4,5]],[[1,4],[3,2],[4,1]]))
+print(s.mergeArrays([[2,4],[3,6],[5,5]], [[1,3],[4,3]]))
