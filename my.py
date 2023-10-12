@@ -1,7 +1,8 @@
 class Solution:
-    def leftRightDifference(self,a):
-        return [abs(sum(a[:i])-sum(a[i+1:])) for i in range(len(a))]
+    def vowelStrings(self,a,n,m):
+        s='aioue'
+        return len([i for i in a[n:m+1] if i[0].lower() in s and i[-1].lower() in s])
     
 s=Solution()
 
-print(s.leftRightDifference([10,4,8,3]))
+print(s.vowelStrings(["are","Amy","u"],0,2))
