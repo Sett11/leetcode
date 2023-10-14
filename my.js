@@ -1,3 +1,4 @@
-convertToBase7=x=>(x).toString(7)
+Array.prototype.last=function(){return !this.length?-1:this[this.length-1]}
 
-console.log(convertToBase7(100))
+console.log([1,2,3].last())
+console.log([0].last())
