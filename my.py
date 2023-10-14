@@ -1,8 +1,7 @@
 class Solution:
-    def vowelStrings(self,a,n,m):
-        s='aioue'
-        return len([i for i in a[n:m+1] if i[0].lower() in s and i[-1].lower() in s])
+    def isAcronym(self,a,s):
+        return [i[0] for i in a]==list(s)
     
 s=Solution()
 
-print(s.vowelStrings(["are","Amy","u"],0,2))
+print(s.isAcronym(["alice","bob","charlie"],"abc"))
