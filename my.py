@@ -1,7 +1,7 @@
 class Solution:
-    def isAcronym(self,a,s):
-        return [i[0] for i in a]==list(s)
+    def kItemsWithMaximumSum(self,a,b,c,k):
+        return sum(([1]*a+[0]*b+[-1]*c)[:k])
     
 s=Solution()
 
-print(s.isAcronym(["alice","bob","charlie"],"abc"))
+print(s.kItemsWithMaximumSum(3,2,0,4))
