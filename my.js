@@ -1,7 +1,7 @@
-const map = function(a,f){
-    r=[]
-    a.forEach((e,i)=>r.push(f(e,i)))
-    return r
-}
+const filter = function (a, f) {
+  r = [];
+  a.forEach((e, i) => (f(e, i) ? r.push(e) : null));
+  return r;
+};
 
-console.log(map([1,2,3,4],e=>e+1))
+console.log(filter([1, 2, 3, 4], (e) => e > 2));
