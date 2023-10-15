@@ -1,9 +1,19 @@
-class Solution:
-    def minNumber(self,a,b):
-        c=set(a).intersection(b)
-        return sorted(c)[0] if c else int(''.join([str(i) for i in sorted([sorted(a)[0]]+[sorted(b)[0]])]))
-    
-s=Solution()
+from collections import Counter
+from bisect import insort
 
-print(s.minNumber([4,1,3],[5,7]))
-print(s.minNumber([3,5,2,6],[3,1,7]))
+
+class Solution:
+    def findWinners(self, a):
+        s = set(sum(a, []))
+        b = Counter([i[1] for i in a])
+        r = []
+        for i in b:
+            if b[i] == 1:
+                insort(r, i)
+        return [sorted(s.difference(b)), r]
+
+
+s = Solution()
+
+print(s.findWinners([[1, 3], [2, 3], [3, 6], [5, 6], [
+      5, 7], [4, 5], [4, 8], [4, 9], [10, 4], [10, 9]]))

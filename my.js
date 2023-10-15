@@ -1,5 +1,3 @@
-const createCounter = function(n) {
-    return function() {
-        return n++
-    }
+const reduce = function(nums, fn, init) {
+    return nums.reduce(fn,init)
 }
