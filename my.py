@@ -1,7 +1,14 @@
+from re import sub
+
 class Solution:
-    def rowAndMaximumOnes(self,a):
-        return sorted([[j.count(1),i] for i,j in enumerate(a)],key=lambda e:(e[0],-e[1]),reverse=True)[0][::-1]
+    def findTheLongestBalancedSubstring(self,s):
+        s=[i for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',s).split(' ') if i]
+        m=0
+        for i in range(len(s)-1):
+            if s[i][0]=='0' and s[i+1][0]=='1':
+                m=max(m,min(len(s[i]),len(s[i+1]))*2)
+        return m
 
 s = Solution()
 
-print(s.rowAndMaximumOnes([[0,0],[1,1],[0,0],[1,1]]))
+print(s.findTheLongestBalancedSubstring('01000111'))
