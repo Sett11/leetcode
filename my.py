@@ -1,7 +1,12 @@
 class Solution:
-    def sumOfMultiples(self,n):
-        return sum([i for i in range(1,n+1) if any(i%j==0 for j in [3,5,7])])
+    def maximizeSum(self,a,k):
+        c=max(a)
+        r=[]
+        while len(r)<k:
+            r.append(c)
+            c+=1
+        return sum(r)
 
 s = Solution()
 
-print(s.sumOfMultiples(10))
+print(s.maximizeSum([1,2,3,4,5],3))
