@@ -1,14 +1,16 @@
 from re import sub
 
 class Solution:
-    def findTheLongestBalancedSubstring(self,s):
-        s=[i for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',s).split(' ') if i]
-        m=0
-        for i in range(len(s)-1):
-            if s[i][0]=='0' and s[i+1][0]=='1':
-                m=max(m,min(len(s[i]),len(s[i+1]))*2)
-        return m
+    def checkZeroOnes(self,s):
+        a=[i for i in sub(r'(.)\1*',lambda e:' '+e.group()+' ',s).split(' ') if i]
+        b=c=0
+        for i in a:
+            if i[0]=='1':
+                b=max(len(i),b)
+            else:
+                c=max(len(i),c)
+        return b>c
 
 s = Solution()
 
-print(s.findTheLongestBalancedSubstring('01000111'))
+print(s.checkZeroOnes('11101000'))
