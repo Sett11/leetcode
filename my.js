@@ -1,7 +1,5 @@
-const filter = function (a, f) {
-  r = [];
-  a.forEach((e, i) => (f(e, i) ? r.push(e) : null));
-  return r;
-};
+const compose=a=>x=>a.reverse().map(e=>x=e(x)).reverse()[0]||x
 
-console.log(filter([1, 2, 3, 4], (e) => e > 2));
+f=compose([x=>x+1,x=>x**2,x=>x*2])
+
+console.log(f(4))
