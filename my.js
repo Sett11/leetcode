@@ -1,8 +1,4 @@
-const chunk=(a,n)=>{
-  const r=[]
-  for(let i=0;i<a.length;i+=n)r.push(a.slice(i,i+n))
-  return r
-}
+const sortBy = (arr, fn) => arr.sort((a,b)=>fn(a)-fn(b))
 
-console.log(chunk([1,2,3,4,5],3))
+console.log(sortBy([1,2,3,4,5],x=>-x))
  
