@@ -1,4 +1,4 @@
-const sortBy = (arr, fn) => arr.sort((a,b)=>fn(a)-fn(b))
+isEmpty = (x, y = JSON.stringify(x)) => y === "{}" || y === "[]"
 
-console.log(sortBy([1,2,3,4,5],x=>-x))
- 
+console.log(isEmpty({}));
+console.log(isEmpty({ x: 9 }));
