@@ -1,12 +1,9 @@
+from re import sub
+
 class Solution:
-    def maximizeSum(self,a,k):
-        c=max(a)
-        r=[]
-        while len(r)<k:
-            r.append(c)
-            c+=1
-        return sum(r)
+    def removeTrailingZeros(self,s):
+        return sub(r'0+$','',s)
+    
+s=Solution()
 
-s = Solution()
-
-print(s.maximizeSum([1,2,3,4,5],3))
+print(s.removeTrailingZeros('51230100'))
