@@ -1,8 +1,7 @@
 class Solution:
-    def strWithout3a3b(self,a,b):
-        a,b=['a']*a,['b']*b
-        return a,b
+    def distinctDifferenceArray(self,a):
+        return [len(set(a[:i]))-len(set(a[i:])) for i in range(1,len(a)+1)]
     
 s=Solution()
 
-print(s.strWithout3a3b(4,1))
+print(s.distinctDifferenceArray([1,2,3,4,5]))
