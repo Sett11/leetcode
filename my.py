@@ -1,11 +1,16 @@
-from collections import Counter as c
+def gcd(x,y):
+    return  [i for i in range(1,min(x,y)+1) if x%i==0 and y%i==0]==[1]
 
 class Solution:
-    def isFascinating(self,n):
-        s=str(n)+str(n*2)+str(n*3)
-        r=set(c(s).values())
-        return all(i in s for i in '123456789') and len(r)==1 and 1 in r and '0' not in s
+    def countBeautifulPairs(self,a):
+        c=0
+        l=len(a)
+        for i in range(l):
+            for j in range(i+1,l):
+                if gcd(int(str(a[i])[0]),int(str(a[j])[-1])):
+                    c+=1
+        return c
     
 s=Solution()
 
-print(s.isFascinating(192))
+print(s.countBeautifulPairs([31,25,72,79,74]))
