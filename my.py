@@ -1,9 +1,8 @@
-from re import sub
-
 class Solution:
-    def removeTrailingZeros(self,s):
-        return sub(r'0+$','',s)
+    def strWithout3a3b(self,a,b):
+        a,b=['a']*a,['b']*b
+        return a,b
     
 s=Solution()
 
-print(s.removeTrailingZeros('51230100'))
+print(s.strWithout3a3b(4,1))

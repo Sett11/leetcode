@@ -1,34 +1,14 @@
-const fibGenerator = function*(){
-    let a=0,b=1
-    while(true){
-      [a,b]=[a+b,a]
-      yield b
+const once = function(f){
+  let c=1
+	return function(...a){
+        return c--===1?f(...a):undefined
     }
 }
 
-gen=fibGenerator()
 
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
-console.log(gen.next().value)
+let fn = (a,b,c) => (a + b + c)
+ let onceFn = once(fn)
+
+  console.log(onceFn(1,2,3))
+  console.log(onceFn(2,3,6))
+ 
