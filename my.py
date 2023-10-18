@@ -1,8 +1,13 @@
 class Solution:
-    def numberOfEmployeesWhoMetTarget(self,a,n):
-        return len([i for i in a if i>=n])
+    def maxSum(self,a):
+        a=sorted([[max(list(map(int,str(i)))),i] for i in a])
+        m=-1
+        for i in range(len(a)-1):
+            if a[i][0]==a[i+1][0]:
+                m=max(m,a[i][1]+a[i+1][1])
+        return m
 
 
 s = Solution()
 
-print(s.numberOfEmployeesWhoMetTarget([1, 2, 3, 4,5,6,7,7],5))
+print(s.maxSum([51,71,17,24,42]))
