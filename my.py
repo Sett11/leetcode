@@ -1,14 +1,10 @@
+from re import sub
+
 class Solution:
-    def countPairs(self,a,n):
-        c=0
-        l=len(a)
-        for i in range(l):
-            for j in range(i+1,l):
-                if a[i]+a[j]<n:
-                    c+=1
-        return c
+    def sumIndicesWithKSetBits(self,a,k):
+        return sum([j for i,j in enumerate(a) if len(sub(r'[^1]','',bin(i)))==k])
 
 
 s = Solution()
 
-print(s.countPairs([-1,1,2,3,1],2))
+print(s.sumIndicesWithKSetBits([5,10,1,5,2],1))
