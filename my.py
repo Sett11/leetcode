@@ -1,12 +1,9 @@
 class Solution:
-    def findMaxAverage(self, a, k):
-        m=c=sum(a[:k])
-        for i in range(k,len(a)):
-            c+=a[i]-a[i-k]
-            m=max(c,m)
-        return m/k
+    def sumOfSquares(self,a):
+        l=len(a)
+        return sum((j**2 for i,j in enumerate(a) if l%(i+1)==0))
 
 
 s = Solution()
 
-print(s.findMaxAverage([1,12,-5,-6,50,3], 4))
+print(s.sumOfSquares([1,2,3,4]))
