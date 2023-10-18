@@ -1,22 +1,23 @@
+def check(a):
+    r=[]
+    for i in range(len(a)-1):
+        r.append(a[i+1]-a[i])
+    return r
+
 class Solution:
-    def semiOrderedPermutation(self,a):
-        one=a.index(1)
-        m=max(a)
-        n=a.index(m)
-        c=0
-        while one!=0 or n!=len(a)-1:
-            while one!=0:
-                a[one],a[one-1]=a[one-1],a[one]
-                one=a.index(1)
-                c+=1
-            n=a.index(m)
-            while n!=len(a)-1:
-                a[n],a[n+1]=a[n+1],a[n]
-                n=a.index(m)
-                c+=1
-        return c
+    def alternatingSubarray(self,a):
+        m=-1
+        l=len(a)
+        for i in range(l):
+            for j in range(i+2,l+1):
+                t=a[i:j]
+                n=len(t)
+                if ([1,-1]*n)[:n-1]==check(t):
+                    m=max(m,n)
+                else:
+                    break
+        return m
 
 s = Solution()
 
-print(s.semiOrderedPermutation([2,1,3]))
-print(s.semiOrderedPermutation([2,4,1,3]))
+print(s.alternatingSubarray([2,3,4,3,4]))
