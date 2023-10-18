@@ -1,18 +1,8 @@
-from collections import Counter as c
-
-
 class Solution:
-    def isGood(self, a):
-        b = c(a)
-        m = max(a)
-        if len(a)-1 != m:
-            return False
-        for i in range(1, m+1):
-            if (i != m and b[i] != 1) or (i == m and b[i] != 2):
-                return False
-        return True
+    def numberOfEmployeesWhoMetTarget(self,a,n):
+        return len([i for i in a if i>=n])
 
 
 s = Solution()
 
-print(s.isGood([1, 2, 3, 3]))
+print(s.numberOfEmployeesWhoMetTarget([1, 2, 3, 4,5,6,7,7],5))
