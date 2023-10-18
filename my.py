@@ -1,9 +1,15 @@
 class Solution:
-    def sumOfSquares(self,a):
-        l=len(a)
-        return sum((j**2 for i,j in enumerate(a) if l%(i+1)==0))
+    def makeSmallestPalindrome(self,s):
+        i=0
+        l=len(s)
+        s=list(s)
+        while s!=s[::-1]:
+            if s[i]!=s[l-i-1]:
+                s[i]=s[l-i-1]=min(s[i],s[l-i-1])
+            i+=1
+        return ''.join(s)
 
 
 s = Solution()
 
-print(s.sumOfSquares([1,2,3,4]))
+print(s.makeSmallestPalindrome('abcd'))
