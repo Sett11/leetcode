@@ -1,14 +1,7 @@
-const expect = v => {
-  return {
-    toBe: function(e){
-        if(e===v)return true
-        throw Error('Not Equal')
-    },
-    notToBe: function(e){
-        if(e!==v)return true
-        throw Error('Equal')
-    },
-  }
+const checkIfInstanceOf = (o, c) => {
+  const a = Object.getOwnPropertyNames(o.__proto__),
+    b = new c()
+  return Object.getOwnPropertyNames(b.__proto__).join`` === a.join``
 }
 
-console.log(expect(5).notToBe(5));
+console.log(checkIfInstanceOf(5, Number))

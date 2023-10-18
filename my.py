@@ -1,15 +1,12 @@
 class Solution:
-    def makeSmallestPalindrome(self,s):
-        i=0
-        l=len(s)
-        s=list(s)
-        while s!=s[::-1]:
-            if s[i]!=s[l-i-1]:
-                s[i]=s[l-i-1]=min(s[i],s[l-i-1])
-            i+=1
-        return ''.join(s)
+    def buyChoco(self,a,n):
+        q=min(a)
+        a.remove(q)
+        s=n-(min(a)+q)
+        return s if s>=0 else n
 
 
 s = Solution()
 
-print(s.makeSmallestPalindrome('abcd'))
+print(s.buyChoco([1,2,2],3))
+print(s.buyChoco([98,54,6,34,66,63,52,39],62))
