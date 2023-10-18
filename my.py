@@ -1,13 +1,14 @@
 class Solution:
-    def maxSum(self,a):
-        a=sorted([[max(list(map(int,str(i)))),i] for i in a])
-        m=-1
-        for i in range(len(a)-1):
-            if a[i][0]==a[i+1][0]:
-                m=max(m,a[i][1]+a[i+1][1])
-        return m
+    def countPairs(self,a,n):
+        c=0
+        l=len(a)
+        for i in range(l):
+            for j in range(i+1,l):
+                if a[i]+a[j]<n:
+                    c+=1
+        return c
 
 
 s = Solution()
 
-print(s.maxSum([51,71,17,24,42]))
+print(s.countPairs([-1,1,2,3,1],2))
