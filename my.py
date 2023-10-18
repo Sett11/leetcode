@@ -1,10 +1,13 @@
-from re import sub
-
 class Solution:
-    def sumIndicesWithKSetBits(self,a,k):
-        return sum([j for i,j in enumerate(a) if len(sub(r'[^1]','',bin(i)))==k])
+    def minOperations(self,a,n):
+        r=[i for i in range(1,n+1)]
+        a=a[::-1]
+        for i in range(len(a)+1):
+            t=a[:i]
+            if all(j in t for j in r):
+                return len(t)
 
 
 s = Solution()
 
-print(s.sumIndicesWithKSetBits([5,10,1,5,2],1))
+print(s.minOperations([3,1,5,4,2],5))
