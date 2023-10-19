@@ -1,13 +1,14 @@
-class Solution:
-    def findIndices(self,a,g,v):
-        l=len(a)
-        for i in range(l):
-            for j in range(i,l):
-                if abs(i-j)>=g and abs(a[i]-a[j])>=v:
-                    return [i,j]
-                    break
-        return [-1]*2
+class NumArray:
 
-s=Solution()
+    def __init__(self, a):
+        self.a = a
 
-print(s.findIndices([5,1,4,1],2,4))
+    def sumRange(self, l, r):
+        return sum(self.a[l:r+1])
+
+
+s = NumArray([-2, 0, 3, -5, 2, -1])
+
+print(s.sumRange(0, 2))
+print(s.sumRange(2, 5))
+print(s.sumRange(0, 5))
