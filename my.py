@@ -1,14 +1,13 @@
 class Solution:
-    def differenceOfSums(self,n,m):
-        a=b=0
-        for i in range(1,n+1):
-            if not i%m:
-                b+=i
-            else:
-                a+=i
-        return a-b
+    def findIndices(self,a,g,v):
+        l=len(a)
+        for i in range(l):
+            for j in range(i,l):
+                if abs(i-j)>=g and abs(a[i]-a[j])>=v:
+                    return [i,j]
+                    break
+        return [-1]*2
 
+s=Solution()
 
-s = Solution()
-
-print(s.differenceOfSums(10,3))
+print(s.findIndices([5,1,4,1],2,4))
