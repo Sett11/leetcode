@@ -1,15 +1,14 @@
 class Solution:
-    def minimumRightShifts(self,a):
-        i=0
-        b=sorted(a)
-        while i<len(a):
-            if a==b:
-                break
-            a.insert(0,a.pop())
-            i+=1
-        return -1 if i==len(a) else i
+    def differenceOfSums(self,n,m):
+        a=b=0
+        for i in range(1,n+1):
+            if not i%m:
+                b+=i
+            else:
+                a+=i
+        return a-b
 
 
 s = Solution()
 
-print(s.minimumRightShifts([2,1,4]))
+print(s.differenceOfSums(10,3))
