@@ -1,13 +1,21 @@
+from collections import deque
+
 class Solution:
-    def minCostClimbingStairs(self,a):
-        n=len(a)
-        r=[0]*n
-        r[0],r[1]=a[0],a[1]
-        for i in range(2,n):
-            r[i]=a[i]+min(r[i-1],r[i-2])
-        return min(r[-1],r[-2])
+    def evalRPN(self,a):
+        stack=deque()
+        for i in a:
+            if i.replace('-','').isdigit():
+                stack.append(int(i))
+            else:
+                if len(stack)>1:
+                    t,p=stack.pop(),stack.pop()
+                    s=eval(f'{p}{i}{t}')
+                    if i=='/':
+                        s=int(s)
+                    stack.append(s)
+        return stack[-1]
+
 
 s=Solution()
 
-print(s.minCostClimbingStairs([10, 15,20]))
-print(s.minCostClimbingStairs([ 1 ,100, 1 ,1, 1 , 100, 1 , 1 ,100, 1]))
+print(s.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+", "5","+"]))
