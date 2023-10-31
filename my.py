@@ -3,27 +3,18 @@ class ListNode:
         self.val = val
         self.next = next
 
-def insert_sort(a):
-    for i in range(1,len(a)):
-        k=i
-        while k and a[k]>a[k-1]:
-            a[k],a[k-1]=a[k-1],a[k]
-            k-=1
-
 class Solution:
-    def insertionSortList(self,h):
-        r=[]
+    def removeElements(self,h,n):
         c=h
-        while c:
-            r.append(c.val)
-            c=c.next
-        insert_sort(r)
-        c=h
-        while c:
-            c.val=r.pop()
-            c=c.next
+        while c and c.next:
+            if c.next.val==n:
+                c.next=c.next.next
+            else:
+                c=c.next
+        if h and h.val==n:
+            h=h.next
         return h
 
 s=Solution()
 
-print(s.sortList(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5))))))))
+print(s.removeElements(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5)))))),3))
