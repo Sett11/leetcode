@@ -4,17 +4,25 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def removeElements(self,h,n):
+    def deleteMiddle(self,h):
         c=h
-        while c and c.next:
-            if c.next.val==n:
+        r=[]
+        while c:
+            r.append(c.val)
+            c=c.next
+        n=len(r)//2
+        if not n:
+            return c
+        i=0
+        c=h
+        while c:
+            if i==n-1:
                 c.next=c.next.next
-            else:
-                c=c.next
-        if h and h.val==n:
-            h=h.next
+                break
+            i+=1
+            c=c.next
         return h
 
 s=Solution()
 
-print(s.removeElements(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5)))))),3))
+print(s.deleteMiddle(ListNode(3,ListNode(1,ListNode(4,ListNode(11,ListNode(9,ListNode(5,ListNode(15)))))))))
