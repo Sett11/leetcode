@@ -7,11 +7,19 @@ class ListNode:
 class Solution:
     def deleteDuplicates(self,h):
         c=h
+        r=[]
         while c and c.next:
             if c.val==c.next.val:
+                r.append(c.val)
+            c=c.next
+        c=h
+        while c and c.next:
+            if c.next.val in r:
                 c.next=c.next.next
             else:
                 c=c.next
+        if h and h.val in r:
+            h=h.next
         return h
 
 s=Solution()
