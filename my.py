@@ -1,21 +1,19 @@
-from collections import deque
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 
 class Solution:
-    def evalRPN(self,a):
-        stack=deque()
-        for i in a:
-            if i.replace('-','').isdigit():
-                stack.append(int(i))
+    def deleteDuplicates(self,h):
+        c=h
+        while c and c.next:
+            if c.val==c.next.val:
+                c.next=c.next.next
             else:
-                if len(stack)>1:
-                    t,p=stack.pop(),stack.pop()
-                    s=eval(f'{p}{i}{t}')
-                    if i=='/':
-                        s=int(s)
-                    stack.append(s)
-        return stack[-1]
-
+                c=c.next
+        return h
 
 s=Solution()
 
-print(s.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+", "5","+"]))
+print(s.deleteDuplicates(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5))))))))
