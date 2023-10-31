@@ -3,25 +3,20 @@ class ListNode:
         self.val = val
         self.next = next
 
-
 class Solution:
-    def deleteDuplicates(self,h):
-        c=h
+    def sortList(self,h):
         r=[]
-        while c and c.next:
-            if c.val==c.next.val:
-                r.append(c.val)
-            c=c.next
         c=h
-        while c and c.next:
-            if c.next.val in r:
-                c.next=c.next.next
-            else:
-                c=c.next
-        if h and h.val in r:
-            h=h.next
+        while c:
+            r.append(c.val)
+            c=c.next
+        r.sort(reverse=True)
+        c=h
+        while c:
+            c.val=r.pop()
+            c=c.next
         return h
 
 s=Solution()
 
-print(s.deleteDuplicates(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5))))))))
+print(s.sortList(ListNode(3,ListNode(1,ListNode(4,ListNode(4,ListNode(9,ListNode(5))))))))
