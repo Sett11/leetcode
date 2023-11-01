@@ -12,14 +12,12 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def swapPairs(self,h):
+    def reverseKGroup(self,h,k):
         a=list_convert_to_array(h)
         n=len(a)
-        if n<2:
+        if n<k:
             return h
-        r=sum([[a[i+1],a[i]] for i in range(0,n-1,2)],[])
-        if n&1:
-            r.append(a[-1])
+        r=sum([a[i:i+k][::-1] if i+k<=n else a[i:i+k] for i in range(0,n,k)],[])
         c=h
         for i in r:
             c.val=i
@@ -28,4 +26,4 @@ class Solution:
 
 s=Solution()
 
-print(s.swapPairs(ListNode(7,ListNode(2,ListNode(4,ListNode(3,ListNode(8)))))))
+print(s.reverseKGroup(ListNode(7,ListNode(2,ListNode(4,ListNode(3,ListNode(8))))),3))
