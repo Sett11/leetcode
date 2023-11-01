@@ -14,10 +14,16 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def isPalindrome(self,h):
-        s=' '.join(map(str,list_convert_to_array(h)))
-        return s==s[::-1]
+    def oddEvenList(self,h):
+        a=list_convert_to_array(h)
+        n=len(a)
+        r=a[0:n:2]+a[1:n:2]
+        c=h
+        for i in r:
+            c.val=i
+            c=c.next
+        return h
 
 s=Solution()
 
-print(s.isPalindrome(ListNode(1,ListNode(2,ListNode(3,ListNode(2,ListNode(1)))))))
+print(s.oddEvenList(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
