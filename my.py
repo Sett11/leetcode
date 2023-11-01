@@ -13,18 +13,21 @@ def list_convert_to_array(h):
         c=c.next
     return r
 
+def next_bigger_number(a,n):
+    try:
+        return next(i for i in a if i>n)
+    except:
+        return 0
+
 class Solution:
-    def insertGreatestCommonDivisors(self,h):
-        c,next=h,h.next
-        while next:
-            n=ListNode(gcd(c.val,next.val))
-            c.next=n
-            n.next=next
-            c=next
-            next=next.next
-        return list_convert_to_array(h)
+    def nextLargerNodes(self,h):
+        a=list_convert_to_array(h)
+        r=[]
+        for i in range(len(a)):
+            r.append(next_bigger_number(a[i:],a[i]))
+        return r
 
 s=Solution()
 
-#print(s.insertGreatestCommonDivisors(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
-print(s.insertGreatestCommonDivisors(ListNode(18,ListNode(6,ListNode(10,ListNode(3))))))
+print(s.nextLargerNodes(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
+print(s.nextLargerNodes(ListNode(18,ListNode(6,ListNode(10,ListNode(3))))))
