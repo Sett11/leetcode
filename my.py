@@ -12,17 +12,15 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def addTwoNumbers(self,a,b):
-        a=list(map(int,str(int(''.join(map(str,list_convert_to_array(a))))+int(''.join(map(str,list_convert_to_array(b)))))))
-        n=len(a)
-        h=ListNode()
+    def swapNodes(self,h,k):
+        a=list_convert_to_array(h)
+        a[k-1],a[-k]=a[-k],a[k-1]
         c=h
-        for i in range(n):
-            c.val=a[i]
-            c.next=ListNode() if i!=n-1 else None
+        for i in a:
+            c.val=i
             c=c.next
         return h
 
 s=Solution()
 
-print(s.addTwoNumbers(ListNode(7,ListNode(2,ListNode(4,ListNode(3)))),ListNode(5,ListNode(6,ListNode(4)))))
+print(s.swapNodes(ListNode(7,ListNode(2,ListNode(4,ListNode(3,ListNode(8,ListNode(9)))))),2))
