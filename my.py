@@ -1,3 +1,5 @@
+from math import gcd
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -12,15 +14,17 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def reverseBetween(self,h,l,r):
-        a=list_convert_to_array(h)
-        a[l-1:r]=a[l-1:r][::-1]
-        c=h
-        for i in a:
-            c.val=i
-            c=c.next
-        return h
+    def insertGreatestCommonDivisors(self,h):
+        c,next=h,h.next
+        while next:
+            n=ListNode(gcd(c.val,next.val))
+            c.next=n
+            n.next=next
+            c=next
+            next=next.next
+        return list_convert_to_array(h)
 
 s=Solution()
 
-print(s.reverseBetween(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5))))),2,4))
+#print(s.insertGreatestCommonDivisors(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
+print(s.insertGreatestCommonDivisors(ListNode(18,ListNode(6,ListNode(10,ListNode(3))))))
