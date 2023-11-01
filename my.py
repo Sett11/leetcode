@@ -13,21 +13,11 @@ def list_convert_to_array(h):
         c=c.next
     return r
 
-def next_bigger_number(a,n):
-    try:
-        return next(i for i in a if i>n)
-    except:
-        return 0
-
 class Solution:
-    def nextLargerNodes(self,h):
-        a=list_convert_to_array(h)
-        r=[]
-        for i in range(len(a)):
-            r.append(next_bigger_number(a[i:],a[i]))
-        return r
+    def isPalindrome(self,h):
+        s=' '.join(map(str,list_convert_to_array(h)))
+        return s==s[::-1]
 
 s=Solution()
 
-print(s.nextLargerNodes(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
-print(s.nextLargerNodes(ListNode(18,ListNode(6,ListNode(10,ListNode(3))))))
+print(s.isPalindrome(ListNode(1,ListNode(2,ListNode(3,ListNode(2,ListNode(1)))))))
