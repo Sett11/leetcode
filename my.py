@@ -12,14 +12,15 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def reverseList(self,h):
-        r=list_convert_to_array(h)[::-1]
+    def reverseBetween(self,h,l,r):
+        a=list_convert_to_array(h)
+        a[l-1:r]=a[l-1:r][::-1]
         c=h
-        for i in r:
+        for i in a:
             c.val=i
             c=c.next
         return h
 
 s=Solution()
 
-print(s.reverseList(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
+print(s.reverseBetween(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5))))),2,4))
