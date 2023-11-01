@@ -12,12 +12,15 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def reverseKGroup(self,h,k):
+    def reverseEvenLengthGroups(self,h):
         a=list_convert_to_array(h)
-        n=len(a)
-        if n<k:
-            return h
-        r=sum([a[i:i+k][::-1] if i+k<=n else a[i:i+k] for i in range(0,n,k)],[])
+        r=[a.pop(0)]
+        i=1
+        while a:
+            t=a[i-1:i+i]
+            r.extend(t if len(t)&1 else t[::-1])
+            del a[0:i]
+            i+=1
         c=h
         for i in r:
             c.val=i
@@ -26,4 +29,4 @@ class Solution:
 
 s=Solution()
 
-print(s.reverseKGroup(ListNode(7,ListNode(2,ListNode(4,ListNode(3,ListNode(8))))),3))
+print(s.reverseEvenLengthGroups(ListNode(7,ListNode(2,ListNode(4,ListNode(3,ListNode(8,ListNode(9,ListNode(10,ListNode(23,ListNode(76,ListNode(98))))))))))))
