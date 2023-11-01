@@ -1,4 +1,4 @@
-from math import gcd
+from random import choice
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -14,16 +14,11 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def oddEvenList(self,h):
-        a=list_convert_to_array(h)
-        n=len(a)
-        r=a[0:n:2]+a[1:n:2]
-        c=h
-        for i in r:
-            c.val=i
-            c=c.next
-        return h
+    def __init__(self,h):
+        self.h=h
+    def getRandom(self):
+        return choice(list_convert_to_array(self.h))
 
-s=Solution()
+s=Solution(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5))))))
 
-print(s.oddEvenList(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
+print(s.getRandom())
