@@ -12,18 +12,16 @@ def list_convert_to_array(h):
     return r
 
 class Solution:
-    def rotateRight(self,h,k):
+    def reorderList(self,h):
         r=list_convert_to_array(h)
-        if not r:
-            return h
-        k%=len(r)
-        r=(r[-k:]+r[0:-k])[::-1]
+        n=len(r)
+        a=sum([[r[i],r[n-i-1]] for i in range(n//2)]+([[r[n//2]]] if n&1 else []),[])
         c=h
-        while len(r):
-            c.val=r.pop()
+        for i in a:
+            c.val=i
             c=c.next
         return h
 
 s=Solution()
 
-print(s.rotateRight(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5))))),10**9+2))
+print(s.reorderList(ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))))
