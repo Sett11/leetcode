@@ -22,11 +22,13 @@ def array_convert_to_list(a):
     return L
 
 class Solution:
-    def mergeNodes(self,h):
-        a=list_convert_to_array(h)
-        ind=[i for i,j in enumerate(a) if not j]
-        return array_convert_to_list([sum(a[ind[i]+1:ind[i+1]]) for i in range(len(ind)-1)])
+    def partition(self,h,n):
+        a,l,r=list_convert_to_array(h),[],[]
+        if not a:
+            return h
+        [l.append(i)if i<n else r.append(i) for i in a]
+        return array_convert_to_list(l+r)
 
 s=Solution()
 
-print(s.mergeNodes(array_convert_to_list([0,14,13,0,40,0])))
+print(s.partition(array_convert_to_list([]),3))
