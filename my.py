@@ -22,13 +22,10 @@ def array_convert_to_list(a):
     return L
 
 class Solution:
-    def removeNthFromEnd(self,h,k):
-        a=list_convert_to_array(h)
-        if len(a)==1 and k==1:
-            return None
-        del a[-k]
-        return array_convert_to_list(a)
+    def mergeKLists(self,a):
+        s=sum([list_convert_to_array(i) for i in a],[])
+        return array_convert_to_list(sorted(s)) if s else None
 
 s=Solution()
 
-print(s.removeNthFromEnd(array_convert_to_list([1,2,3,4,5]),2))
+print(s.mergeKLists([array_convert_to_list(i) for i in [[1,4,5],[1,3,4],[2,6]]]))
