@@ -22,9 +22,13 @@ def array_convert_to_list(a):
     return L
 
 class Solution:
-    def getDecimalValue(self,h):
-        return int(''.join(map(str,list_convert_to_array(h))),2)
+    def removeNthFromEnd(self,h,k):
+        a=list_convert_to_array(h)
+        if len(a)==1 and k==1:
+            return None
+        del a[-k]
+        return array_convert_to_list(a)
 
 s=Solution()
 
-print(s.getDecimalValue(array_convert_to_list([1,0,1])))
+print(s.removeNthFromEnd(array_convert_to_list([1,2,3,4,5]),2))
