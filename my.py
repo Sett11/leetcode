@@ -1,6 +1,6 @@
 from copy import deepcopy
 
 class Solution:
-    def cloneGraph(self,node):
-        c=deepcopy(node)
+    def copyRandomList(self,h):
+        c=deepcopy(h)
         return c
