@@ -1,23 +1,7 @@
 class Solution:
-    def findCircleNum(self,a):
-        n=len(a)
-        s=set()
-
-        def dfs(i):
-            if i not in s:
-                s.add(i)
-                for j in range(n):
-                    if a[i][j]:
-                        dfs(j)
-        
-        c=0
-        for i in range(n):
-            if i not in s:
-                dfs(i)
-                c+=1
-        
-        return c
-
+    def findCenter(self,a):
+        return list(set(a[0])&set(a[1]))[0]
+    
 S=Solution()
 
-print(S.findCircleNum([[1,1,0],[1,1,0],[0,0,1]]))
+print(S.findCenter([[1,2],[2,3],[4,2]]))
