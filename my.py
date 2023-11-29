@@ -1,36 +1,22 @@
-from collections import defaultdict
-from heapq import heappush,heappop
-
-def convert_two_dimensional_array_to_graph(a):
-    d=defaultdict(list)
-
-    for i,j in a:
-        d[i].append(j)
-        d[j].append(i)
-
-    return d
-
 class Solution:
-    def maxStarSum(self,v,r,k):
-        g=convert_two_dimensional_array_to_graph(r)
-        if not r:
-            return max(v)
-        m=float('-inf')
+    def longestPalindrome(self,s):
+        T='#'.join('^{}$'.format(s))
+        n=len(T)
+        P=[0]*n
+        C=R=0
 
-        for i in g:
-            t=[]
-            for j in g[i]:
-                heappush(t,v[j])
-                while len(t)>k:
-                    heappop(t)
-            p=v[i]
-            for x in range(len(t)):
-                p=max(p,p+t[x])
-                m=max(m,p)
+        for i in range(1,n-1):
+            P[i]=(R>i) and min(R-i,P[2*C-i])
+            while T[i+1+P[i]]==T[i-1-P[i]]:
+                P[i]+=1
+            if i+P[i]>R:
+                C,R=i,i+P[i]
+        
+        m,c=max((n,i) for i,n in enumerate(P))
 
-        return max(m,max(v))
-    
+        return s[(c-m)//2:(c+m)//2]
+
+
 S=Solution()
 
-print(S.maxStarSum([1,2,3,4,10,-10,-20],[[0,1],[1,2],[1,3],[3,4],[ 3,5],[3,6]],2))
-print(S.maxStarSum([-2,-1,-2],[[0,2]],1))
+print(S.longestPalindrome('ababbab'))
