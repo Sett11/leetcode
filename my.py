@@ -1,15 +1,9 @@
-class Solution:
-    def hasCycle(self,h):
-        s=set()
+h=sorted(2**i*3**j*5**k for i in range(35) for j in range(25) for k in range(15))
 
-        while h:
-            if h.next in s:
-                return True
-            s.add(h)
-            h=h.next
-        
-        return False
+class Solution:
+    def nthUglyNumber(self,n):
+        return h[n-1]
 
 S=Solution()
 
-print(S.hasCycle())
+print(S.nthUglyNumber(125))
