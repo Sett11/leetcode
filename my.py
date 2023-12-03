@@ -1,9 +1,26 @@
-h=sorted(2**i*3**j*5**k for i in range(35) for j in range(25) for k in range(15))
+k=2
+
+def guess(n):
+    if n<k:
+        return 1
+    if n>k:
+        return -1
+    return 0
 
 class Solution:
-    def nthUglyNumber(self,n):
-        return h[n-1]
+    def guessNumber(self,n):
+        l,r=0,n+1
+
+        while True:
+            m=(l+r)//2
+            x=guess(m)
+            if x==0:
+                return m
+            elif x==1:
+                l=m
+            else:
+                r=m
 
 S=Solution()
 
-print(S.nthUglyNumber(125))
+print(S.guessNumber(2))
