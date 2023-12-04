@@ -1,24 +1,16 @@
 class Solution:
-    def generateParenthesis(self,n):
-        r=[]
+    def kthGrammar(self,n,k):
+        v=True
+        n=1<<(n-1)
 
-        def f(s,n,m):
-            if [m,n]==[0,0]:
-                r.append(s)
-                return
-            if not n:
-                r.append(s+')'*m)
-                return
-            if n<m:
-                f(s+')',n,m-1)
-            f(s+'(',n-1,m)
+        while n!=1:
+            n//=2
+            if k>n:
+                k-=n
+                v=not v
         
-        f('',n,n)
-
-        return r
-
-
+        return 0 if v else 1
     
 S=Solution()
 
-print(S.generateParenthesis(8))
+print(S.kthGrammar(2,2))
