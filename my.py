@@ -1,26 +1,15 @@
-k=2
-
-def guess(n):
-    if n<k:
-        return 1
-    if n>k:
-        return -1
-    return 0
+from re import sub
+from collections import Counter
 
 class Solution:
-    def guessNumber(self,n):
-        l,r=0,n+1
-
-        while True:
-            m=(l+r)//2
-            x=guess(m)
-            if x==0:
-                return m
-            elif x==1:
-                l=m
-            else:
-                r=m
+    def shortestCompletingWord(self,s,a):
+        b,c=Counter(sub(r'[^A-z]','',s.lower())),sorted(map(lambda x:[x,Counter(x.lower())],a),key=lambda x:len(x[0]))
+        
+        for i,j in c:
+            if all(k in i and j[k]>=b[k] for k in b):
+                return i
+    
 
 S=Solution()
 
-print(S.guessNumber(2))
+print(S.shortestCompletingWord("1s3 456",["looks","pest","stew","show"]))
