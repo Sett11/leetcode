@@ -1,15 +1,8 @@
-from re import sub
-from collections import Counter
-
 class Solution:
-    def shortestCompletingWord(self,s,a):
-        b,c=Counter(sub(r'[^A-z]','',s.lower())),sorted(map(lambda x:[x,Counter(x.lower())],a),key=lambda x:len(x[0]))
-        
-        for i,j in c:
-            if all(k in i and j[k]>=b[k] for k in b):
-                return i
+    def getMinDistance(self,a,k,n):
+        return min([abs(i-n) for i,j in enumerate(a) if j==k])
     
 
 S=Solution()
 
-print(S.shortestCompletingWord("1s3 456",["looks","pest","stew","show"]))
+print(S.getMinDistance([1,2,3,4,5],5,3))
