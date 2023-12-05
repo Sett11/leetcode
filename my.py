@@ -1,32 +1,21 @@
+from math import gcd
+
+def lcm(a,b):
+    return a*b/gcd(a,b)
+
 class Solution:
-    def orangesRotting(self,a):
-        n,m=len(a),len(a[0])
-        v,c=n*m,0
+    def nthMagicalNumber(self,n,a,b):
+        k,l,r=lcm(a,b),2,10**14
 
-        while v:
-            r=[]
-            w=False
-            for i in range(n):
-                for j in range(m):
-                    if a[i][j]==1:
-                        w=True
-                    if a[i][j]==2:
-                        p=[[k,h] for k,h in [[i+1,j],[i,j+1],[i-1,j],[i,j-1]] if -1<k<n and -1<h<m and a[k][h]==1]
-                        r.extend(p)
-            
-            for x,y in r:
-                a[x][y]=2
-
-            if not w:
-                return c
-            
-            c+=1
-            v-=1
+        while l<r:
+            m=(l+r)//2
+            if m//a+m//b-m//k<n:
+                l=m+1
+            else:
+                r=m
         
-        return -1
+        return l%(10**9+7)
     
-
 S=Solution()
 
-print(S.orangesRotting([[2,1,1],[1,1,0],[0,1,1]]))
-print(S.orangesRotting([[2,1,1],[0,1,1],[1,0,1]]))
+print(S.nthMagicalNumber(4,2,3))
