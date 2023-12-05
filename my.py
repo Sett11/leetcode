@@ -1,22 +1,29 @@
-from collections import defaultdict
+from itertools import permutations as p
 
 class Solution:
-    def longestArithSeqLength(self,a):
-        o=defaultdict(dict)
-        c=1
+    def largestTimeFromDigits(self,a):
+        a=list(map(lambda x:''.join(map(str,x)),p(a)))
+        m=24
+        o={}
 
-        for i in range(len(a)):
-            for j in range(i):
-                n=a[i]-a[j]
-                if n not in o[j]:
-                    o[j][n]=1
-                if n not in o[i]:
-                    o[i][n]=0
-                o[i][n]=o[j][n]+1
-                c=max(c,o[i][n])
+        for i in a:
+            n=float(i[:2]+'.'+i[2:])
+            t=24-n
+            if t>0 and int(i[2:])<60:
+                m=min(m,t)
+                o[t]=str(n)
+        
+        r=(o[m][:2]+':'+o[m][2:]).replace('.','') if m in o else ''
+        c=r.split(':')
 
-        return c
+        if r and len(c[0])<2:
+            r='0'+r
+        
+        if r and len(c[1])<2:
+            r+='0'
+        
+        return r
     
 S=Solution()
 
-print(S.longestArithSeqLength([20,1,15,3,10,5,8]))
+print(S.largestTimeFromDigits([2,0,6,6]))
