@@ -1,12 +1,12 @@
-from collections import Counter
-
 class Solution:
-    def findSpecialInteger(self,a):
-        n,c,s=len(a)//4,Counter(a),set(a)
-        for i in s:
-            if c[i]>n:
-                return i
+    def replaceElements(self,a):
+        m=-1
+        for i in range(len(a)-1,-1,-1):
+            a[i],m=m,max(a[i],m)
+        return a
+
+
     
 S=Solution()
-
-print(S.findSpecialInteger([1,2,2,6,6,6,6,7,10]))
+    
+print(S.replaceElements([17,18,5,4,6,1]))
