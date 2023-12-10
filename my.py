@@ -1,12 +1,18 @@
-from functools import reduce
-from operator import mul
-
 class Solution:
-    def subtractProductAndSum(self,n):
-        a=list(map(int,str(n)))
-        return reduce(mul,a)-sum(a)
+    def sequentialDigits(self,a,b):
+        n,m,t,r=len(str(a)),len(str(b))+1,'123456789',[]
+
+        while n<m:
+            for i in range(10-n):
+                x=int(t[i:i+n])
+                if a<=x<=b:
+                    r.append(x)
+            n+=1
+
+        return r
+
     
 
 S=Solution()
 
-print(S.subtractProductAndSum(4421))
+print(S.sequentialDigits(1000,10**9))
