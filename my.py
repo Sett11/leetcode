@@ -1,18 +1,17 @@
+from random import choice
+
 class Solution:
-    def kthFactor(self,n,k):
-        r=[1]
-        for i in range(2,n//2):
-            if n%i==0:
-                r.append(i)
-                if len(r)==k:
-                    return r[-1]
-        if n%2==0 and n//2 not in r:
-            r.append(n//2)
-        r.append(n)
-        return r[k-1] if k<=len(r) else -1
-
-
+    def sortColors(self,a):
+        def hs(a):
+            if len(a)<2:
+                return a
+            l,m,r,n=[],[],[],choice(a)
+            {l.append(i) if i<n else r.append(i) if i>n else m.append(i) for i in a}
+            return hs(l)+m+hs(r)
+        b=hs(a)
+        for i in range(len(b)):
+            a[i]=b[i]
     
 S=Solution()
-    
-print(S.kthFactor(2,2))
+
+print(S.sortColors([2,0,2,1,1,0]))
