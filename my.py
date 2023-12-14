@@ -1,13 +1,12 @@
-from collections import Counter
-
 class Solution:
-    def sortColors(self,a):
-        c=Counter(a)
-        x=[0]*c[0]+[1]*c[1]+[2]*c[2]
-
-        for i in range(len(x)):
-            a[i]=x[i]
+    def minDistance(self,a,b):
+        n,m=len(a),len(b)
+        r=[[i+j if i*j==0 else 0 for j in range(m+1)] for i in range(n+1)]
+        for i in range(1,n+1):
+            for j in range(1,m+1):
+                r[i][j]=r[i-1][j-1] if a[i-1]==b[j-1] else 1+min(r[i-1][j],r[i][j-1],r[i-1][j-1])
+        return r[-1][-1]
     
 S=Solution()
 
-print(S.sortColors([2,0,2,1,1,0]))
+print(S.minDistance("horse","ros"))
