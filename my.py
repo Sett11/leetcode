@@ -1,13 +1,7 @@
 class Solution:
-    def orderlyQueue(self,s,k):
-        if k!=1:
-            return ''.join(sorted(s))
-        a=[s]
-        for i in range(len(s)):
-            s=s[1:]+s[0]
-            a.append(s)
-        return sorted(a)[0]
+    def superPow(self,a,b):
+        return pow(a,int(''.join(map(str,b))),1337)
     
 S=Solution()
 
-print(S.orderlyQueue('irsxx',1))
+print(S.superPow(2,[1,0]))
