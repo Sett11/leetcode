@@ -1,13 +1,9 @@
+from itertools import product
+
 class Solution:
-    def maxConsecutive(self,l,r,b):
-        s=set(b)
-        a=[l]+sorted(b)+[r]
-        m=0
-        for i in range(1,len(a)):
-            m=max(a[i]-a[i-1]-(1 if a[i] in s and a[i-1] in s else 0),m)
-        return m if m>1 else 0
+    def kthSmallestPrimeFraction(self,a,n):
+        return sorted([[i[0]/i[1],i] for i in product(a,a) if i[0]!=i[1]])[n-1][1]
     
 S=Solution()
 
-print(S.maxConsecutive(2,9,[4,6]))
-print(S.maxConsecutive(28,50,[35,48]))
+print(S.kthSmallestPrimeFraction([1,2,3,5],3))
