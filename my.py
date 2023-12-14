@@ -1,7 +1,15 @@
 class Solution:
-    def largestPalindrome(self,n):
-        return [0,9,987,123,597,677,1218,877,475][n]
+    def powerfulIntegers(self,x,y,n):
+        a=sorted(x**i+y**j for i in range(35) for j in range(25))
+        for i in range(len(a)):
+            if a[i]>n:
+                return list(set(a[:i]))
+            if a[i]==n:
+                return list(set(a[:i+1]))
+        return list(set(a))
+
     
 S=Solution()
 
-print(S.largestPalindrome(3))
+print(S.powerfulIntegers(3,5,15))
+print(S.powerfulIntegers(1,1,40000))
