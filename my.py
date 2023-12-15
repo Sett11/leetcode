@@ -6,14 +6,14 @@ class TreeNode:
 
 
 class Solution:
-    def preorderTraversal(self,r):
+    def postorderTraversal(self,r):
         a=[]
         def f(r):
             if not r:
                 return
-            a.append(r.val)
             f(r.left)
             f(r.right)
+            a.append(r.val)
         f(r)
         return a
 
@@ -21,4 +21,4 @@ S=Solution()
 t=TreeNode(1,
            None,TreeNode(2,
                          TreeNode(3),None))
-print(S.preorderTraversal(t))
+print(S.postorderTraversal(t))
