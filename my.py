@@ -1,15 +1,22 @@
-class Solution:
-    def powerfulIntegers(self,x,y,n):
-        a=sorted(x**i+y**j for i in range(35) for j in range(25))
-        for i in range(len(a)):
-            if a[i]>n:
-                return list(set(a[:i]))
-            if a[i]==n:
-                return list(set(a[:i+1]))
-        return list(set(a))
+class TreeNode:
+    def __init__(self,val=0,left=None,right=None):
+        self.val=val
+        self.left=left
+        self.right=right
 
-    
+
+class Solution:
+    def inorderTraversal(self,r):
+        a=[]
+        def f(r):
+            if not r:
+                return
+            f(r.left)
+            a.append(r.val)
+            f(r.right)
+        f(r)
+        return a
+
 S=Solution()
 
-print(S.powerfulIntegers(3,5,15))
-print(S.powerfulIntegers(1,1,40000))
+print(S.inorderTraversal())
