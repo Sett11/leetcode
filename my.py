@@ -6,17 +6,19 @@ class TreeNode:
 
 
 class Solution:
-    def inorderTraversal(self,r):
+    def preorderTraversal(self,r):
         a=[]
         def f(r):
             if not r:
                 return
-            f(r.left)
             a.append(r.val)
+            f(r.left)
             f(r.right)
         f(r)
         return a
 
 S=Solution()
-
-print(S.inorderTraversal())
+t=TreeNode(1,
+           None,TreeNode(2,
+                         TreeNode(3),None))
+print(S.preorderTraversal(t))
