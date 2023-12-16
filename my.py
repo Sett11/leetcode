@@ -1,24 +1,69 @@
-class TreeNode:
-    def __init__(self,val=0,left=None,right=None):
-        self.val=val
-        self.left=left
-        self.right=right
-
+def f(a,x,y):
+    i,j=x,y
+    r=[]
+    while j>=0:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        j-=1
+    i,j=x,y
+    while j<8:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        j+=1
+    i,j=x,y
+    while i>=0:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i-=1
+    i,j=x,y
+    while i<8:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i+=1
+    i,j=x,y
+    while i<8 and j>=0:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i+=1
+        j-=1
+    i,j=x,y
+    while i>=0 and j>=0:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i-=1
+        j-=1
+    i,j=x,y
+    while i<8 and j<8:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i+=1
+        j+=1
+    i,j=x,y
+    while i>=0 and j<8:
+        if a[i][j]==1:
+            r.append([i,j])
+            break
+        i-=1
+        j+=1
+    return r
 
 class Solution:
-    def postorderTraversal(self,r):
-        a=[]
-        def f(r):
-            if not r:
-                return
-            f(r.left)
-            f(r.right)
-            a.append(r.val)
-        f(r)
-        return a
-
+    def queensAttacktheKing(self,a,b):
+        c=[[0]*8 for _ in range(8)]
+        c[b[0]][b[1]]=2
+        for i in range(8):
+            for j in range(8):
+                if [i,j] in a:
+                    c[i][j]=1
+        return f(c,b[0],b[1])
+    
 S=Solution()
-t=TreeNode(1,
-           None,TreeNode(2,
-                         TreeNode(3),None))
-print(S.postorderTraversal(t))
+
+print(S.queensAttacktheKing([[0,0],[1,1],[2,2],[3,4],[3,5],[ 4,4],[4,5]],[3,3]))
