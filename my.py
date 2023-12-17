@@ -1,14 +1,18 @@
+from functools import cache
+
+@cache
 def f(n):
-    c=0
-    while n>1:
-        n=3*n+1 if n&1 else n//2
-        c+=1
-    return c
+    r=[1,n]
+    for i in range(2,int(n**.5+1)):
+        if n%i==0:
+            if i not in r and n//i not in r:
+                r.extend([i,n//i])
+    return sum(r) if len(set(r))==4 else 0
 
 class Solution:
-    def getKth(self,l,r,n):
-        return sorted([[f(i),i] for i in range(l,r+1)],key=lambda x:(x[0],x[1]))[n-1][1]
+    def sumFourDivisors(self,a):
+        return sum(list(map(f,a)))
 
 S=Solution()
 
-print(S.getKth(12,15,2))
+print(S.sumFourDivisors([21,21]))
