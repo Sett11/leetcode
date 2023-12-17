@@ -1,14 +1,14 @@
 class Solution:
-    def numberOfSteps(self,n):
+    def countOperations(self,a,b):
         c=0
-        while n:
-            if n&1:
-                n-=1
+        while a and b:
+            if a>=b:
+                a-=b
             else:
-                n//=2
+                b-=a
             c+=1
         return c
 
 S=Solution()
 
-print(S.numberOfSteps(14))
+print(S.countOperations(2,3))
