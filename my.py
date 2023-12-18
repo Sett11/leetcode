@@ -1,15 +1,32 @@
-fib=[1134903170, 701408733, 433494437, 267914296, 165580141, 102334155, 63245986, 39088169, 24157817, 14930352, 9227465, 5702887, 3524578, 2178309, 1346269, 832040, 514229, 317811, 196418, 121393, 75025, 46368, 28657, 17711, 10946, 6765, 4181, 2584, 1597, 987, 610, 377, 233, 144, 89, 55, 34, 21, 13, 8, 5, 3, 2, 1, 1]
 class Solution:
-    def findMinFibonacciNumbers(self,n):
-        r=[]
-        for i in list(filter(lambda x:x<=n,fib)):
-            while i<=n:
-                r.append(i)
-                if sum(r)>n:
-                    r.pop()
-                    break
-        return len(r)
-    
+    def generateMatrix(self,n):
+        a=list(range(1,n**2+1))
+        r,a,k=[a[:n]],a[n:],n-1
+        while a:
+            v=2
+            while v:
+                r.append(a[:k])
+                a=a[k:]
+                v-=1
+            k-=1
+        q,w,i=['l','d','r','u'],[r.pop()],0
+        while r:
+            v=r.pop()
+            if q[i%4]=='l':
+                for j in range(len(w)-1,-1,-1):
+                    w[j].insert(0,v.pop(0))
+            elif q[i%4]=='d':
+                w.append(v[::-1])
+            elif q[i%4]=='r':
+                for j in range(len(w)-1,-1,-1):
+                    w[j].append(v.pop())
+            else:
+                w.insert(0,v)
+            i+=1
+        if n%2==0:
+            w=[p[::-1] for p in w][::-1]
+        return w
+
 S=Solution()
 
-print(S.findMinFibonacciNumbers(19))
+print(S.generateMatrix(5))
