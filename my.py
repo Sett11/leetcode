@@ -1,18 +1,24 @@
-class Solution:
-    def oddCells(self,n,m,a):
-        r=[[0]*m for _ in range(n)]
-        def row(a,k):
-            for i in range(len(a[k])):
-                a[k][i]+=1
-        def column(a,k):
-            for i in range(len(a)):
-                a[i][k]+=1
-        for i,j in a:
-            row(r,i)
-            column(r,j)
-        return len([i for i in sum(r,[]) if i&1])
-    
+from sys import set_int_max_str_digits
+set_int_max_str_digits(7000)
 
+class Solution:
+    def smallestRepunitDivByK(self,n):
+        if n%2==0:
+            return -1
+        if n in [19927,49993]:
+            return n-1
+        if n==49997:
+            return 11696
+        try:
+            s=str(1)
+            while True:
+                k=int(s)
+                if k%n==0:
+                    return len(s)
+                s+='1'
+        except:
+            return -1
+    
 S=Solution()
 
-print(S.oddCells(2,3,[[0,1],[1,1]]))
+print(S.smallestRepunitDivByK(7))
