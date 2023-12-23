@@ -1,24 +1,19 @@
-from sys import set_int_max_str_digits
-set_int_max_str_digits(7000)
-
 class Solution:
-    def smallestRepunitDivByK(self,n):
-        if n%2==0:
-            return -1
-        if n in [19927,49993]:
-            return n-1
-        if n==49997:
-            return 11696
-        try:
-            s=str(1)
-            while True:
-                k=int(s)
-                if k%n==0:
-                    return len(s)
-                s+='1'
-        except:
-            return -1
+    def reorderSpaces(self,s):
+        a,n,r=s.split(),s.count(' '),''
+        if not n:
+            return s
+        if len(a)==1:
+            return a[0]+' '*n
+        k=n//(len(a)-1)
+        for i in range(len(a)):
+            r+=a[i]+' '*k
+            if i!=len(a)-1:
+                n-=k
+        r=r.strip()
+        return r+' '*n
     
 S=Solution()
 
-print(S.smallestRepunitDivByK(7))
+print(S.reorderSpaces("  this   is  a sentence "))
+print(S.reorderSpaces(" practice   makes   perfect"))
