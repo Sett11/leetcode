@@ -1,19 +1,13 @@
+from bisect import insort
+
 class Solution:
-    def reorderSpaces(self,s):
-        a,n,r=s.split(),s.count(' '),''
-        if not n:
-            return s
-        if len(a)==1:
-            return a[0]+' '*n
-        k=n//(len(a)-1)
-        for i in range(len(a)):
-            r+=a[i]+' '*k
-            if i!=len(a)-1:
-                n-=k
-        r=r.strip()
-        return r+' '*n
+    def findClosestElements(self,a,n,k):
+        r=[]
+        for i in a:
+            insort(r,[abs(k-i),i])
+        return list(map(lambda y:y[1],sorted(r[:n],key=lambda x:x[1])))
     
 S=Solution()
 
-print(S.reorderSpaces("  this   is  a sentence "))
-print(S.reorderSpaces(" practice   makes   perfect"))
+print(S.findClosestElements([1,2,3,4,5],4,3))
+print(S.findClosestElements([1,1,1,10,10],1,9))
